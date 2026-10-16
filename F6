@@ -1,0 +1,799 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Kardeks PICU F6.1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&display=swap">
+<style id="pagestyle">@page{size:297mm 420mm;margin:6mm}</style>
+<style>
+/* Lembar F6.1 digital: satu "kertas" yang bisa diisi; layout kertas asli 1814px dipakai saat cetak */
+:root{
+  --navy:#13365C; --teal:#0E7C7B; --teal-d:#0B5F5E; --ink:#1B2330; --sub:#3A4654; --mute:#55606E;
+  --line:#C9D1DB; --line-d:#5B6B7D; --dot:#8A97A6; --soft:#F4F7FA; --soft2:#E9EEF4; --tealbg:#E3EEEE; --tealbg2:#EEF6F6;
+  --warn:#FFF6E5; --warn-ink:#7A3E00; --desk:#DDE3EA; --now:#FFF3C4; --focus:#FFE38A;
+  --display:'IBM Plex Sans','Segoe UI',system-ui,sans-serif; --cond:'IBM Plex Sans Condensed','IBM Plex Sans','Arial Narrow',system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:var(--cond);font-size:14px}
+input,textarea,select,button{font:inherit;color:inherit}
+input[type=checkbox]{accent-color:var(--navy);width:16px;height:16px;margin:0;cursor:pointer}
+
+/* Toolbar */
+.toolbar{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding:8px 16px;font-family:var(--display)}
+.toolbar .brand{font-weight:700;font-size:16px;margin-right:6px;white-space:nowrap}
+.toolbar select,.toolbar button{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;border-radius:8px;padding:6px 10px;font-size:13.5px;cursor:pointer}
+.toolbar select{max-width:250px}
+.toolbar .grp{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+@media screen and (max-width:1500px){.toolbar .status{display:none}}
+.toolbar select option{color:var(--ink)}
+.toolbar button:hover{background:rgba(255,255,255,.18)}
+.toolbar .primary{background:#fff;color:var(--navy);font-weight:700;border-color:#fff}
+.toolbar .primary:hover{background:#E3EEEE}
+.toolbar .sp{flex:1 1 auto}
+.toolbar .status{font-size:12.5px;opacity:.8;white-space:nowrap}
+.toolbar label{font-size:12.5px;display:flex;align-items:center;gap:6px}
+.jump{display:flex;gap:8px;justify-content:center;padding:12px 16px 0}
+.jump a{font-family:var(--display);font-weight:600;color:var(--navy);text-decoration:none;background:#fff;border-radius:999px;padding:5px 16px;border:1px solid var(--line)}
+.notice{max-width:1814px;margin:10px auto 0;padding:8px 14px;font-size:13px;color:var(--sub);background:#fff;border:1px solid var(--line);border-radius:10px;margin-inline:16px}
+@media screen and (min-width:1846px){.notice{margin-inline:auto}}
+
+/* Sheet */
+.sheet{background:#fff;max-width:1814px;margin:16px auto 24px;padding:40px;box-shadow:0 4px 24px rgba(19,54,92,.15);display:flex;flex-direction:column;gap:12px;scroll-margin-top:60px}
+@media screen and (max-width:1846px){.sheet{margin-inline:16px}}
+.fhead{display:flex;align-items:center;gap:20px;padding-bottom:10px;border-bottom:4px solid var(--navy);font-family:var(--display);flex-wrap:wrap}
+.logo{width:68px;height:68px;border:1.5px dashed var(--dot);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--mute);text-align:center;flex:none}
+.logoimg{width:58px;height:75px;object-fit:contain;flex:none}
+.ttl{display:flex;flex-direction:column;gap:3px;flex:1 1 400px;min-width:0}
+.ttl b{font-size:30px;color:var(--navy);line-height:1.1}
+.ttl span{font-size:16px;color:var(--sub)}
+.risti{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;color:var(--navy);border:1.5px solid var(--navy);padding:8px 12px;cursor:pointer}
+.badgewrap{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.badge{background:var(--navy);color:#fff;font-size:16px;font-weight:700;padding:5px 12px;letter-spacing:.06em}
+.tgl{font-size:14px;color:var(--sub);display:flex;align-items:center;gap:6px}
+.tgl input{border:0;border-bottom:1px dotted var(--dot);padding:2px 4px;background:transparent}
+
+.box{border:1px solid var(--line-d);background:#fff;min-width:0}
+.bt{background:var(--navy);color:#fff;font-size:13px;font-weight:600;letter-spacing:.08em;padding:5px 10px}
+.bt small{font-weight:400;letter-spacing:0;opacity:.85}
+
+/* Identity */
+.idg{display:grid;grid-template-columns:2.4fr 1fr 1.2fr .6fr .7fr .7fr .7fr}
+.idg.back{grid-template-columns:2.4fr 1fr .7fr 1fr .8fr}
+.f{display:flex;flex-direction:column;gap:3px;padding:7px 10px;border-right:1px solid var(--line);min-width:0}
+.f.top{border-top:1px solid var(--line)}
+.f.last{border-right:0}
+.fl{font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--navy);text-transform:uppercase;white-space:nowrap}
+.f input,.f select,.f output{border:0;border-bottom:1px dotted var(--dot);height:24px;padding:0 2px;background:transparent;width:100%;min-width:0;font-size:15px}
+.f output{display:block;line-height:24px;font-weight:600;color:var(--teal-d)}
+.f .two{display:flex;gap:6px;align-items:center}
+.f .two output{width:auto;flex:none;font-size:13px;white-space:nowrap}
+.f.tealbg{background:var(--tealbg2)}
+.f.alergi{border-right:0;border-left:4px solid var(--navy);background:var(--warn)}
+.f.alergi .fl{color:var(--warn-ink)}
+
+/* Middle */
+.mid,.bottom{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.gridbox{flex:1 1 900px;display:flex;flex-direction:column}
+.side{flex:1 1 560px;max-width:560px;display:flex;flex-direction:column;gap:12px}
+.gscroll{overflow-x:auto}
+.hg{min-width:1100px}
+.row,.grow{display:grid;grid-template-columns:200px repeat(24,minmax(0,1fr));border-bottom:1px solid #9AA6B4;height:28px}
+.grow{height:21px;border-bottom:1px dotted #B5BFCB}
+.lab{display:flex;align-items:center;justify-content:space-between;gap:4px;padding:0 7px;font-size:14px;border-right:1px solid var(--line-d);background:var(--soft);white-space:nowrap;overflow:hidden;position:sticky;left:0;z-index:2}
+.lab.t{background:var(--tealbg);font-weight:600;color:var(--teal-d)}
+.lab .labin{border:0;border-bottom:1px dotted var(--dot);background:transparent;width:100%;min-width:0;font-size:13.5px;padding:0 2px}
+.u{font-size:12px;color:var(--mute);flex:none}
+.c,.hc{border-left:1px solid var(--line);min-width:0;position:relative}
+.c.n{background:#F6F8FB}
+.c.s,.hc.s{border-left:2px solid var(--navy)}
+.c.b,.hc.b{border-left:2px dashed var(--teal)}
+.blokrow{height:20px}
+.blokrow>div{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--teal-d);background:var(--tealbg2)}
+.blokrow>div+div{border-left:2px dashed var(--teal)}
+.c.now,.hc.now{background:#DFF1EF;box-shadow:inset 2px 0 0 var(--teal),inset -2px 0 0 var(--teal)}
+.hc{font-size:13.5px;font-weight:600;display:flex;align-items:center;justify-content:center;color:var(--navy)}
+.hc.n{background:var(--soft2)}
+.c input{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;text-align:center;font-size:13px;padding:0 1px}
+.c input:focus,.mt input:focus,.f input:focus,textarea:focus{outline:2px solid var(--teal);outline-offset:-2px;background:var(--focus)}
+.c input.calc{font-weight:700;color:var(--teal-d)}
+.lab .route{flex:none;font-size:11.5px;font-weight:600;color:var(--teal-d);min-width:30px}
+.c.split{display:flex}
+.c.split input{position:static;flex:1 1 0;min-width:0;height:100%;padding:0}
+.c.split input+input{border-left:1px solid var(--dot)}
+.c.split input:nth-child(3){border-left:1.5px solid var(--line-d)}
+.sec{height:24px;background:var(--navy);color:#fff;font-size:13px;font-weight:600;letter-spacing:.08em;display:flex;align-items:center;padding:0 10px;position:sticky;left:0}
+.shiftrow{height:24px}
+.shiftrow>div{display:flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:600;color:var(--navy)}
+.chartbox{position:relative}
+.chartbox svg{position:absolute;left:200px;right:0;top:0;bottom:0;width:calc(100% - 200px);height:100%;pointer-events:none;overflow:visible}
+.legend{padding:7px 10px;font-size:13px;color:var(--sub);line-height:1.45}
+.legend b{color:var(--navy)}
+
+/* Mini tables */
+.mt{display:grid;font-size:13.5px}
+.mt>div{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:0 6px;display:flex;align-items:center;min-height:27px;min-width:0;gap:4px}
+.mt>.h{background:var(--soft2);font-weight:600;color:var(--navy);font-size:12.5px}
+.mt>.g{background:var(--soft);font-weight:600;font-size:12.5px;color:var(--teal);grid-column:1/-1;border-right:0}
+.mt>.k{background:var(--tealbg);font-weight:600;color:var(--teal-d)}
+.mt>.e{border-right:0}
+.mt>.ctr{justify-content:center}
+.mt>.in{padding:0}
+.mt input:not([type=checkbox]){border:0;background:transparent;width:100%;min-width:0;height:27px;padding:0 6px;font-size:13.5px}
+.mt input.hdr{font-weight:600;color:var(--navy);font-size:12.5px;padding:0}
+.mt input[type=time]::-webkit-calendar-picker-indicator{display:none}
+.mt output{font-weight:700;color:var(--teal-d);font-variant-numeric:tabular-nums}
+.mt output.neg{color:#B42318}
+.note{padding:7px 10px;font-size:12.5px;color:var(--sub);line-height:1.45;background:var(--soft)}
+.note b{color:var(--navy)}
+textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;line-height:28px;font-size:14px;background:repeating-linear-gradient(to bottom,transparent 0 27px,var(--dot) 27px 28px);background-attachment:local}
+
+.bottom>.b1{flex:1 1 420px}
+.bottom>.b2{flex:1.15 1 480px}
+.bottom>.b3{flex:1 1 420px;max-width:420px;display:flex;flex-direction:column;align-self:stretch}
+.b3 textarea{flex:1 1 auto;min-height:392px}
+.bottom>.b4{flex:1.6 1 760px}
+.bottom>.b5{flex:1 1 420px;display:flex;flex-direction:column;align-self:stretch}
+.b5 textarea{flex:1 1 auto;min-height:252px}
+
+/* satu halaman: PEWS & laporan shift di kolom samping */
+.side .pref{grid-template-columns:86px repeat(4,minmax(0,1fr));font-size:11.5px}
+.side .esc{font-size:12.5px}
+.side .sbar{grid-template-columns:minmax(0,1fr)}
+.side .sbar>div:not(:last-child){border-right:0;border-bottom:1px solid var(--line)}
+.side .sbar textarea.r{min-height:140px}
+.blk>div:not(.lab){grid-column:span 6;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:700;color:var(--teal-d);border-left:2px dashed var(--teal);font-variant-numeric:tabular-nums;font-size:13px}
+.blk>div:nth-child(2){border-left:1px solid var(--line)}
+.blk output.neg,.tot24 output.neg{color:#B42318}
+.blk small{font-weight:400;color:var(--mute)}
+.blk>div:has(> output:first-child:empty) small{display:none}
+.tot24{display:flex;flex-wrap:wrap;gap:4px 22px;align-items:center;padding:6px 10px;font-size:13.5px;background:var(--tealbg2);border-bottom:1px solid #9AA6B4;position:sticky;left:0}
+.tot24 b{color:var(--navy)}
+.tot24 output{font-weight:700;color:var(--teal-d);font-variant-numeric:tabular-nums}
+.bottom.bgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);grid-template-areas:"prog sp" "prog add" "prog cat";grid-template-rows:auto 1fr 1fr;gap:16px;align-items:stretch}
+.bgrid>.bprog{grid-area:prog;display:flex;flex-direction:column}.bgrid>.bsp{grid-area:sp}
+.bgrid>.badd{grid-area:add}.bgrid>.bcat{grid-area:cat}
+.bgrid>.badd,.bgrid>.bcat{display:flex;flex-direction:column}
+.bprog .advg{flex:1 1 auto}.advg textarea{flex:1 1 auto}
+.sysg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:2px solid var(--navy)}
+.sysg label{display:flex;align-items:center;gap:8px;padding:0 10px;height:30px;border-bottom:1px solid var(--line);font-size:13.5px;min-width:0}
+.sysg label:nth-child(odd){border-right:1px solid var(--line)}
+.sysg span{flex:0 0 112px;font-weight:600;color:var(--navy);font-size:12.5px}
+.sysg input{border:0;border-bottom:1px dotted var(--dot);background:transparent;flex:1 1 auto;min-width:0;height:24px}
+@media screen and (max-width:1100px){.bottom.bgrid{grid-template-columns:minmax(0,1fr);grid-template-areas:"prog" "sp" "add" "cat";grid-template-rows:none}}
+.badd textarea,.bcat textarea{flex:1 1 auto;min-height:168px}
+.advg{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(4,minmax(0,1fr))}
+.advg>div{display:flex;flex-direction:column;min-width:0}
+.advg>div+div{border-left:1px solid var(--line)}
+.advg .sl{font-size:12.5px;font-weight:600;color:var(--teal-d);background:var(--tealbg2);padding:4px 10px;border-bottom:1px solid var(--line)}
+.advg textarea{min-height:420px}
+.idg .dxf textarea{border:0;border-bottom:1px dotted var(--dot);background:transparent;width:100%;resize:vertical;font-size:15px;line-height:24px;min-height:50px;padding:0 2px}
+.sign{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;font-size:14px}
+.sign label{border:1px solid var(--line-d);padding:7px 10px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sign b{color:var(--navy);white-space:nowrap}
+.sign input{border:0;border-bottom:1px dotted var(--dot);flex:1 1 auto;min-width:0;background:transparent;text-align:right}
+
+/* Back page */
+.dxwrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.dxcol:first-child{border-right:2px solid var(--navy)}
+.dx{display:grid;grid-template-columns:30px 64px minmax(0,1fr) 118px 118px 36px 36px 36px;font-size:14px}
+.dx>div{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:0 6px;display:flex;align-items:center;height:30px;white-space:nowrap;overflow:hidden;min-width:0}
+.dx>div:last-child{border-right:0}
+.dx>.cc{justify-content:center;padding:0}
+.dx input:not([type=checkbox]){border:0;background:transparent;width:100%;min-width:0;height:28px;font-size:13px;padding:0}
+.dh>div{background:var(--soft2);font-weight:600;color:var(--navy);font-size:12.5px;justify-content:center}
+.dg{height:28px;background:var(--tealbg);color:var(--teal-d);font-weight:600;font-size:12.5px;letter-spacing:.06em;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid var(--line)}
+.code{color:var(--mute);font-size:12.5px}
+.dx.on>div{background:#F2FAF9}
+.edu{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.edu label{display:flex;align-items:center;gap:8px;font-size:13.5px;padding:7px 10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
+.edu label span{flex:1 1 auto}
+.edu input[type=text]{border:0;border-bottom:1px dotted var(--dot);width:150px;flex:none;background:transparent;font-size:12.5px}
+.sbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.sbar>div{padding:8px 12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.sbar>div:not(:last-child){border-right:1px solid var(--line)}
+.sbar h4{margin:0;font-size:14px;font-weight:700;color:var(--navy)}
+.sbar .sl{font-size:13px;color:var(--navy);font-weight:600;margin-top:4px}
+.sbar textarea{min-height:112px}
+.sbar textarea.r{min-height:196px}
+.printing #belakang .sbarbox{flex:1 1 auto;display:flex;flex-direction:column}
+.printing #belakang .sbar{flex:1 1 auto}
+.printing #belakang .sbar textarea{flex:1 1 auto}
+.sbar .who{font-size:13px;color:var(--mute);display:flex;gap:8px;padding-top:8px;flex-wrap:wrap}
+.sbar .who input{border:0;border-bottom:1px dotted var(--dot);background:transparent;min-width:0;flex:1 1 90px}
+.sbar .who input.jam{flex:0 0 70px}
+.sbar .ho{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px;padding:6px 8px;border:1.5px solid var(--navy);font-size:13px}
+.sbar .ho .hot{font-weight:700;color:var(--navy);letter-spacing:.06em;font-size:12px}
+.sbar .ho input{border:0;border-bottom:1px dotted var(--dot);background:transparent;min-width:0;flex:1 1 110px}
+.sbar .ho input.jam{flex:0 0 70px}
+.foot{font-size:12.5px;color:var(--mute);font-style:italic;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* Zona warna & PEWS */
+.c.z-y,.printing .c.z-y{background:#FFE7A0!important}
+.c.z-o,.printing .c.z-o{background:#FFC98A!important}
+.c.z-r,.printing .c.z-r{background:#FFB8AE!important}
+.c.z-r input{color:#8A1C12;font-weight:700}
+.c.pewsc input{cursor:pointer;font-weight:700}
+.zinfo{display:inline-flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.sw{display:inline-block;width:12px;height:12px;border:1px solid var(--line-d);vertical-align:-2px;margin-right:3px}
+.alertbar{max-width:1814px;margin:10px 16px 0;padding:10px 14px;border-radius:10px;font-family:var(--display);font-weight:600;font-size:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+@media screen and (min-width:1846px){.alertbar{margin-inline:auto}}
+.alertbar.l1{background:#FFF1C2;color:#6B4A00;border:1px solid #E9C766}
+.alertbar.l2{background:#FFE0BF;color:#7A3E00;border:1px solid #E8A15A}
+.alertbar.l3{background:#FFD6D0;color:#8A1C12;border:1px solid #D9796C}
+.alertbar a{color:inherit}
+.settings{max-width:1814px;margin:10px 16px 0;background:#fff;border:1px solid var(--line);border-radius:10px;font-size:13.5px}
+@media screen and (min-width:1846px){.settings{margin-inline:auto}}
+.settings summary{cursor:pointer;padding:9px 14px;font-family:var(--display);font-weight:600;color:var(--navy)}
+.settings .sbody{padding:4px 14px 14px;display:flex;flex-wrap:wrap;gap:16px 28px;align-items:flex-start}
+.settings table{border-collapse:collapse}
+.settings th,.settings td{border:1px solid var(--line);padding:3px 6px;text-align:center;font-weight:400}
+.settings th{background:var(--soft2);color:var(--navy);font-weight:600;font-size:12.5px}
+.settings input{width:52px;border:1px solid var(--line);border-radius:4px;padding:2px 4px;text-align:center}
+.settings input.wide{width:330px;text-align:left}
+.settings .fld{display:flex;flex-direction:column;gap:6px}
+.settings .fld label{display:flex;gap:6px;align-items:center}
+.settings .warnnote{flex-basis:100%;color:var(--warn-ink);background:var(--warn);padding:6px 10px;border-radius:6px}
+.settings button{border:1px solid var(--line-d);background:#fff;border-radius:6px;padding:4px 10px;cursor:pointer}
+.pop{position:fixed;z-index:40;background:#fff;border:1px solid var(--line-d);border-radius:12px;box-shadow:0 12px 40px rgba(19,54,92,.3);width:min(460px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;font-size:13.5px}
+.pop header{background:var(--navy);color:#fff;padding:8px 12px;font-family:var(--display);font-weight:700;display:flex;justify-content:space-between;align-items:center;border-radius:11px 11px 0 0}
+.pop .ref{padding:6px 12px;background:var(--soft);color:var(--sub);font-size:12.5px}
+.pop fieldset{border:0;border-bottom:1px solid var(--line);margin:0;padding:6px 12px}
+.pop legend{font-weight:700;color:var(--navy);padding:0;margin-bottom:2px}
+.pop label{display:flex;gap:8px;align-items:flex-start;padding:3px 0;cursor:pointer;line-height:1.3}
+.pop label b{flex:none;width:14px;color:var(--navy)}
+.pop .foot2{display:flex;gap:8px;align-items:center;padding:10px 12px;flex-wrap:wrap}
+.pop .tot{font-family:var(--display);font-weight:700;font-size:18px;margin-right:auto}
+.pop button{border:1px solid var(--line-d);background:#fff;border-radius:8px;padding:6px 12px;cursor:pointer}
+.pop button.ok{background:var(--navy);color:#fff;border-color:var(--navy)}
+.pewsbox{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
+.pewsbox>div:first-child{border-right:2px solid var(--navy)}
+.pref{display:grid;grid-template-columns:120px repeat(4,minmax(0,1fr));font-size:12.5px;line-height:1.3}
+.pref>div{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:5px 6px}
+.pref>div:nth-child(5n){border-right:0}
+.pref>.h{background:var(--soft2);font-weight:600;color:var(--navy)}
+.pref>.l{background:var(--soft);font-weight:600;color:var(--navy)}
+.esc{display:grid;grid-template-columns:auto 1fr;font-size:13px}
+.esc>div{padding:5px 8px;border-bottom:1px solid var(--line)}
+.esc>.lv{font-weight:700;white-space:nowrap;border-right:1px solid var(--line)}
+
+/* Tata letak layar: tabel per jam penuh, kartu samping tersusun rapi di bawahnya.
+   Tata letak kertas (berdampingan) hanya untuk cetak & layar sangat lebar. */
+@media screen and (max-width:1859px){
+  body:not(.printing) .mid{flex-direction:column;align-items:stretch}
+  body:not(.printing) .gridbox{flex:none}
+  body:not(.printing) .side{max-width:none;display:block;columns:3 360px;column-gap:16px}
+  body:not(.printing) .side>.box{break-inside:avoid;margin-bottom:12px}
+  body:not(.printing) .bottom:not(.bgrid){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+  body:not(.printing) .bottom>.b3,body:not(.printing) .bottom>.b4{grid-column:1/-1;max-width:none}
+  body:not(.printing) .b3 textarea{min-height:200px}
+}
+@media screen and (max-width:1100px){
+  body:not(.printing) .bottom:not(.bgrid){grid-template-columns:minmax(0,1fr)}
+  body:not(.printing) .bottom .mt{overflow-x:auto}
+}
+
+/* Narrow screens (not print) */
+@media screen and (max-width:1300px){
+  .side,.bottom>.b3{max-width:none}
+  .idg,.idg.back{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+  .f{border-bottom:1px solid var(--line)}
+  .f.top{border-top:0}
+  .f[style*="span"]{grid-column:auto!important}
+  .pewsbox,.sbar,.edu{grid-template-columns:minmax(0,1fr)}
+  .pewsbox>div:first-child{border-right:0;border-bottom:2px solid var(--navy)}
+  .pewsbox .mt{overflow-x:auto}
+  .sbar>div:not(:last-child){border-right:0;border-bottom:1px solid var(--line)}
+  .sign{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sheet{padding:20px 16px}
+}
+@media screen and (max-width:640px){
+  .sign{grid-template-columns:minmax(0,1fr)}
+  .ttl b{font-size:22px}
+  .pref{grid-template-columns:90px repeat(4,minmax(110px,1fr))}
+  .pewsbox>div:first-child{overflow-x:auto}
+}
+
+/* Print */
+@media print{
+  body{background:#fff}
+  .toolbar,.jump,.notice{display:none!important}
+}
+.printing .toolbar,.printing .jump,.printing .notice,.printing .alertbar,.printing .settings,.printing .pop{display:none!important}
+@media print{.alertbar,.settings,.pop{display:none!important}}
+.printing .sheet{width:1814px;max-width:none;margin:0;padding:48px;box-shadow:none;break-after:page;page-break-after:always}
+.printing .sheet:last-of-type{break-after:auto;page-break-after:auto}
+.printing .gscroll{overflow:visible}
+.printing ::placeholder{color:transparent}
+.printing .kosong,.printing .kosong::-webkit-datetime-edit{color:transparent}
+.printing .c.now,.printing .hc.now{background:inherit}
+.printing .c.n{background:#F6F8FB}
+.printing .hc.n{background:var(--soft2)}
+.printing input[type=date]::-webkit-calendar-picker-indicator,.printing input[type=time]::-webkit-calendar-picker-indicator{display:none}
+.printing textarea{resize:none;overflow:hidden}
+.printing select{appearance:none;-webkit-appearance:none}
+.printing .dx.on>div{background:#fff}
+</style>
+
+<div class="toolbar">
+  <span class="brand">Kardeks PICU · F6.1</span>
+  <select id="sheetSel" aria-label="Pilih lembar"></select>
+  <button id="btnNew" title="Lembar kosong untuk pasien baru">+ Lembar baru</button>
+  <button id="btnNext" title="Salin identitas, alat, obat & balance kumulatif ke tanggal berikutnya">Hari berikutnya</button>
+  <button id="btnDel">Hapus lembar</button>
+  <span class="sp"></span>
+  <span class="status" id="status"></span>
+  <button id="btnExport" title="Simpan semua lembar ke file cadangan">Cadangkan</button>
+  <button id="btnImport">Pulihkan</button>
+  <input type="file" id="fileImport" accept="application/json,.json" hidden>
+  <label>Kertas
+    <select id="paper">
+      <option value="a3">A3</option>
+      <option value="besar">48 × 65 cm (asli)</option>
+      <option value="a4">A4</option>
+    </select>
+  </label>
+  <button class="primary" id="btnPrint">Cetak</button>
+</div>
+
+<p class="notice"><b>Versi coba.</b> Data tersimpan otomatis hanya di browser perangkat ini, tidak dikirim ke mana pun. MAP, total intake/output per jam, balance, diuresis, IWL, kebutuhan per 24 jam, umur, hari rawat dan hari alat terhitung otomatis (teks hijau). Kolom jam yang sedang berjalan diberi bingkai hijau. Sel tanda vital berwarna kuning/merah bila di luar batas usia; klik sel PEWS untuk menghitung skor.</p>
+<div class="alertbar" id="alertbar" hidden></div>
+<details class="settings" id="settings">
+  <summary>Pengaturan zona warna &amp; PEWS</summary>
+  <div class="sbody" id="sbody"></div>
+</details>
+<div class="pop" id="pewsPop" hidden role="dialog" aria-label="Hitung PEWS"></div>
+
+<section class="sheet" id="depan">
+  <div class="fhead">
+    <img class="logoimg" src="logo-rssa.png" alt="Logo RSSA" width="58" height="75">
+    <div class="ttl"><b>LEMBAR OBSERVASI &amp; IMPLEMENTASI HARIAN PICU</b><span>RSUD Dr. Saiful Anwar Malang · Pemerintah Provinsi Jawa Timur</span></div>
+    <label class="risti"><input type="checkbox" data-k="p.risti">RISTI</label>
+    <div class="badgewrap"><div class="badge">F6.1 · REV. 2026</div><label class="tgl">Tanggal: <input type="date" data-k="p.tanggal"></label></div>
+  </div>
+
+  <div class="box idg">
+    <label class="f"><span class="fl">Nama pasien</span><input data-k="p.nama" autocomplete="off"></label>
+    <label class="f"><span class="fl">No. RM</span><input data-k="p.rm" autocomplete="off"></label>
+    <label class="f"><span class="fl">Tgl lahir / Umur</span><span class="two"><input type="date" data-k="p.tgllahir"><output id="o-umur"></output></span></label>
+    <label class="f"><span class="fl">L / P</span><select data-k="p.jk"><option value=""></option><option>L</option><option>P</option></select></label>
+    <label class="f tealbg"><span class="fl">BB (kg)</span><input data-k="p.bb" inputmode="decimal"></label>
+    <label class="f tealbg"><span class="fl">TB (cm)</span><input data-k="p.tb" inputmode="decimal"></label>
+    <label class="f last"><span class="fl">Bed</span><input data-k="p.bed"></label>
+    <label class="f top dxf last" style="grid-column:1/-1"><span class="fl">Diagnosa medis</span><textarea data-k="p.dx" rows="2"></textarea></label>
+    <label class="f top"><span class="fl">DPJP / Konsulen</span><input data-k="p.dpjp"></label>
+    <label class="f top"><span class="fl">Tgl masuk</span><input type="date" data-k="p.tglmasuk"></label>
+    <label class="f top"><span class="fl">Hari ke</span><output id="o-hr"></output></label>
+    <label class="f top alergi" style="grid-column:span 4"><span class="fl">⚠ Alergi obat / makanan</span><input data-k="p.alergi"></label>
+  </div>
+
+  <div class="box" id="alatbox"></div>
+
+  <div class="mid">
+    <div class="box gridbox">
+      <div class="gscroll"><div class="hg" id="hourgrid"></div></div>
+      <div class="legend"><b>Mode napas:</b> S = spontan · NK = nasal kanul · SM = simple mask · NRM · HF = HFNC · CP = CPAP · V = ventilator (tulis modenya) &nbsp;·&nbsp; <b>TD</b> ditulis sistol/diastol, mis. 100/60 &nbsp;·&nbsp; <b>Kekuatan otot</b> (0–5): kanan atas | kiri atas | kanan bawah | kiri bawah &nbsp;·&nbsp; <b>Pupil</b> mm & <b>respon cahaya</b> (+/−): kanan | kiri &nbsp;·&nbsp; <b>Nebul</b>: tulis obat + dosis/pengencer di label &nbsp;·&nbsp; <b>Topikal</b> = salep / tetes mata &nbsp;·&nbsp; <b>Restrain:</b> sirkulasi ditulis pulsasi K/L; visual ✓ baik / ✗ ada cedera &nbsp;·&nbsp; <b>Balance</b> = intake − (output + IWL); cc/kg/jam = balance ÷ BB ÷ 6 (÷ lama jam bila blok belum penuh); diuresis = urin ÷ BB ÷ jam; IWL (30 − umur) × BB / 24 jam<br><span class="zinfo" id="zinfo"></span></div>
+    </div>
+    <aside class="side" id="side"></aside>
+  </div>
+
+  <div class="bottom" id="bottom"></div>
+
+  <div class="sign">
+    <label><b>Perawat PAGI</b><input data-k="ttd.pagi" placeholder="Nama / paraf"></label>
+    <label><b>Perawat SORE</b><input data-k="ttd.sore" placeholder="Nama / paraf"></label>
+    <label><b>Perawat MALAM</b><input data-k="ttd.malam" placeholder="Nama / paraf"></label>
+    <label><b>DPJP</b><input data-k="ttd.dpjp" placeholder="Nama / paraf"></label>
+  </div>
+</section>
+
+
+
+<script>
+/* ---------- definitions ---------- */
+const HOURS=Array.from({length:24},(_,i)=>(7+i)%24);
+const colCls=i=>(i===7||i===14?' s':'')+(i===6||i===12||i===18?' b':'')+(i>=14?' n':'');
+// [id,label,unit,flag]  flag: num | calc | name
+const GROUPS=[
+ {t:'HEMODINAMIK',graph:true,rows:[['nadi','Nadi ●','x/mnt','num'],['suhu','Suhu ×','°C','num'],['td','TD sistol / diastol','mmHg'],['map','MAP','mmHg','calc'],['cvp','CVP','cmH₂O','num'],['rr','Frekuensi napas','x/mnt','num'],['spo2','SpO₂','%','num'],['crt','CRT','detik','num'],['akral','Akral (H/D)',''],['ekg','Irama EKG',''],['pews','PEWS (klik)','skor','pews']]},
+ {t:'NEUROLOGI · NYERI · SEDASI',rows:[['gcs','GCS (E / V / M)',''],['four','FOUR score (E/M/B/R)','skor'],['pup','Lebar pupil','ka | ki','s2'],['rc','Respon cahaya','ka | ki','s2'],['otot','Kekuatan otot','atas | bawah','s4'],['comfort','COMFORT-B / sedasi','skor','num'],['flacc','FLACC / nyeri','skor','num']]},
+ {t:'RESPIRASI · SETTING VENTILATOR',rows:[['mode','Mode ventilator','kode'],['rrset','Frekuensi','x/mnt'],['peep','PEEP','cmH₂O'],['pins','P insp','cmH₂O'],['ps','PS','cmH₂O'],['vt','V target','ml'],['fio2','FiO₂','%'],['ie','I : E','rasio'],['pramp','P ramp','']]},
+ {t:'RESPIRASI · PEMANTAUAN',rows:[['ppeak','P peak','cmH₂O'],['rrv','RR terukur','x/mnt'],['vte','Vte','ml'],['mve','MVe','L/mnt'],['leak','Leak','%'],['sekret','Konsistensi sputum','']]},
+ {t:'TINDAKAN KEPERAWATAN · tulis ✓ di jam dikerjakan',rows:[['tk1','Batuk efektif / napas dalam',''],['tk2','Suctioning',''],['tk3','Inhalasi / fisioterapi dada',''],['tk4','Rawat ETT·trakeo / sirkuit',''],['tk5','CVC·PICC: asistensi / rawat',''],['tk6','IV line: pasang / rawat',''],['tk7','Arteri line: asist / rawat',''],['tk8','NGT·OGT: pasang / cek',''],['tk9','Kateter urin: pasang / lepas',''],['tk11','ROM pasif / aktif',''],['tk21','Cegah foot drop',''],['tk12','Massage / back rub',''],['tk13','Rawat luka / aff drain',''],['tk14','Kasur dekubitus / ganti linen',''],['tk15','Oral hygiene',''],['tk16','Personal hygiene / keramas',''],['tk17','Selimut hangat / kompres',''],['tk18','Penanda jatuh·side rail·rem',''],['tk19','Perawatan stoma',''],['tk20','Lain-lain','','free']]},
+ {t:'PEMANTAUAN RESTRAIN',rows:[['rs2','Sirkulasi',''],['rs1','Visual (cedera / kulit)','✓/✗']]},
+ {t:'PEMBERIAN OBAT · tulis nama + dosis, centang / paraf di jam diberikan (cek 5 benar)',rows:[['ob1','IV','','freeroute'],['ob2','IV','','freeroute'],['ob3','IV','','freeroute'],['ob4','IV','','freeroute'],['ob5','IV','','freeroute'],['ob6','IV','','freeroute'],['ob7','IM / SC','','freeroute'],['ob8','IM / SC','','freeroute'],['ob9','PO','','freeroute'],['ob10','PO','','freeroute'],['ob11','PO','','freeroute'],['ob12','PO','','freeroute'],['ob13','PO','','freeroute'],['ob14','PO','','freeroute'],['ob17','Nebul','','freeroute'],['ob18','Nebul','','freeroute'],['ob15','Topikal','','freeroute'],['ob16','Topikal','','freeroute']]},
+ {t:'INTAKE',rows:[['cair1','Infus 1','cc','name'],['cair2','Infus 2','cc','name'],['obativ','Obat infus / IV','cc','num'],['sp1','SP 1','cc','name'],['sp2','SP 2','cc','name'],['sp3','SP 3','cc','name'],['sp4','SP 4','cc','name'],['sp5','SP 5','cc','name'],['sp6','SP 6','cc','name'],['sp7','SP 7','cc','name'],['obor','Obat oral','cc','num'],['sonde','Diet (ASI / susu / sonde)','cc','num'],['oral','Rehidrasi / minum','cc','num'],['transf','Transfusi · no. labu','cc','name']]},
+ {t:'OUTPUT',rows:[['urin','Urin','cc','num'],['iwl','IWL (otomatis)','cc','calc'],['drain','WSD / drain','cc','num'],['perd','Darah','cc','num'],['residu','Residu lambung','cc','num'],['ngt','Muntah / NGT','cc','num'],['bab','BAB','frek / konsist.']]},
+ {t:'BALANCE PER JAM',rows:[['tin','Total intake','cc','calc'],['tout','Total output + IWL','cc','calc'],['bal','Balance','cc','calc'],['kum','Balance kumulatif','cc','calc']]},
+];
+const INTAKE=['cair1','cair2','obativ','sp1','sp2','sp3','sp4','sp5','sp6','sp7','obor','sonde','oral','transf'];
+const OUTPUT=['urin','drain','perd','residu','ngt'];
+const ROW_IDS=GROUPS.flatMap(g=>g.rows.filter(r=>r[3]!=='calc').map(r=>r[0]));
+const ALAT=[['ett','ETT / Trakeostomi'],['cvc','CVC'],['iv','IV line perifer'],['art','Arteri line'],['ngt','NGT / OGT'],['kat','Kateter urin'],['drain','Drain / WSD']];
+const BUNDLE=[['VAP',[['vap1','Head up 30–45°'],['vap2','Oral care (sesuai SPO)'],['vap3','Cek tekanan cuff / posisi ETT'],['vap4','Evaluasi sedasi harian / weaning']]],['CLABSI',[['cl1','Kebersihan tangan & scrub the hub'],['cl2','Dressing bersih, kering, utuh'],['cl3','Kaji indikasi — lepas bila tak perlu']]],['CAUTI',[['ca1','Kantong urin di bawah kandung kemih'],['ca2','Perawatan meatus & kaji indikasi']]],['KIDSAFE',[['ks1','Kebutuhan tumbuh kembang anak'],['ks2','Pencegahan infeksi'],['ks3','Profilaksis DVT (sesuai indikasi)'],['ks4','Integritas kulit'],['ks5','Sedasi & analgesia sesuai target'],['ks6','Keterlibatan keluarga'],['ks7','Nutrisi enteral dini'],['ks8','Profilaksis stress ulcer'],['ks9','Kontrol glukosa']]]];
+const SKOR=[['braden','Braden Q (luka tekan)'],['humpty','Humpty Dumpty (jatuh)'],['kaki','Cek kaki / foot drop']];
+const LAB=[['bga','pH / pCO₂ / pO₂'],['hco3','HCO₃ / BE'],['sat','SaO₂ / SvO₂'],['lakt','Laktat'],['elek','Na / K / Ca'],['dl','Hb / Leu / Trombo']];
+// PEWS (format Brighton/Monaghan). Teks kriteria = contoh; sesuaikan dengan PEWS versi RSSA.
+const PEWS_CAT=[
+ ['b','Perilaku',['Bermain / sesuai','Tidur','Rewel / iritabel','Letargi / bingung, respons nyeri menurun']],
+ ['c','Kardiovaskular',['Merah muda, CRT 1–2 dtk','Pucat atau CRT 3 dtk','Keabuan atau CRT 4 dtk, atau takikardia ≥20 di atas normal','Keabuan & mottled, atau CRT ≥5 dtk, atau takikardia ≥30 di atas normal, atau bradikardia']],
+ ['r','Respirasi',['Normal, tanpa retraksi','>10 di atas normal, otot bantu napas, atau FiO₂ ≥30% / O₂ ≥3 lpm','>20 di atas normal, retraksi, tracheal tug, atau FiO₂ ≥40% / O₂ ≥6 lpm','≥5 di bawah normal dengan retraksi sternal, tracheal tug, grunting, atau FiO₂ ≥50% / O₂ ≥8 lpm']],
+];
+const PEWS_X='Nebulisasi tiap 15 menit atau muntah persisten pasca-operasi (+2)';
+const BANDS=[['< 1 th',0,12],['1–2 th',12,24],['2–5 th',24,60],['5–12 th',60,144],['> 12 th',144,1e9]];
+// Angka contoh dari tabel nilai normal APLS — WAJIB dicocokkan dengan acuan RSSA.
+const ZDEF={hr:[[110,160],[100,150],[95,140],[80,120],[60,100]],rr:[[30,40],[25,35],[25,30],[20,25],[15,20]],sbp:[[70,90],[85,95],[85,100],[90,110],[100,120]],
+ pct:20,spo2:[95,92],suhu:[36,38,35,39.5],crt:[2,3],pews:[3,4,5],
+ esc:['Tingkatkan frekuensi observasi, lapor perawat penanggung jawab shift','Lapor dokter jaga / residen, evaluasi ≤ 30 menit','Lapor DPJP, panggil tim segera, evaluasi saat itu juga']};
+const EDU=['Kondisi pasien & rencana perawatan','Kebersihan tangan & aturan kunjungan','Pencegahan jatuh & pengaman tempat tidur','Nutrisi / ASI perah','Obat, alat & tindakan yang dijalani','Persiapan pindah ruang / pulang'];
+const DEFAULTS={'k.target':'≥ 1 cc/kg/jam (atau sesuai DPJP)'};
+
+/* ---------- build ---------- */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const inp=(k,a='')=>`<input data-k="${k}" ${a}>`;
+const cb=k=>`<input type="checkbox" data-k="${k}">`;
+
+function buildGrid(){
+ let h=`<div class="row shiftrow"><div class="lab" style="font-weight:600;color:var(--navy)">SHIFT</div><div style="grid-column:span 7;border-left:1px solid var(--line)">PAGI</div><div style="grid-column:span 7;border-left:2px solid var(--navy)">SORE</div><div style="grid-column:span 10;border-left:2px solid var(--navy);background:var(--soft2)">MALAM</div></div>`;
+ h+=`<div class="row blokrow"><div class="lab" style="font-weight:600;color:var(--teal-d);font-size:12.5px">BLOK BALANCE</div>${['06–12','12–18','18–24','24–06'].map(t=>`<div style="grid-column:span 6">${t}</div>`).join('')}</div>`;
+ h+=`<div class="row" style="border-bottom:2px solid var(--navy)"><div class="lab" style="font-weight:600;color:var(--navy)">JAM</div>${HOURS.map((x,i)=>`<div class="hc${colCls(i)}" data-col="${i}">${String(x).padStart(2,'0')}</div>`).join('')}</div>`;
+ const cells=(id,flag)=>HOURS.map((x,i)=>flag==='s2'||flag==='s4'
+  ?`<div class="c split${colCls(i)}" data-col="${i}">${Array.from({length:flag==='s2'?2:4},(_,j)=>`<input data-k="g.${id}.${i}.${j}" aria-label="${id} ${j+1} jam ${String(x).padStart(2,'0')}" autocomplete="off">`).join('')}</div>`
+  :flag==='pews'
+  ?`<div class="c pewsc${colCls(i)}" data-col="${i}"><input data-k="g.pews.${i}" readonly aria-label="PEWS jam ${String(x).padStart(2,'0')}, tekan spasi untuk menghitung"><input type="hidden" data-k="g.pewsd.${i}"></div>`
+  :`<div class="c${colCls(i)}" data-col="${i}"><input data-k="g.${id}.${i}" aria-label="${id} jam ${String(x).padStart(2,'0')}" ${flag==='calc'?'readonly tabindex="-1" class="calc"':''} ${flag==='num'||flag==='name'?'inputmode="decimal"':''} autocomplete="off"></div>`).join('');
+ const empty=HOURS.map((x,i)=>`<div class="c${colCls(i)}" data-col="${i}"></div>`).join('');
+ GROUPS.forEach(g=>{
+  h+=`<div class="sec">${g.t}</div>`;
+  if(g.graph){
+   h+=`<div class="grow" style="height:22px;background:var(--soft)"><div class="lab" style="font-size:13px;font-weight:600"><span>Grafik nadi ●</span><span>suhu ×</span></div>${empty}</div><div class="chartbox">`;
+   [[200,41],[180,40],[160,39],[140,38],[120,37],[100,36],[80,35],[60,34]].forEach(([a,b])=>{h+=`<div class="grow"><div class="lab" style="font-size:13px"><span>${a}</span><span>${b} °C</span></div>${empty}</div>`});
+   h+=`<svg id="chart" aria-hidden="true"></svg></div>`;
+  }
+  g.rows.forEach(([id,l,u,f])=>{
+   const lab=f==='freeroute'?`<span class="route">${l}</span><input class="labin" data-k="g.${id}.nama" placeholder="nama · dosis">`:f==='free'?`<input class="labin" data-k="g.${id}.nama" placeholder="${l}: ________">`:f==='name'?`<input class="labin" data-k="g.${id}.nama" placeholder="${l}: ________">`:`<span>${l}</span>`;
+   h+=`<div class="row"><div class="lab${f==='calc'&&id!=='map'?' t':''}">${lab}<span class="u">${u}</span></div>${cells(id,f)}</div>`;
+  });
+ });
+ const blk=(lab,fn)=>`<div class="row blk"><div class="lab t">${lab}</div>${[0,1,2,3].map(b=>`<div>${fn(b)}</div>`).join('')}</div>`;
+ h+=`<div class="sec">BALANCE PER 6 JAM · ${['06–12','12–18','18–24','24–06'].join(' · ')}</div>`;
+ h+=blk('Intake · output · IWL',b=>`<output id="bl-in-${b}"></output><small>·</small><output id="bl-out-${b}"></output><small>·</small><output id="bl-iwl-${b}"></output><small>(<output id="bl-h-${b}"></output> jam)</small>`);
+ h+=blk('Balance 6 jam',b=>`<output id="bl-bal-${b}"></output>`);
+ h+=blk('Balance cc/kg/jam',b=>`<output id="bl-bkg-${b}"></output>`);
+ h+=blk('Diuresis cc/kg/jam',b=>`<output id="bl-diu-${b}"></output>`);
+ h+=blk('Kumulatif',b=>`<output id="bl-kum-${b}"></output>`);
+ h+=`<div class="tot24"><b>TOTAL 24 JAM</b><span>Intake <output id="bl-in-4"></output></span><span>Output <output id="bl-out-4"></output></span><span>IWL <output id="bl-iwl-4"></output></span><span>Balance <output id="bl-bal-4"></output></span><span>cc/kg/jam <output id="bl-bkg-4"></output></span><span>Diuresis <output id="bl-diu-4"></output> cc/kg/jam</span><span>Kumulatif <output id="bl-kum-4"></output></span><span style="color:var(--mute);font-size:12.5px">(<output id="bl-h-4"></output> jam)</span></div>`;
+ $('#hourgrid').innerHTML=h;
+}
+function buildSide(){
+ const ac=`grid-template-columns:150px repeat(${ALAT.length},minmax(0,1fr))`;
+ $('#alatbox').innerHTML=`<div class="bt">ALAT INVASIF TERPASANG <small>· isi tgl aff bila dilepas, tgl ganti bila diganti baru (hari ke- dihitung ulang dari tgl ganti)</small></div><div class="mt alat" style="${ac}"><div class="h">Alat</div>${ALAT.map(([,l],j)=>`<div class="h${j===ALAT.length-1?' e':''}">${l}</div>`).join('')}`+
+  [['lok','Lokasi / ukuran',''],['tgl','Tgl pasang','type="date"'],['hk','Hari ke',null],['aff','Tgl aff','type="date"'],['ganti','Ganti baru (tgl)','type="date"']].map(([c,l,t])=>`<div class="k">${l}</div>`+ALAT.map(([id],j)=>t===null?`<div class="ctr${j===ALAT.length-1?' e':''}"><output id="hk-${id}"></output></div>`:`<div class="in${j===ALAT.length-1?' e':''}">${inp(`a.${id}.${c}`,t)}</div>`).join('')).join('')+`</div>`;
+ const bundle=BUNDLE.map(([g,rows])=>`<div class="g">${g}</div>`+rows.map(([id,l])=>`<div>${esc(l)}</div>`+['P','S','M'].map((s,j)=>`<div class="ctr${j===2?' e':''}">${cb(`b.${id}.${s}`)}</div>`).join('')).join('')).join('');
+ const skor=SKOR.map(([id,l])=>`<div>${l}</div>`+['P','S','M'].map((s,j)=>`<div class="in${j===2?' e':''}">${inp(`s.${id}.${s}`,'style="text-align:center"')}</div>`).join('')).join('');
+ const keb=`<div>Holliday-Segar</div><div class="e" style="grid-column:span 2"><output id="kb-hs"></output></div>
+  <div>Schofield (BB)</div><div class="e" style="grid-column:span 2"><output id="kb-sch"></output></div>
+  <div>BBI</div><div class="in e" style="grid-column:span 2">${inp('k.bbi','inputmode="decimal" placeholder="___ kg"')}</div>
+  <div>RDA</div><div class="in e" style="grid-column:span 2">${inp('k.rda','inputmode="decimal" placeholder="___ kkal/kg (sesuai usia)"')}</div>
+  <div class="k">RDA × BBI</div><div class="e" style="grid-column:span 2"><output id="kb-rda"></output></div>
+  <div>Kebutuhan dipakai</div><div class="in e" style="grid-column:span 2">${inp('k.pakai','placeholder="mis. HS / Schofield × faktor stres"')}</div>`;
+ const lab=LAB.map(([id,l])=>`<div>${l}</div>`+[1,2,3].map(j=>`<div class="in${j===3?' e':''}">${inp(`lab.${id}.${j}`)}</div>`).join('')).join('');
+ $('#side').innerHTML=`
+ <div class="box"><div class="bt">BUNDLE CARE <small>(centang per shift)</small></div><div class="mt" style="grid-template-columns:1fr 38px 38px 38px">
+  <div class="h">Tindakan</div><div class="h ctr">P</div><div class="h ctr">S</div><div class="h e ctr">M</div>${bundle}</div></div>
+ <div class="box"><div class="bt">KEBUTUHAN &amp; PROGRAM</div><div class="mt" style="grid-template-columns:1.1fr 1fr 1fr">
+  <div class="h">Hitungan kalori</div><div class="h e" style="grid-column:span 2">kkal / 24 jam</div>${keb}
+  <div>Diet / formula</div><div class="in e" style="grid-column:span 2">${inp('k.diet')}</div>
+  <div>Target diuresis</div><div class="in e" style="grid-column:span 2">${inp('k.target')}</div></div></div>
+ <div class="box"><div class="bt">RIWAYAT BALANCE KEMARIN <small>· hitungan hari ini ada di bawah grid jam</small></div><div class="mt" style="grid-template-columns:1.25fr 1fr">
+  <div>Balance 24 jam kemarin</div><div class="in e">${inp('bal.kemarin','inputmode="decimal" placeholder="cc"')}</div>
+  <div>Kumulatif s/d kemarin</div><div class="in e">${inp('bal.kum0','inputmode="decimal" placeholder="0"')}</div>
+  <div style="font-size:12.5px">Pasien baru masuk jam</div><div class="in e">${inp('bal.masuk','type="time" id="masuk" title="Isi hanya di hari pasien masuk"')}</div>
+  <div style="font-size:12.5px">IWL 24 jam (bila beda SPO)</div><div class="in e">${inp('bal.iwl24','id="iwl24" inputmode="decimal" title="IWL per 24 jam. Kosongkan untuk memakai rumus otomatis"')}</div></div></div>
+ <div class="box"><div class="bt">LAB / BGA KUNCI</div><div class="mt" style="grid-template-columns:1.3fr 1fr 1fr 1fr">
+  <div class="h">Parameter</div>${[1,2,3].map(j=>`<div class="h${j===3?' e':''}">Jam&nbsp;${inp(`lab.jam${j}`,'class="hdr" type="time"')}</div>`).join('')}${lab}</div></div>
+ <div class="box" id="eskalasi"><div class="bt">PEWS &amp; ESKALASI <small>· klik sel PEWS di grid untuk menghitung</small></div><div class="pref" id="pref"></div><div class="esc" id="escGuide"></div><div class="mt" id="escLog" style="grid-template-columns:62px 44px 1.3fr 1fr 1.3fr .6fr"></div></div>
+ <div class="box sbarbox"><div class="bt">LAPORAN PERAWAT SHIFT &amp; HAND OVER <small>· CPPT lengkap di SIMRS</small></div><div class="sbar" id="sbar"></div></div>`;
+}
+function buildBottom(){
+ const ta=(k,lab,ph='')=>`<textarea class="lined" data-k="${k}" aria-label="${lab}" placeholder="${ph}"></textarea>`;
+ const SYS=[['kardio','Kardiovaskular'],['infeksi','Infeksi'],['metab','Metabolik'],['hema','Hematologi'],['nefro','Nefrologi'],['neuro','Neurologi'],['alim','Alimentary'],['resp','Respirasi']];
+ $('#bottom').classList.add('bgrid');
+ $('#bottom').innerHTML=`
+ <div class="box bprog"><div class="bt">CATATAN PROGRAM TERAPI <small>· advice dokter / DPJP</small></div>
+  <div class="sysg">${SYS.map(([k,l])=>`<label><span>${l}</span>${inp(`pt.${k}`)}</label>`).join('')}</div>
+  <div class="advg">
+   <div><span class="sl">Medikasi</span>${ta('advc.umum','Medikasi','IV / PO / topikal · dosis · jadwal')}</div>
+   <div><span class="sl">Program cairan</span>${ta('advc.cairan','Program cairan','maintenance · resusitasi')}</div>
+   <div><span class="sl">Program ventilasi</span>${ta('advc.napas','Program ventilasi','mode · setting · target')}</div>
+   <div><span class="sl">Program nutrisi</span>${ta('advc.diet','Program nutrisi','jenis · volume · frekuensi')}</div>
+   <div><span class="sl">Program lain</span>${ta('advc.lain','Program lain','HS · Schofield · RDA×BBI · lab')}</div></div></div>
+ <div class="box bsp"><div class="bt">NILAI KRITIS LAB <small>· catat jam hasil keluar &amp; jam dilaporkan (batas waktu sesuai SPO)</small></div><div class="mt" style="grid-template-columns:62px 62px 1fr .7fr 1fr 62px 1.2fr .55fr">
+  <div class="h">Jam hasil</div><div class="h">Tgl</div><div class="h">Parameter</div><div class="h">Hasil</div><div class="h">Dilapor ke</div><div class="h">Jam lapor</div><div class="h">Advice / tindak lanjut</div><div class="h e">Paraf</div>${Array.from({length:7},(_,n)=>['jam','tgl','par','hasil','lapor','jlapor','tl','paraf'].map((c,j)=>`<div class="in${j===7?' e':''}">${inp(`nk.${n}.${c}`,c==='jam'||c==='jlapor'?'type="time"':c==='tgl'?'placeholder="dd/mm"':'')}</div>`).join('')).join('')}</div></div>
+ <div class="box badd"><div class="bt">CATATAN PERMASALAHAN, KONSULTASI &amp; ADVICE TAMBAHAN <small>· via telepon: TBaK</small></div>${ta('advd.txt','Permasalahan, konsultasi dan advice tambahan','jam · masalah / kondisi · advice · dokter · TBaK')}</div>
+ <div class="box bcat"><div class="bt">CATATAN PERAWAT</div>${ta('catatan','Catatan perawat')}</div>`;
+}
+function buildBack(){
+ $('#pref').innerHTML=`<div class="h">Kriteria</div><div class="h">0</div><div class="h">1</div><div class="h">2</div><div class="h">3</div>`+PEWS_CAT.map(([k,l,o])=>`<div class="l">${l}</div>`+o.map(t=>`<div>${esc(t)}</div>`).join('')).join('')+`<div class="l">Tambahan</div><div style="grid-column:span 4;border-right:0">${PEWS_X}</div>`;
+ const cols=[['jam','Jam','time'],['skor','PEWS'],['temuan','Temuan / kondisi'],['lapor','Lapor ke · jam'],['tind','Instruksi / tindakan'],['paraf','Paraf']];
+ $('#escLog').innerHTML=cols.map(([,l],j)=>`<div class="h${j===cols.length-1?' e':''}">${l}</div>`).join('')+Array.from({length:8},(_,n)=>cols.map(([c,,t],j)=>`<div class="in${j===cols.length-1?' e':''}">${inp(`esk.${n}.${c}`,t?`type="${t}"`:'')}</div>`).join('')).join('');
+ const rows=(pre,cols)=>[1,2,3,4,5].map(n=>cols.map((c,j)=>`<div class="in${j===cols.length-1?' e':''}">${inp(`${pre}.${n}.${c}`,c==='mulai'||c==='selesai'?'type="time"':'')}</div>`).join('')).join('');
+ $('#sbar').innerHTML=['DINAS PAGI','DINAS SORE','DINAS MALAM'].map((n,i)=>`<div><h4>${n}</h4><div class="who" style="padding-top:0">${inp(`cppt.${i}.jam`,'class="jam" type="time" aria-label="Jam"')}${inp(`cppt.${i}.ppa`,'placeholder="Perawat penanggung jawab"')}</div><span class="sl">Laporan / implementasi</span><textarea class="lined r" data-k="cppt.${i}.soap" aria-label="${n} laporan perawat shift" placeholder="1. Memonitor hemodinamik&#10;2. Memonitor balance cairan&#10;3. …"></textarea><div class="ho"><span class="hot">HAND OVER</span>${inp(`cppt.${i}.hojam`,'class="jam" type="time" aria-label="Jam hand over"')}${inp(`cppt.${i}.pemberi`,'placeholder="Nama / TTD pemberi"')}${inp(`cppt.${i}.penerima`,'placeholder="Nama / TTD penerima"')}</div></div>`).join('');
+}
+buildGrid();buildSide();buildBottom();buildBack();
+
+/* ---------- data ---------- */
+const KEY='kardeks-picu-f61';
+const todayISO=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
+const addDays=(iso,n)=>{const d=new Date(iso+'T00:00:00');d.setDate(d.getDate()+n);d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
+let store={sheets:{},current:null};
+try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.sheets)store=s}catch(e){}
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(store));setStatus('Tersimpan '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}))}catch(e){setStatus('Gagal menyimpan di browser ini — gunakan Cadangkan')}}
+function setStatus(t){$('#status').textContent=t}
+function collect(){const d={};$$('[data-k]').forEach(el=>{if(el.classList.contains('calc'))return;if(el.type==='checkbox'){if(el.checked)d[el.dataset.k]=true}else if(el.value!=='')d[el.dataset.k]=el.value});return d}
+function apply(d){$$('[data-k]').forEach(el=>{const k=el.dataset.k;if(el.classList.contains('calc'))return;if(el.type==='checkbox')el.checked=!!d[k];else el.value=d[k]??DEFAULTS[k]??''})}
+function cur(){return store.sheets[store.current]}
+function newSheet(data){const id=uid();store.sheets[id]={data:data||{'p.tanggal':todayISO()},updated:Date.now()};store.current=id;return id}
+function fmtDate(iso){if(!iso)return'';const[y,m,d]=iso.split('-');return`${d}/${m}/${y}`}
+function label(s){const d=s.data;return`${d['p.bed']?'Bed '+d['p.bed']+' · ':''}${d['p.nama']||'Tanpa nama'} · ${fmtDate(d['p.tanggal'])||'tanpa tanggal'}`}
+function renderSel(){const ids=Object.keys(store.sheets).sort((a,b)=>(store.sheets[b].data['p.tanggal']||'').localeCompare(store.sheets[a].data['p.tanggal']||'')||store.sheets[b].updated-store.sheets[a].updated);
+ $('#sheetSel').innerHTML=ids.map(id=>`<option value="${id}" ${id===store.current?'selected':''}>${esc(label(store.sheets[id]))}</option>`).join('')}
+function load(id){store.current=id;apply(cur().data);recalc();renderSel();persist()}
+let saveT=0;
+function onEdit(){recalc();clearTimeout(saveT);saveT=setTimeout(()=>{const s=cur();s.data=collect();s.updated=Date.now();persist();renderSel()},350)}
+document.addEventListener('input',e=>{if(e.target.closest('.sheet'))onEdit()});
+document.addEventListener('change',e=>{if(e.target.closest('.sheet'))onEdit()});
+
+/* ---------- calculations ---------- */
+const val=k=>{const el=document.querySelector(`[data-k="${k}"]`);return el?el.value:''};
+const num=v=>{if(v==null||v==='')return NaN;const n=parseFloat(String(v).replace(',','.'));return n};
+const r1=n=>Math.round(n*10)/10;
+const setO=(id,v,neg)=>{const o=document.getElementById(id);if(!o)return;o.textContent=v;o.classList.toggle('neg',!!neg)};
+function days(a,b){return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/864e5)}
+function umur(lahir,tgl){if(!lahir||!tgl)return null;const a=new Date(lahir+'T00:00:00'),b=new Date(tgl+'T00:00:00');if(b<a)return null;let m=(b.getFullYear()-a.getFullYear())*12+b.getMonth()-a.getMonth();if(b.getDate()<a.getDate())m--;const th=Math.floor(m/12);return{th,bl:m%12,hr:days(lahir,tgl)}}
+function recalc(){
+ const tgl=val('p.tanggal'),bb=num(val('p.bb'));
+ // umur & hari rawat
+ const u=umur(val('p.tgllahir'),tgl);
+ setO('o-umur',u?(u.th>0?`${u.th} th ${u.bl} bl`:u.bl>0?`${u.bl} bl`:`${u.hr} hr`):'');
+ const hr=val('p.tglmasuk')&&tgl?days(val('p.tglmasuk'),tgl)+1:'';
+ setO('o-hr',hr>0?hr:'');
+ // mirror back page
+ setO('m-nama',val('p.nama'));setO('m-rm',val('p.rm'));setO('m-bb',val('p.bb'));setO('m-tgl',fmtDate(tgl));setO('m-hr',hr>0?hr:'');
+ // alat
+ ALAT.forEach(([id])=>{const t=val(`a.${id}.ganti`)||val(`a.${id}.tgl`);const aff=val(`a.${id}.aff`);const d=t&&tgl&&!(aff&&aff<=tgl)?days(t,tgl)+1:'';setO(`hk-${id}`,aff&&aff<=tgl?'aff':d>0?d:'')});
+ // per jam
+ const tin=[],tout=[];
+ const iwlA=u&&bb>0?Math.max(0,30-u.th)*bb:NaN,iwlM=num(($('#iwl24')||{}).value),iwlH=(!isNaN(iwlM)?iwlM:iwlA)/24;
+ const msH=val('bal.masuk');let relH=null;if(msH){const[hh,mm]=msH.split(':').map(Number);relH=(((hh*60+mm-360)%1440)+1440)%1440/60}
+ const setV=(k,v)=>{const e=document.querySelector(`[data-k="${k}"]`);if(e)e.value=v};
+ for(let i=0;i<24;i++){
+  const td=val(`g.td.${i}`).match(/(\d+(?:[.,]\d+)?)\s*\/\s*(\d+(?:[.,]\d+)?)/);
+  setV(`g.map.${i}`,td?Math.round((num(td[1])+2*num(td[2]))/3):'');
+  let si=0,so=0,hi=false,ho=false;
+  INTAKE.forEach(r=>{const n=num(val(`g.${r}.${i}`));if(!isNaN(n)){si+=n;hi=true}});
+  OUTPUT.forEach(r=>{const n=num(val(`g.${r}.${i}`));if(!isNaN(n)){so+=n;ho=true}});
+  tin[i]=hi?si:null;tout[i]=ho?so:null;
+ }
+ let Lh=-1;for(let i=23;i>=0;i--)if(tin[i]!=null||tout[i]!=null){Lh=i;break}
+ const k0h=num(val('bal.kum0'));let kh=isNaN(k0h)?0:k0h;
+ for(let i=0;i<24;i++){
+  const active=i<=Lh&&!(relH!=null&&i+1<=relH),iw=active&&!isNaN(iwlH)?iwlH:0;
+  setV(`g.iwl.${i}`,active&&!isNaN(iwlH)?r1(iwlH):'');
+  setV(`g.tin.${i}`,tin[i]!=null?r1(tin[i]):'');
+  const ot=(tout[i]||0)+iw;setV(`g.tout.${i}`,active?r1(ot):'');
+  if(active){const bh=(tin[i]||0)-ot;kh+=bh;setV(`g.bal.${i}`,(bh>0?'+':'')+r1(bh));setV(`g.kum.${i}`,(kh>0?'+':'')+r1(kh))}
+  else{setV(`g.bal.${i}`,'');setV(`g.kum.${i}`,'')}
+ }
+ // kebutuhan
+ {const hs=bb>0?(bb<=10?100*bb:bb<=20?1000+50*(bb-10):1500+20*(bb-20)):NaN;setO('kb-hs',isNaN(hs)?'isi BB':`${Math.round(hs)} kkal (cairan ${Math.round(hs)} cc)`);
+  const jk=val('p.jk'),th=u?u.th:NaN;let sc=NaN;
+  if(bb>0&&!isNaN(th)&&(jk==='L'||jk==='P')){const t=th<3?0:th<10?1:2;sc=jk==='L'?[59.512*bb-30.4,22.706*bb+504.3,17.686*bb+658.2][t]:[58.317*bb-31.1,20.315*bb+485.9,13.384*bb+692.6][t]}
+  setO('kb-sch',isNaN(sc)?'isi BB, tgl lahir & L/P':`${Math.round(sc)} kkal`);
+  const bi=num(val('k.bbi')),rd=num(val('k.rda'));setO('kb-rda',bi>0&&rd>0?`${Math.round(bi*rd)} kkal`:'___')}
+ // balance
+ const iwlAuto=u&&bb>0?Math.max(0,30-u.th)*bb:NaN;
+ const iwlIn=$('#iwl24');iwlIn.placeholder=isNaN(iwlAuto)?'isi BB & tgl lahir':`${r1(iwlAuto)} oto`;
+ const iwl24=!isNaN(num(iwlIn.value))?num(iwlIn.value):iwlAuto;
+ // Blok balance 6 jam. Kolom indeks i (jam 07 = 0) mencatat jam ke-(i+1) sejak 06.00.
+ // Blok b = kolom 6b..6b+5 (06–12, 12–18, 18–24, 24–06).
+ const sgn=n=>(n>0?'+':'')+r1(n);
+ let L=-1;for(let i=23;i>=0;i--)if(tin[i]!=null||tout[i]!=null){L=i;break}
+ const ms=val('bal.masuk');let rel=null;
+ if(ms){const[hh,mm]=ms.split(':').map(Number);rel=(((hh*60+mm-360)%1440)+1440)%1440/60}
+ const k0=num(val('bal.kum0'));let kum=isNaN(k0)?0:k0;
+ let T={in:0,out:0,iwl:0,urin:0,any:false,h:0};
+ for(let b=0;b<4;b++){
+  const a=6*b,e=a+6,start=rel!=null?Math.max(a,rel):a;
+  let I=0,O=0,U=0,any=false;
+  if(start<e)for(let i=a;i<e;i++){if(rel!=null&&i+1<=rel)continue;
+   if(tin[i]!=null){I+=tin[i];any=true}if(tout[i]!=null){O+=tout[i];any=true}const un=num(val(`g.urin.${i}`));if(!isNaN(un))U+=un}
+  const hE=any?Math.max(0,Math.min(e,L+1)-start):0;
+  const iwl=isNaN(iwl24)?0:iwl24*hE/24,bal=I-(O+iwl);
+  if(any){kum+=bal;T.in+=I;T.out+=O;T.iwl+=iwl;T.urin+=U;T.any=true;T.h+=hE}
+  setO(`bl-h-${b}`,start>=e?'—':any?r1(hE):'');
+  setO(`bl-in-${b}`,any?r1(I):'');setO(`bl-out-${b}`,any?r1(O):'');setO(`bl-iwl-${b}`,any&&!isNaN(iwl24)?r1(iwl):'');
+  setO(`bl-bal-${b}`,any?sgn(bal):'',bal<0);setO(`bl-kum-${b}`,any?sgn(kum):'',kum<0);
+  setO(`bl-diu-${b}`,any&&bb>0&&hE>0?r1(U/bb/hE):'');
+  {const v=bal/bb/hE;setO(`bl-bkg-${b}`,any&&bb>0&&hE>0?(v>0?'+':'')+v.toFixed(2):'',v<0)}
+ }
+ const b24=T.in-(T.out+T.iwl);
+ setO('bl-h-4',T.any?r1(T.h):'');
+ setO('bl-in-4',T.any?r1(T.in):'');setO('bl-iwl-4',T.any&&!isNaN(iwl24)?r1(T.iwl):'');setO('bl-out-4',T.any?r1(T.out):'');setO('bl-bal-4',T.any?sgn(b24):'',b24<0);
+ setO('bl-diu-4',T.any&&bb>0&&T.h>0?r1(T.urin/bb/T.h):'');
+ {const v=b24/bb/T.h;setO('bl-bkg-4',T.any&&bb>0&&T.h>0?(v>0?'+':'')+v.toFixed(2):'',v<0)}
+ setO('bl-kum-4',T.any||!isNaN(k0)?sgn(kum):'',kum<0);
+ colorize(u);
+ markNow(tgl);drawChart();
+}
+
+/* ---------- zona warna & PEWS ---------- */
+let Z=JSON.parse(JSON.stringify(ZDEF));
+try{const z=JSON.parse(localStorage.getItem(KEY+'-zona'));if(z&&z.hr)Z=Object.assign(Z,z)}catch(e){}
+let band=-1;
+function bandOf(u){if(!u)return-1;const m=u.th*12+u.bl;return BANDS.findIndex(([,a,b])=>m>=a&&m<b)}
+function zRange(v,[lo,hi]){if(isNaN(v))return'';const p=Z.pct/100;if(v<lo*(1-p)||v>hi*(1+p))return'r';if(v<lo||v>hi)return'y';return''}
+function pewsLevel(score,parts){if(isNaN(score))return 0;const[t1,t2,t3]=Z.pews;if(score>=t3||(parts&&parts.some(x=>x===3)))return 3;if(score>=t2)return 2;if(score>=t1)return 1;return 0}
+const pewsParts=i=>{const s=val(`g.pewsd.${i}`);return s?s.split(',').map(Number):null};
+function colorize(u){
+ band=bandOf(u);
+ const setZ=(row,i,z)=>{const c=document.querySelector(`[data-k="g.${row}.${i}"]`).parentNode;c.classList.remove('z-y','z-o','z-r');if(z)c.classList.add('z-'+z)};
+ for(let i=0;i<24;i++){
+  if(band>=0){
+   setZ('nadi',i,zRange(num(val(`g.nadi.${i}`)),Z.hr[band]));
+   setZ('rr',i,zRange(num(val(`g.rr.${i}`)),Z.rr[band]));
+   const td=val(`g.td.${i}`).match(/(\d+(?:[.,]\d+)?)/);setZ('td',i,td?zRange(num(td[1]),Z.sbp[band]):'');
+  }else['nadi','rr','td'].forEach(r=>setZ(r,i,''));
+  const sp=num(val(`g.spo2.${i}`));setZ('spo2',i,isNaN(sp)?'':sp<Z.spo2[1]?'r':sp<Z.spo2[0]?'y':'');
+  const t=num(val(`g.suhu.${i}`));setZ('suhu',i,isNaN(t)?'':(t<Z.suhu[2]||t>=Z.suhu[3])?'r':(t<Z.suhu[0]||t>=Z.suhu[1])?'y':'');
+  const c=num(val(`g.crt.${i}`));setZ('crt',i,isNaN(c)?'':c>Z.crt[1]?'r':c>Z.crt[0]?'y':'');
+  const lv=pewsLevel(num(val(`g.pews.${i}`)),pewsParts(i));setZ('pews',i,['','y','o','r'][lv]);
+ }
+ const sw=c=>`<span class="sw" style="background:${c}"></span>`;
+ $('#zinfo').innerHTML=band>=0
+  ?`<b>Zona warna (usia ${BANDS[band][0]}):</b> Nadi ${Z.hr[band].join('–')} · Napas ${Z.rr[band].join('–')} · TD sistol ${Z.sbp[band].join('–')} · SpO₂ ≥ ${Z.spo2[0]}% &nbsp; ${sw('#FFE7A0')}di luar normal ${sw('#FFB8AE')}>${Z.pct}% di luar normal / bahaya · PEWS ${sw('#FFE7A0')}≥${Z.pews[0]} ${sw('#FFC98A')}≥${Z.pews[1]} ${sw('#FFB8AE')}≥${Z.pews[2]}`
+  :`<b>Zona warna:</b> isi tanggal lahir supaya nadi, napas & TD diwarnai sesuai usia. SpO₂, suhu, CRT & PEWS tetap diwarnai.`;
+ // banner: PEWS jam terakhir yang terisi
+ let last=-1;for(let i=23;i>=0;i--)if(val(`g.pews.${i}`)!==''){last=i;break}
+ const bar=$('#alertbar');
+ if(last>=0){const sc=num(val(`g.pews.${last}`)),lv=pewsLevel(sc,pewsParts(last));
+  if(lv>0){bar.hidden=false;bar.className='alertbar l'+lv;bar.innerHTML=`PEWS ${sc} pada jam ${String(HOURS[last]).padStart(2,'0')}.00 → ${esc(Z.esc[lv-1])}. <a href="#eskalasi">Catat di tabel eskalasi</a>`}else bar.hidden=true}
+ else bar.hidden=true;
+}
+function renderEscGuide(){
+ const[t1,t2,t3]=Z.pews;
+ $('#escGuide').innerHTML=[[`0–${t1-1}`,'Observasi rutin sesuai jadwal'],[`${t1}`+(t2-t1>1?`–${t2-1}`:''),Z.esc[0]],[`${t2}`+(t3-t2>1?`–${t3-1}`:''),Z.esc[1]],[`≥ ${t3} atau skor 3 di satu kategori`,Z.esc[2]]].map(([a,b],i)=>`<div class="lv" style="background:${['#fff','#FFE7A0','#FFC98A','#FFB8AE'][i]}">PEWS ${a}</div><div>${esc(b)}</div>`).join('');
+}
+function renderSettings(){
+ const row=(k,l)=>`<tr><th style="text-align:left">${l}</th>${BANDS.map((b,i)=>`<td><input data-z="${k}.${i}.0" value="${Z[k][i][0]}" inputmode="decimal" aria-label="${l} ${b[0]} batas bawah"> – <input data-z="${k}.${i}.1" value="${Z[k][i][1]}" inputmode="decimal" aria-label="${l} ${b[0]} batas atas"></td>`).join('')}</tr>`;
+ $('#sbody').innerHTML=`
+ <p class="warnnote">Angka bawaan adalah contoh dari tabel nilai normal APLS dan PEWS format Brighton. Cocokkan dengan acuan &amp; SPO PICU RSSA sebelum dipakai. Pengaturan tersimpan di browser ini.</p>
+ <table><tr><th>Batas normal</th>${BANDS.map(b=>`<th>${b[0]}</th>`).join('')}</tr>${row('hr','Nadi (x/mnt)')}${row('rr','Napas (x/mnt)')}${row('sbp','TD sistol (mmHg)')}</table>
+ <div class="fld">
+  <label>Merah bila lebih dari <input data-z="pct" value="${Z.pct}"> % di luar batas normal</label>
+  <label>SpO₂: kuning &lt; <input data-z="spo2.0" value="${Z.spo2[0]}"> · merah &lt; <input data-z="spo2.1" value="${Z.spo2[1]}"></label>
+  <label>Suhu: kuning &lt; <input data-z="suhu.0" value="${Z.suhu[0]}"> atau ≥ <input data-z="suhu.1" value="${Z.suhu[1]}"></label>
+  <label>Suhu: merah &lt; <input data-z="suhu.2" value="${Z.suhu[2]}"> atau ≥ <input data-z="suhu.3" value="${Z.suhu[3]}"></label>
+  <label>CRT: kuning &gt; <input data-z="crt.0" value="${Z.crt[0]}"> · merah &gt; <input data-z="crt.1" value="${Z.crt[1]}"> detik</label>
+ </div>
+ <div class="fld">
+  <label>PEWS kuning ≥ <input data-z="pews.0" value="${Z.pews[0]}"> oranye ≥ <input data-z="pews.1" value="${Z.pews[1]}"> merah ≥ <input data-z="pews.2" value="${Z.pews[2]}"></label>
+  <label>Kuning: <input class="wide" data-z="esc.0" value="${esc(Z.esc[0])}"></label>
+  <label>Oranye: <input class="wide" data-z="esc.1" value="${esc(Z.esc[1])}"></label>
+  <label>Merah: <input class="wide" data-z="esc.2" value="${esc(Z.esc[2])}"></label>
+  <span><button type="button" id="zReset">Kembalikan angka bawaan</button></span>
+ </div>`;
+ $('#zReset').onclick=()=>{Z=JSON.parse(JSON.stringify(ZDEF));saveZ();renderSettings()};
+}
+function saveZ(){try{localStorage.setItem(KEY+'-zona',JSON.stringify(Z))}catch(e){}renderEscGuide();recalc()}
+$('#sbody').addEventListener('input',e=>{const k=e.target.dataset.z;if(!k)return;const p=k.split('.');const v=p[0]==='esc'?e.target.value:num(e.target.value);if(p[0]!=='esc'&&isNaN(v))return;
+ if(p.length===1)Z[p[0]]=v;else if(p.length===2)Z[p[0]][+p[1]]=v;else Z[p[0]][+p[1]][+p[2]]=v;saveZ()});
+
+/* PEWS popover */
+let popCol=-1;
+function openPews(i,anchor){
+ popCol=i;const parts=pewsParts(i)||[null,null,null,0];const h=String(HOURS[i]).padStart(2,'0');
+ const ref=['nadi','rr','crt','spo2','fio2'].map(k=>[k,val(`g.${k}.${i}`)]).filter(([,v])=>v).map(([k,v])=>`${{nadi:'Nadi',rr:'Napas',crt:'CRT',spo2:'SpO₂',fio2:'FiO₂/O₂'}[k]} ${esc(v)}`).join(' · ');
+ const pop=$('#pewsPop');
+ pop.innerHTML=`<header><span>PEWS jam ${h}.00</span><button type="button" data-x="close" aria-label="Tutup" style="background:none;border:0;color:#fff;font-size:18px">×</button></header>
+ <div class="ref">${ref||'Belum ada tanda vital jam ini.'}${band>=0?` · Normal usia ${BANDS[band][0]}: nadi ${Z.hr[band].join('–')}, napas ${Z.rr[band].join('–')}`:''}</div>
+ ${PEWS_CAT.map(([k,l,o],ci)=>`<fieldset><legend>${l}</legend>${o.map((t,s)=>`<label><input type="radio" name="pw-${k}" value="${s}" ${parts[ci]===s?'checked':''}><b>${s}</b><span>${esc(t)}</span></label>`).join('')}</fieldset>`).join('')}
+ <fieldset><label><input type="checkbox" id="pw-x" ${parts[3]?'checked':''}><span>${PEWS_X}</span></label></fieldset>
+ <div class="foot2"><span class="tot" id="pw-tot"></span><button type="button" data-x="clear">Kosongkan</button><button type="button" class="ok" data-x="save">Simpan</button></div>`;
+ pop.hidden=false;
+ const r=anchor.getBoundingClientRect(),pw=pop.offsetWidth,ph=pop.offsetHeight;
+ let left=Math.min(Math.max(12,r.left+r.width/2-pw/2),innerWidth-pw-12),top=r.bottom+6;if(top+ph>innerHeight-12)top=Math.max(12,r.top-ph-6);
+ pop.style.left=left+'px';pop.style.top=top+'px';
+ updPewsTot();const first=pop.querySelector('input:checked')||pop.querySelector('input');first.focus();
+}
+function pewsSel(){const p=$('#pewsPop');const g=k=>{const e=p.querySelector(`input[name="pw-${k}"]:checked`);return e?+e.value:null};return[g('b'),g('c'),g('r'),p.querySelector('#pw-x').checked?2:0]}
+function updPewsTot(){const s=pewsSel(),done=s.slice(0,3).every(x=>x!==null),tot=s.reduce((a,b)=>a+(b||0),0),lv=pewsLevel(tot,s.slice(0,3));
+ $('#pw-tot').innerHTML=done?`Skor ${tot} <small style="font-weight:600;font-size:12.5px;color:${['#3A4654','#6B4A00','#7A3E00','#8A1C12'][lv]}">${lv?esc(Z.esc[lv-1]):'observasi rutin'}</small>`:'<small style="font-size:13px;color:#55606E">Pilih ketiga kategori</small>'}
+function closePews(){$('#pewsPop').hidden=true;const c=document.querySelector(`[data-k="g.pews.${popCol}"]`);if(c)c.focus();popCol=-1}
+$('#pewsPop').addEventListener('change',updPewsTot);
+$('#pewsPop').addEventListener('click',e=>{const x=e.target.closest('[data-x]');if(!x)return;const a=x.dataset.x;
+ if(a==='save'){const s=pewsSel();if(s.slice(0,3).some(v=>v===null)){updPewsTot();return}
+  document.querySelector(`[data-k="g.pews.${popCol}"]`).value=s.reduce((p,q)=>p+q,0);document.querySelector(`[data-k="g.pewsd.${popCol}"]`).value=s.join(',');onEdit();closePews()}
+ else if(a==='clear'){document.querySelector(`[data-k="g.pews.${popCol}"]`).value='';document.querySelector(`[data-k="g.pewsd.${popCol}"]`).value='';onEdit();closePews()}
+ else closePews()});
+$('#pewsPop').addEventListener('keydown',e=>{if(e.key==='Escape')closePews()});
+document.addEventListener('mousedown',e=>{if(!$('#pewsPop').hidden&&!e.target.closest('#pewsPop')&&!e.target.closest('.pewsc'))$('#pewsPop').hidden=true});
+$('#hourgrid').addEventListener('click',e=>{const c=e.target.closest('.pewsc');if(c)openPews(+c.dataset.col,c)});
+$('#hourgrid').addEventListener('keydown',e=>{const c=e.target.closest('.pewsc');if(c&&(e.key===' '||e.key==='F2')){e.preventDefault();openPews(+c.dataset.col,c)}});
+renderSettings();renderEscGuide();
+function markNow(tgl){
+ $$('.now').forEach(e=>e.classList.remove('now'));
+ if(!tgl)return;const start=new Date(tgl+'T07:00:00');const idx=Math.floor((Date.now()-start)/36e5);
+ if(idx>=0&&idx<24)$$(`[data-col="${idx}"]`).forEach(e=>e.classList.add('now'));
+}
+function drawChart(){
+ const svg=$('#chart');const W=svg.clientWidth||svg.parentNode.offsetWidth-200,H=svg.parentNode.offsetHeight;if(!W||!H)return;
+ svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+ const rh=H/8,cw=W/24,x=i=>(i+.5)*cw;
+ const yN=n=>Math.max(0,Math.min(H,((200-n)/20)*rh+rh/2)),yS=s=>Math.max(0,Math.min(H,(41-s)*rh+rh/2));
+ const pts=(k,f)=>{const p=[];for(let i=0;i<24;i++){const n=num(val(`g.${k}.${i}`));if(!isNaN(n))p.push([x(i),f(n)])}return p};
+ const N=pts('nadi',yN),S=pts('suhu',yS);
+ const line=(p,c,dash)=>p.length>1?`<polyline points="${p.map(q=>q.join(',')).join(' ')}" fill="none" stroke="${c}" stroke-width="1.6" ${dash?'stroke-dasharray="4 3"':''}/>`:'';
+ let zone='';
+ if(band>=0){const[lo,hi]=Z.hr[band],p=Z.pct/100,rect=(a,b,c)=>{const y1=Math.max(0,Math.min(yN(a),yN(b))),y2=Math.min(H,Math.max(yN(a),yN(b)));return y2>y1?`<rect x="0" y="${y1}" width="${W}" height="${y2-y1}" fill="${c}" opacity=".35"/>`:''};
+  zone=rect(400,hi*(1+p),'#FFB8AE')+rect(hi*(1+p),hi,'#FFE7A0')+rect(lo,lo*(1-p),'#FFE7A0')+rect(lo*(1-p),0,'#FFB8AE');}
+ svg.innerHTML=zone+line(N,'#B42318')+line(S,'#13365C',true)+N.map(([a,b])=>`<circle cx="${a}" cy="${b}" r="3.6" fill="#B42318"/>`).join('')+S.map(([a,b])=>`<path d="M${a-4} ${b-4}L${a+4} ${b+4}M${a+4} ${b-4}L${a-4} ${b+4}" stroke="#13365C" stroke-width="2"/>`).join('');
+}
+addEventListener('resize',()=>drawChart());
+setInterval(()=>markNow(val('p.tanggal')),60000);
+
+/* grid keyboard: Enter / panah atas-bawah pindah baris */
+$('#hourgrid').addEventListener('keydown',e=>{
+ const k=e.target.dataset&&e.target.dataset.k;if(!k||!k.startsWith('g.'))return;
+ const [,row,col,sub]=k.split('.');if(col==='nama')return;
+ let d=0;if(e.key==='Enter'||e.key==='ArrowDown')d=1;else if(e.key==='ArrowUp')d=-1;else return;
+ const i=ROW_IDS.indexOf(row)+d;if(i<0||i>=ROW_IDS.length)return;
+ e.preventDefault();const t=document.querySelector(`[data-k="g.${ROW_IDS[i]}.${col}"]`)||document.querySelector(`[data-k="g.${ROW_IDS[i]}.${col}.${sub||0}"]`)||document.querySelector(`[data-k="g.${ROW_IDS[i]}.${col}.0"]`);if(t){t.focus();t.select()}
+});
+
+/* ---------- toolbar ---------- */
+$('#sheetSel').onchange=e=>load(e.target.value);
+$('#btnNew').onclick=()=>{newSheet();load(store.current)};
+$('#btnNext').onclick=()=>{
+ const d=collect(),n={};
+ const keep=k=>/^p\./.test(k)&&k!=='p.tanggal'||/^a\./.test(k)||/^sp\./.test(k)&&!/\.(p1|p2)$/.test(k)||/^m\.\d+\.(nama|rute|jadwal)$/.test(k)||/^dx\.[^.]+\.(on|kode|nama|muncul|teratasi)$/.test(k)||/^k\./.test(k)||/^g\.(cair1|cair2|transf|ob\d+|sp\d)\.nama$/.test(k);
+ Object.keys(d).forEach(k=>{if(keep(k))n[k]=d[k]});
+ n['p.tanggal']=d['p.tanggal']?addDays(d['p.tanggal'],1):todayISO();
+ const kum=$('#bl-kum-4').textContent.replace('+','');if(kum!=='')n['bal.kum0']=kum;const b24=$('#bl-bal-4').textContent.replace('+','');if(b24!=='')n['bal.kemarin']=b24;
+ newSheet(n);load(store.current);setStatus('Lembar hari berikutnya dibuat');
+};
+$('#btnDel').onclick=()=>{const s=cur();if(!confirm(`Hapus lembar "${label(s)}"? Data lembar ini akan hilang dari browser ini.`))return;delete store.sheets[store.current];const ids=Object.keys(store.sheets);if(ids.length)store.current=ids[0];else newSheet();load(store.current)};
+$('#btnExport').onclick=()=>{const s=cur();s.data=collect();const blob=new Blob([JSON.stringify(store,null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`kardeks-picu-cadangan-${todayISO()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)};
+$('#btnImport').onclick=()=>$('#fileImport').click();
+$('#fileImport').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const s=JSON.parse(await f.text());if(!s.sheets)throw 0;let n=0;Object.entries(s.sheets).forEach(([id,v])=>{if(v&&v.data){store.sheets[id]=v;n++}});load(Object.keys(s.sheets)[0]);setStatus(`${n} lembar dipulihkan`)}catch(err){alert('File cadangan tidak bisa dibaca. Pilih file .json dari tombol Cadangkan.')}e.target.value=''};
+
+/* ---------- print ---------- */
+const PAPER={a3:[297,420],besar:[480,650],a4:[210,297]};
+try{const p=localStorage.getItem(KEY+'-paper');if(p&&PAPER[p])$('#paper').value=p}catch(e){}
+function setPage(){const[w,h]=PAPER[$('#paper').value];$('#pagestyle').textContent=`@page{size:${w}mm ${h}mm;margin:6mm}`}
+$('#paper').onchange=()=>{setPage();try{localStorage.setItem(KEY+'-paper',$('#paper').value)}catch(e){}};
+let printing=false;
+function preparePrint(){
+ if(printing)return;printing=true;setPage();document.body.classList.add('printing');
+ $$('[data-k]').forEach(el=>el.classList.toggle('kosong',el.type!=='checkbox'&&!el.value));
+ const[w,h]=PAPER[$('#paper').value],mm=3.7795,pw=(w-12)*mm,ph=(h-12)*mm;
+ $$('.sheet').forEach(s=>{s.style.zoom='';s.style.zoom=Math.min(pw/s.offsetWidth,ph/s.offsetHeight)*.99});
+ drawChart();
+}
+function endPrint(){printing=false;document.body.classList.remove('printing');$$('.sheet').forEach(s=>s.style.zoom='');$$('.kosong').forEach(e=>e.classList.remove('kosong'));drawChart()}
+addEventListener('beforeprint',preparePrint);addEventListener('afterprint',endPrint);
+// Di dalam bingkai (mis. tampilan artifact) cetak & unduh diblokir: beri tahu, jangan diam saja.
+const framed=(()=>{try{return window.self!==window.top}catch(e){return true}})();
+const blockedMsg=f=>setStatus(`${f} hanya berfungsi di versi lokal (file index.html di laptop)`)||($('#status').style.display='inline');
+$('#btnPrint').onclick=()=>{if(framed){blockedMsg('Cetak');return}preparePrint();setTimeout(()=>window.print(),50)};
+if(framed){const ex=$('#btnExport');ex.onclick=()=>blockedMsg('Cadangkan');ex.title='Hanya di versi lokal';$('#btnPrint').title='Hanya di versi lokal'}
+
+/* ---------- boot ---------- */
+setPage();
+if(!store.current||!store.sheets[store.current]){const ids=Object.keys(store.sheets);if(ids.length)store.current=ids[0];else newSheet()}
+load(store.current);setStatus('Tersimpan otomatis di browser ini');
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(drawChart);
+</script>
+
+</body></html>
