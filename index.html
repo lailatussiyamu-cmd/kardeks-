@@ -26,6 +26,19 @@ input[type=checkbox]{accent-color:var(--navy);width:16px;height:16px;margin:0;cu
 .toolbar .grp{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 @media screen and (max-width:1500px){.toolbar .status{display:none}}
 .toolbar select option{color:var(--ink)}
+.toolbar .mem{font-size:12.5px;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,.12);white-space:nowrap}
+.toolbar .mem.w{background:#FFC98A;color:#5A2E00;font-weight:700}
+.toolbar .mem.x{background:#FFB8AE;color:#7A1408;font-weight:700}
+.toolbar .tbar{flex-basis:100%;border-radius:8px;padding:7px 12px;font-size:14px;font-weight:600}
+.toolbar .tbar.l3{background:#FFD6D0;color:#8A1C12}
+.toolbar .tbar.l2{background:#FFE0BF;color:#7A3E00}
+.toolbar .pstrip{flex-basis:100%;display:flex;gap:6px 16px;flex-wrap:wrap;font-size:14px;padding:4px 2px 0;border-top:1px solid rgba(255,255,255,.25)}
+.toolbar .pstrip b{font-size:15px}
+.toolbar .pstrip .al{color:#FFD27A;font-weight:600}
+.c.bad input,.f.bad input{outline:2px dashed #7B2CBF;outline-offset:-3px;color:#5A189A;font-weight:700}
+.f.cek input[data-k="p.bb"]{background:#FFE0BF}
+.f .bbk{font-size:11.5px;font-weight:600;color:#7A3E00;background:#FFE0BF;border:1px solid #E8A15A;border-radius:6px;padding:1px 6px;cursor:pointer;white-space:nowrap}
+@media print{.toolbar .tbar,.toolbar .pstrip,.f .bbk{display:none!important}}
 .toolbar button:hover{background:rgba(255,255,255,.18)}
 .toolbar .primary{background:#fff;color:var(--navy);font-weight:700;border-color:#fff}
 .toolbar .primary:hover{background:#E3EEEE}
@@ -57,11 +70,12 @@ input[type=checkbox]{accent-color:var(--navy);width:16px;height:16px;margin:0;cu
 .bt small{font-weight:400;letter-spacing:0;opacity:.85}
 
 /* Identity */
-.idg{display:grid;grid-template-columns:2.4fr 1fr 1.2fr .6fr .7fr .7fr .7fr}
+.idg{display:grid;grid-template-columns:2.2fr 1fr 1.2fr .5fr .75fr .9fr .65fr .6fr}
 .idg.back{grid-template-columns:2.4fr 1fr .7fr 1fr .8fr}
 .f{display:flex;flex-direction:column;gap:3px;padding:7px 10px;border-right:1px solid var(--line);min-width:0}
 .f.top{border-top:1px solid var(--line)}
 .f.last{border-right:0}
+.idg .prio select{font-weight:700}
 .fl{font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--navy);text-transform:uppercase;white-space:nowrap}
 .f input,.f select,.f output{border:0;border-bottom:1px dotted var(--dot);height:24px;padding:0 2px;background:transparent;width:100%;min-width:0;font-size:15px}
 .f output{display:block;line-height:24px;font-weight:600;color:var(--teal-d)}
@@ -119,6 +133,7 @@ input[type=checkbox]{accent-color:var(--navy);width:16px;height:16px;margin:0;cu
 .mt>.ctr{justify-content:center}
 .mt>.in{padding:0}
 .mt input:not([type=checkbox]){border:0;background:transparent;width:100%;min-width:0;height:27px;padding:0 6px;font-size:13.5px}
+.mt select{border:0;background:transparent;width:100%;min-width:0;height:27px;padding:0 4px;font:inherit;font-size:13.5px;font-weight:600;color:var(--teal-d)}
 .mt input.hdr{font-weight:600;color:var(--navy);font-size:12.5px;padding:0}
 .mt input[type=time]::-webkit-calendar-picker-indicator{display:none}
 .mt output{font-weight:700;color:var(--teal-d);font-variant-numeric:tabular-nums}
@@ -213,6 +228,11 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 .c.z-r,.printing .c.z-r{background:#FFB8AE!important}
 .c.z-r input{color:#8A1C12;font-weight:700}
 .c.pewsc input{cursor:pointer;font-weight:700}
+.c.pewsc input::placeholder{color:#8A6A2A;font-weight:600;font-style:italic}
+.printing .c.pewsc input::placeholder{color:transparent}
+@media print{.c.pewsc input::placeholder{color:transparent}}
+.pop .auto{padding:6px 12px;background:#FFF1C2;color:#6B4A00;font-size:12.5px;border-bottom:1px solid #E9C766}
+.pop label.sug span{text-decoration:underline dotted}
 .zinfo{display:inline-flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
 .sw{display:inline-block;width:12px;height:12px;border:1px solid var(--line-d);vertical-align:-2px;margin-right:3px}
 .alertbar{max-width:1814px;margin:10px 16px 0;padding:10px 14px;border-radius:10px;font-family:var(--display);font-weight:600;font-size:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
@@ -221,6 +241,9 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 .alertbar.l2{background:#FFE0BF;color:#7A3E00;border:1px solid #E8A15A}
 .alertbar.l3{background:#FFD6D0;color:#8A1C12;border:1px solid #D9796C}
 .alertbar a{color:inherit}
+.alertbar button{font:inherit;font-size:12.5px;padding:2px 10px;border-radius:6px;border:1px solid currentColor;background:#fff;color:inherit;cursor:pointer}
+.lab.alergi{background:#FFD6D0;box-shadow:inset 3px 0 0 #B42318}
+.lab.verif{background:#FFE0BF;box-shadow:inset 3px 0 0 #E8A15A}
 .settings{max-width:1814px;margin:10px 16px 0;background:#fff;border:1px solid var(--line);border-radius:10px;font-size:13.5px}
 @media screen and (min-width:1846px){.settings{margin-inline:auto}}
 .settings summary{cursor:pointer;padding:9px 14px;font-family:var(--display);font-weight:600;color:var(--navy)}
@@ -234,6 +257,10 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 .settings .fld label{display:flex;gap:6px;align-items:center}
 .settings .warnnote{flex-basis:100%;color:var(--warn-ink);background:var(--warn);padding:6px 10px;border-radius:6px}
 .settings button{border:1px solid var(--line-d);background:#fff;border-radius:6px;padding:4px 10px;cursor:pointer}
+.settings input:disabled,.settings button:disabled{background:var(--soft);color:var(--mute);cursor:not-allowed}
+.settings .zlock{flex-basis:100%;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 10px;border-radius:6px;background:var(--soft2);color:var(--navy);font-weight:600}
+.settings .zlock.on{background:#FFE0BF;color:#7A3E00}
+.settings .zlog{flex-basis:100%;font-size:12.5px;color:var(--sub);display:flex;flex-direction:column;gap:2px}
 .pop{position:fixed;z-index:40;background:#fff;border:1px solid var(--line-d);border-radius:12px;box-shadow:0 12px 40px rgba(19,54,92,.3);width:min(460px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;font-size:13.5px}
 .pop header{background:var(--navy);color:#fff;padding:8px 12px;font-family:var(--display);font-weight:700;display:flex;justify-content:space-between;align-items:center;border-radius:11px 11px 0 0}
 .pop .ref{padding:6px 12px;background:var(--soft);color:var(--sub);font-size:12.5px}
@@ -242,7 +269,7 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 .pop label{display:flex;gap:8px;align-items:flex-start;padding:3px 0;cursor:pointer;line-height:1.3}
 .pop label b{flex:none;width:14px;color:var(--navy)}
 .pop .foot2{display:flex;gap:8px;align-items:center;padding:10px 12px;flex-wrap:wrap}
-.pop .tot{font-family:var(--display);font-weight:700;font-size:18px;margin-right:auto}
+.pop .tot{font-family:var(--display);font-weight:700;font-size:18px;margin-right:auto;flex-basis:100%}
 .pop button{border:1px solid var(--line-d);background:#fff;border-radius:8px;padding:6px 12px;cursor:pointer}
 .pop button.ok{background:var(--navy);color:#fff;border-color:var(--navy)}
 .pewsbox{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
@@ -322,7 +349,10 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
   <button id="btnDel">Hapus lembar</button>
   <span class="sp"></span>
   <span class="status" id="status"></span>
-  <button id="btnExport" title="Simpan semua lembar ke file cadangan">Cadangkan</button>
+  <span class="mem" id="mem" title="Pemakaian memori browser untuk kardeks (batas ±5 juta karakter per alamat)"></span>
+  <button id="btnExport" title="Simpan semua lembar pasien yang sedang dibuka (No. RM sama) ke file">Cadangkan pasien</button>
+  <button id="btnExportAll" title="Simpan semua lembar semua pasien ke satu file">Semua</button>
+  <button id="btnPulang" title="Arsipkan semua lembar pasien ini ke file, lalu hapus dari browser">Pasien pulang</button>
   <button id="btnImport">Pulihkan</button>
   <input type="file" id="fileImport" accept="application/json,.json" hidden>
   <label>Kertas
@@ -333,10 +363,14 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
     </select>
   </label>
   <button class="primary" id="btnPrint">Cetak</button>
+  <div class="tbar" id="savebar" role="alert" hidden></div>
+  <div class="pstrip" id="pstrip" hidden></div>
 </div>
 
 <p class="notice"><b>Versi coba.</b> Data tersimpan otomatis hanya di browser perangkat ini, tidak dikirim ke mana pun. MAP, total intake/output per jam, balance, diuresis, IWL, kebutuhan per 24 jam, umur, hari rawat dan hari alat terhitung otomatis (teks hijau). Kolom jam yang sedang berjalan diberi bingkai hijau. Sel tanda vital berwarna kuning/merah bila di luar batas usia; klik sel PEWS untuk menghitung skor.</p>
 <div class="alertbar" id="alertbar" hidden></div>
+<div class="alertbar l3" id="alergibar" role="alert" hidden></div>
+<div class="alertbar l2" id="verifbar" hidden></div><input type="hidden" data-k="obverif" id="obverif">
 <details class="settings" id="settings">
   <summary>Pengaturan zona warna &amp; PEWS</summary>
   <div class="sbody" id="sbody"></div>
@@ -356,14 +390,17 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
     <label class="f"><span class="fl">No. RM</span><input data-k="p.rm" autocomplete="off"></label>
     <label class="f"><span class="fl">Tgl lahir / Umur</span><span class="two"><input type="date" data-k="p.tgllahir"><output id="o-umur"></output></span></label>
     <label class="f"><span class="fl">L / P</span><select data-k="p.jk"><option value=""></option><option>L</option><option>P</option></select></label>
-    <label class="f tealbg"><span class="fl">BB (kg)</span><input data-k="p.bb" inputmode="decimal"></label>
-    <label class="f tealbg"><span class="fl">TB (cm)</span><input data-k="p.tb" inputmode="decimal"></label>
+    <label class="f tealbg" id="f-bb"><span class="fl">BB aktual (kg)</span><span class="two"><input data-k="p.bb" inputmode="decimal" title="Ditimbang hari ini"><input type="hidden" data-k="p.bbcek"><button type="button" class="bbk" id="bbk" hidden title="BB disalin dari kemarin. Timbang ulang, atau klik bila BB ini sudah dikonfirmasi">BB kemarin · ✓ cek</button></span></label>
+    <label class="f tealbg" id="f-bbi"><span class="fl">BB ideal (kg)</span><span class="two"><input data-k="k.bbi" inputmode="decimal" placeholder="kurva BB/TB" title="BB ideal menurut TB (kurva WHO/CDC). Dipakai untuk RDA × BBI dan status gizi"><output id="o-gizi"></output></span></label>
+    <label class="f tealbg" id="f-tb"><span class="fl">TB (cm)</span><input data-k="p.tb" inputmode="decimal"></label>
     <label class="f last"><span class="fl">Bed</span><input data-k="p.bed"></label>
-    <label class="f top dxf last" style="grid-column:1/-1"><span class="fl">Diagnosa medis</span><textarea data-k="p.dx" rows="2"></textarea></label>
+    <label class="f top dxf" style="grid-column:1/7"><span class="fl">Diagnosa medis</span><textarea data-k="p.dx" rows="2"></textarea></label>
+    <div class="f top last prio" style="grid-column:span 2" title="Ditetapkan DPJP (Kepmenkes 1778/2010): P1 terapi intensif & titrasi, P2 pemantauan ketat/invasif, P3 kondisi tidak stabil dengan peluang pulih kecil"><span class="fl">Prioritas ICU (DPJP)</span><select data-k="p.prio" aria-label="Prioritas ICU"><option value=""></option><option>P1</option><option>P2</option><option>P3</option></select><span class="two"><span style="font-size:12.5px;white-space:nowrap">ditinjau</span><input type="date" data-k="p.priotgl" aria-label="Tanggal tinjau prioritas"></span></div>
     <label class="f top"><span class="fl">DPJP / Konsulen</span><input data-k="p.dpjp"></label>
     <label class="f top"><span class="fl">Tgl masuk</span><input type="date" data-k="p.tglmasuk"></label>
     <label class="f top"><span class="fl">Hari ke</span><output id="o-hr"></output></label>
-    <label class="f top alergi" style="grid-column:span 4"><span class="fl">⚠ Alergi obat / makanan</span><input data-k="p.alergi"></label>
+    <label class="f top" style="grid-column:span 2" title="Isi bila DPJP menetapkan target khusus, mis. PJB sianotik 75–85%. Kosongkan untuk memakai batas umum di pengaturan."><span class="fl">Target SpO₂ (%)</span><span class="two"><input data-k="p.spo2lo" inputmode="decimal" placeholder="umum" aria-label="Target SpO2 bawah"><span>–</span><input data-k="p.spo2hi" inputmode="decimal" placeholder="" aria-label="Target SpO2 atas"></span></label>
+    <label class="f top alergi" style="grid-column:span 3"><span class="fl">⚠ Alergi obat / makanan</span><input data-k="p.alergi"></label>
   </div>
 
   <div class="box" id="alatbox"></div>
@@ -401,11 +438,11 @@ const GROUPS=[
  {t:'TINDAKAN KEPERAWATAN · tulis ✓ di jam dikerjakan',rows:[['tk1','Batuk efektif / napas dalam',''],['tk2','Suctioning',''],['tk3','Inhalasi / fisioterapi dada',''],['tk4','Rawat ETT·trakeo / sirkuit',''],['tk5','CVC·PICC: asistensi / rawat',''],['tk6','IV line: pasang / rawat',''],['tk7','Arteri line: asist / rawat',''],['tk8','NGT·OGT: pasang / cek',''],['tk9','Kateter urin: pasang / lepas',''],['tk11','ROM pasif / aktif',''],['tk21','Cegah foot drop',''],['tk12','Massage / back rub',''],['tk13','Rawat luka / aff drain',''],['tk14','Kasur dekubitus / ganti linen',''],['tk15','Oral hygiene',''],['tk16','Personal hygiene / keramas',''],['tk17','Selimut hangat / kompres',''],['tk18','Penanda jatuh·side rail·rem',''],['tk19','Perawatan stoma',''],['tk20','Lain-lain','','free']]},
  {t:'PEMANTAUAN RESTRAIN',rows:[['rs2','Sirkulasi',''],['rs1','Visual (cedera / kulit)','✓/✗']]},
  {t:'PEMBERIAN OBAT · tulis nama + dosis, centang / paraf di jam diberikan (cek 5 benar)',rows:[['ob1','IV','','freeroute'],['ob2','IV','','freeroute'],['ob3','IV','','freeroute'],['ob4','IV','','freeroute'],['ob5','IV','','freeroute'],['ob6','IV','','freeroute'],['ob7','IM / SC','','freeroute'],['ob8','IM / SC','','freeroute'],['ob9','PO','','freeroute'],['ob10','PO','','freeroute'],['ob11','PO','','freeroute'],['ob12','PO','','freeroute'],['ob13','PO','','freeroute'],['ob14','PO','','freeroute'],['ob17','Nebul','','freeroute'],['ob18','Nebul','','freeroute'],['ob15','Topikal','','freeroute'],['ob16','Topikal','','freeroute']]},
- {t:'INTAKE',rows:[['cair1','Infus 1','cc','name'],['cair2','Infus 2','cc','name'],['obativ','Obat infus / IV','cc','num'],['sp1','SP 1','cc','name'],['sp2','SP 2','cc','name'],['sp3','SP 3','cc','name'],['sp4','SP 4','cc','name'],['sp5','SP 5','cc','name'],['sp6','SP 6','cc','name'],['sp7','SP 7','cc','name'],['obor','Obat oral','cc','num'],['sonde','Diet (ASI / susu / sonde)','cc','num'],['oral','Rehidrasi / minum','cc','num'],['transf','Transfusi · no. labu','cc','name']]},
+ {t:'INTAKE',rows:[['cair1','Infus 1','cc','name'],['cair2','Infus 2','cc','name'],['obativ','Obat infus / IV','cc','num'],['sp1','SP 1','cc','name'],['sp2','SP 2','cc','name'],['sp3','SP 3','cc','name'],['sp4','SP 4','cc','name'],['sp5','SP 5','cc','name'],['sp6','SP 6','cc','name'],['sp7','SP 7','cc','name'],['obor','Obat oral','cc','num'],['sonde','Diet (ASI / susu / sonde)','cc','num'],['oral','Rehidrasi / minum','cc','num'],['transf','Transfusi 1 · jenis · no. labu','cc','name'],['transf2','Transfusi 2 · jenis · no. labu','cc','name'],['transf3','Transfusi 3 · jenis · no. labu','cc','name']]},
  {t:'OUTPUT',rows:[['urin','Urin','cc','num'],['iwl','IWL (otomatis)','cc','calc'],['drain','WSD / drain','cc','num'],['perd','Darah','cc','num'],['residu','Residu lambung','cc','num'],['ngt','Muntah / NGT','cc','num'],['bab','BAB','frek / konsist.']]},
  {t:'BALANCE PER JAM',rows:[['tin','Total intake','cc','calc'],['tout','Total output + IWL','cc','calc'],['bal','Balance','cc','calc'],['kum','Balance kumulatif','cc','calc']]},
 ];
-const INTAKE=['cair1','cair2','obativ','sp1','sp2','sp3','sp4','sp5','sp6','sp7','obor','sonde','oral','transf'];
+const INTAKE=['cair1','cair2','obativ','sp1','sp2','sp3','sp4','sp5','sp6','sp7','obor','sonde','oral','transf','transf2','transf3'];
 const OUTPUT=['urin','drain','perd','residu','ngt'];
 const ROW_IDS=GROUPS.flatMap(g=>g.rows.filter(r=>r[3]!=='calc').map(r=>r[0]));
 const ALAT=[['ett','ETT / Trakeostomi'],['cvc','CVC'],['iv','IV line perifer'],['art','Arteri line'],['ngt','NGT / OGT'],['kat','Kateter urin'],['drain','Drain / WSD']];
@@ -471,11 +508,11 @@ function buildSide(){
   [['lok','Lokasi / ukuran',''],['tgl','Tgl pasang','type="date"'],['hk','Hari ke',null],['aff','Tgl aff','type="date"'],['ganti','Ganti baru (tgl)','type="date"']].map(([c,l,t])=>`<div class="k">${l}</div>`+ALAT.map(([id],j)=>t===null?`<div class="ctr${j===ALAT.length-1?' e':''}"><output id="hk-${id}"></output></div>`:`<div class="in${j===ALAT.length-1?' e':''}">${inp(`a.${id}.${c}`,t)}</div>`).join('')).join('')+`</div>`;
  const bundle=BUNDLE.map(([g,rows])=>`<div class="g">${g}</div>`+rows.map(([id,l])=>`<div>${esc(l)}</div>`+['P','S','M'].map((s,j)=>`<div class="ctr${j===2?' e':''}">${cb(`b.${id}.${s}`)}</div>`).join('')).join('')).join('');
  const skor=SKOR.map(([id,l])=>`<div>${l}</div>`+['P','S','M'].map((s,j)=>`<div class="in${j===2?' e':''}">${inp(`s.${id}.${s}`,'style="text-align:center"')}</div>`).join('')).join('');
- const keb=`<div>Holliday-Segar</div><div class="e" style="grid-column:span 2"><output id="kb-hs"></output></div>
-  <div>Schofield (BB)</div><div class="e" style="grid-column:span 2"><output id="kb-sch"></output></div>
-  <div>BBI</div><div class="in e" style="grid-column:span 2">${inp('k.bbi','inputmode="decimal" placeholder="___ kg"')}</div>
+ const keb=`<div class="k">Dasar BB (sesuai DPJP)</div><div class="in e" style="grid-column:span 2"><select data-k="k.dasar" title="BB untuk Holliday-Segar, Schofield & RDA"><option value="">BB aktual</option><option value="bbi">BB ideal</option></select></div>
+  <div>Holliday-Segar</div><div class="e" style="grid-column:span 2"><output id="kb-hs"></output></div>
+  <div>Schofield</div><div class="e" style="grid-column:span 2"><output id="kb-sch"></output></div>
   <div>RDA</div><div class="in e" style="grid-column:span 2">${inp('k.rda','inputmode="decimal" placeholder="___ kkal/kg (sesuai usia)"')}</div>
-  <div class="k">RDA × BBI</div><div class="e" style="grid-column:span 2"><output id="kb-rda"></output></div>
+  <div class="k">RDA × BB</div><div class="e" style="grid-column:span 2"><output id="kb-rda"></output></div>
   <div>Kebutuhan dipakai</div><div class="in e" style="grid-column:span 2">${inp('k.pakai','placeholder="mis. HS / Schofield × faktor stres"')}</div>`;
  const lab=LAB.map(([id,l])=>`<div>${l}</div>`+[1,2,3].map(j=>`<div class="in${j===3?' e':''}">${inp(`lab.${id}.${j}`)}</div>`).join('')).join('');
  $('#side').innerHTML=`
@@ -489,6 +526,7 @@ function buildSide(){
   <div>Balance 24 jam kemarin</div><div class="in e">${inp('bal.kemarin','inputmode="decimal" placeholder="cc"')}</div>
   <div>Kumulatif s/d kemarin</div><div class="in e">${inp('bal.kum0','inputmode="decimal" placeholder="0"')}</div>
   <div style="font-size:12.5px">Pasien baru masuk jam</div><div class="in e">${inp('bal.masuk','type="time" id="masuk" title="Isi hanya di hari pasien masuk"')}</div>
+  <div style="font-size:12.5px">Dasar BB IWL · diuresis · balance/kg</div><div class="in e"><select data-k="k.dasarkg" title="BB untuk IWL, diuresis cc/kg/jam & balance cc/kg/jam"><option value="">BB aktual</option><option value="bbi">BB ideal</option></select></div>
   <div style="font-size:12.5px">IWL 24 jam (bila beda SPO)</div><div class="in e">${inp('bal.iwl24','id="iwl24" inputmode="decimal" title="IWL per 24 jam. Kosongkan untuk memakai rumus otomatis"')}</div></div></div>
  <div class="box"><div class="bt">LAB / BGA KUNCI</div><div class="mt" style="grid-template-columns:1.3fr 1fr 1fr 1fr">
   <div class="h">Parameter</div>${[1,2,3].map(j=>`<div class="h${j===3?' e':''}">Jam&nbsp;${inp(`lab.jam${j}`,'class="hdr" type="time"')}</div>`).join('')}${lab}</div></div>
@@ -527,21 +565,45 @@ const KEY='kardeks-picu-f61';
 const todayISO=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
 const addDays=(iso,n)=>{const d=new Date(iso+'T00:00:00');d.setDate(d.getDate()+n);d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
 let store={sheets:{},current:null};
-try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.sheets)store=s}catch(e){}
+const readStore=()=>{try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.sheets)return s}catch(e){}return null};
+store=readStore()||store;
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
-function persist(){try{localStorage.setItem(KEY,JSON.stringify(store));setStatus('Tersimpan '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}))}catch(e){setStatus('Gagal menyimpan di browser ini — gunakan Cadangkan')}}
+// Beberapa tab bisa membuka kardeks bersamaan: sebelum menulis, gabungkan dulu dengan isi terbaru
+// (lembar yang lebih baru menang) supaya lembar dari tab lain tidak tertimpa.
+const deleted=new Set();
+function mergeLatest(){const s=readStore();if(!s)return false;let curChanged=false;
+ Object.entries(s.sheets).forEach(([id,v])=>{if(deleted.has(id)||!v||!v.data)return;const m=store.sheets[id];if(!m||(v.updated||0)>(m.updated||0)){store.sheets[id]=v;if(id===store.current)curChanged=true}});
+ deleted.forEach(id=>delete store.sheets[id]);return curChanged}
+function persist(){try{mergeLatest();localStorage.setItem(KEY,JSON.stringify(store));setStatus('Tersimpan '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}));showMem(false)}catch(e){setStatus('Gagal menyimpan di browser ini — gunakan Cadangkan');showMem(true)}}
+// Jatah localStorage Chrome ±5 juta karakter per alamat, dipakai bersama semua lembar.
+const QUOTA=5e6;
+function memUsed(){let n=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);n+=k.length+localStorage.getItem(k).length}}catch(e){}return n}
+function showMem(fail){
+ const pct=Math.min(100,Math.round(memUsed()/QUOTA*100)),m=$('#mem'),sb=$('#savebar');
+ m.textContent=`Memori ${pct}% · ${Object.keys(store.sheets).length} lembar`;m.className='mem'+(fail||pct>=90?' x':pct>=80?' w':'');
+ if(fail){sb.hidden=false;sb.className='tbar l3';sb.textContent='⛔ GAGAL MENYIMPAN — perubahan terakhir belum tersimpan di browser. Jangan tutup halaman: tekan Cadangkan sekarang, lalu hapus lembar pasien yang sudah pulang.'}
+ else if(pct>=80){sb.hidden=false;sb.className='tbar l2';sb.textContent=`Memori kardeks ${pct}% terpakai. Cadangkan lalu hapus lembar pasien yang sudah pulang sebelum penuh.`}
+ else sb.hidden=true}
 function setStatus(t){$('#status').textContent=t}
 function collect(){const d={};$$('[data-k]').forEach(el=>{if(el.classList.contains('calc'))return;if(el.type==='checkbox'){if(el.checked)d[el.dataset.k]=true}else if(el.value!=='')d[el.dataset.k]=el.value});return d}
 function apply(d){$$('[data-k]').forEach(el=>{const k=el.dataset.k;if(el.classList.contains('calc'))return;if(el.type==='checkbox')el.checked=!!d[k];else el.value=d[k]??DEFAULTS[k]??''})}
 function cur(){return store.sheets[store.current]}
-function newSheet(data){const id=uid();store.sheets[id]={data:data||{'p.tanggal':todayISO()},updated:Date.now()};store.current=id;return id}
+function newSheet(data){flushSave();const id=uid();store.sheets[id]={data:data||{'p.tanggal':todayISO()},updated:Date.now()};store.current=id;return id}
 function fmtDate(iso){if(!iso)return'';const[y,m,d]=iso.split('-');return`${d}/${m}/${y}`}
 function label(s){const d=s.data;return`${d['p.bed']?'Bed '+d['p.bed']+' · ':''}${d['p.nama']||'Tanpa nama'} · ${fmtDate(d['p.tanggal'])||'tanpa tanggal'}`}
 function renderSel(){const ids=Object.keys(store.sheets).sort((a,b)=>(store.sheets[b].data['p.tanggal']||'').localeCompare(store.sheets[a].data['p.tanggal']||'')||store.sheets[b].updated-store.sheets[a].updated);
  $('#sheetSel').innerHTML=ids.map(id=>`<option value="${id}" ${id===store.current?'selected':''}>${esc(label(store.sheets[id]))}</option>`).join('')}
-function load(id){store.current=id;apply(cur().data);recalc();renderSel();persist()}
+function load(id){flushSave();mergeLatest();store.current=id;apply(cur().data);recalc();renderSel();persist()}
 let saveT=0;
-function onEdit(){recalc();clearTimeout(saveT);saveT=setTimeout(()=>{const s=cur();s.data=collect();s.updated=Date.now();persist();renderSel()},350)}
+function saveNow(){saveT=0;const s=cur();s.data=collect();s.updated=Date.now();persist();renderSel()}
+function flushSave(){if(saveT){clearTimeout(saveT);saveNow()}}
+function onEdit(){recalc();clearTimeout(saveT);saveT=setTimeout(saveNow,350)}
+// Tab lain menyimpan: ambil lembar baru/berubah, buang yang dihapus di sana.
+addEventListener('storage',e=>{if(e.key!==KEY)return;const s=readStore();if(!s)return;
+ Object.keys(store.sheets).forEach(id=>{if(!s.sheets[id]&&id!==store.current)delete store.sheets[id]});
+ const curChanged=mergeLatest();
+ if(curChanged){if(saveT)setStatus('Lembar ini juga sedang diedit di tab lain — tutup salah satu tab');else{apply(cur().data);recalc();setStatus('Lembar ini diperbarui dari tab lain')}}
+ renderSel()});
 document.addEventListener('input',e=>{if(e.target.closest('.sheet'))onEdit()});
 document.addEventListener('change',e=>{if(e.target.closest('.sheet'))onEdit()});
 
@@ -553,7 +615,8 @@ const setO=(id,v,neg)=>{const o=document.getElementById(id);if(!o)return;o.textC
 function days(a,b){return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/864e5)}
 function umur(lahir,tgl){if(!lahir||!tgl)return null;const a=new Date(lahir+'T00:00:00'),b=new Date(tgl+'T00:00:00');if(b<a)return null;let m=(b.getFullYear()-a.getFullYear())*12+b.getMonth()-a.getMonth();if(b.getDate()<a.getDate())m--;const th=Math.floor(m/12);return{th,bl:m%12,hr:days(lahir,tgl)}}
 function recalc(){
- const tgl=val('p.tanggal'),bb=num(val('p.bb'));
+ // Tiap DPJP bisa memilih BB aktual atau BB ideal: bb = dasar IWL/diuresis/balance per kg, bbK = dasar kebutuhan.
+ const wj=n=>n>=.3&&n<=150?n:NaN,tgl=val('p.tanggal'),bba=wj(num(val('p.bb'))),bbi0=wj(num(val('k.bbi'))),pickBB=k=>val(k)==='bbi'?bbi0:bba,bb=pickBB('k.dasarkg'),bbK=pickBB('k.dasar'),nmK=val('k.dasar')==='bbi'?'BB ideal':'BB aktual';
  // umur & hari rawat
  const u=umur(val('p.tgllahir'),tgl);
  setO('o-umur',u?(u.th>0?`${u.th} th ${u.bl} bl`:u.bl>0?`${u.bl} bl`:`${u.hr} hr`):'');
@@ -587,11 +650,15 @@ function recalc(){
   else{setV(`g.bal.${i}`,'');setV(`g.kum.${i}`,'')}
  }
  // kebutuhan
- {const hs=bb>0?(bb<=10?100*bb:bb<=20?1000+50*(bb-10):1500+20*(bb-20)):NaN;setO('kb-hs',isNaN(hs)?'isi BB':`${Math.round(hs)} kkal (cairan ${Math.round(hs)} cc)`);
-  const jk=val('p.jk'),th=u?u.th:NaN;let sc=NaN;
-  if(bb>0&&!isNaN(th)&&(jk==='L'||jk==='P')){const t=th<3?0:th<10?1:2;sc=jk==='L'?[59.512*bb-30.4,22.706*bb+504.3,17.686*bb+658.2][t]:[58.317*bb-31.1,20.315*bb+485.9,13.384*bb+692.6][t]}
-  setO('kb-sch',isNaN(sc)?'isi BB, tgl lahir & L/P':`${Math.round(sc)} kkal`);
-  const bi=num(val('k.bbi')),rd=num(val('k.rda'));setO('kb-rda',bi>0&&rd>0?`${Math.round(bi*rd)} kkal`:'___')}
+ {const HS=w=>w>0?(w<=10?100*w:w<=20?1000+50*(w-10):1500+20*(w-20)):NaN,hs=HS(bbK),bbi=bbi0,bb=bba,kg=`${nmK} ${bbK} kg`;
+  setO('kb-hs',isNaN(hs)?`isi ${nmK}`:`${Math.round(hs)} kkal (cairan ${Math.round(hs)} cc) · ${kg}`);
+  // Status gizi BB aktual / BBI (Waterlow)
+  const pg=bb>0&&bbi>0?bb/bbi*100:NaN,og=$('#o-gizi');
+  setO('o-gizi',isNaN(pg)?'':`${Math.round(pg)}% · ${pg>120?'obesitas':pg>110?'overweight':pg>=90?'normal':pg>=70?'gizi kurang':'gizi buruk'}`);og.style.color=isNaN(pg)||(pg>=90&&pg<=110)?'':'#B42318';og.title='BB aktual ÷ BB ideal × 100% (Waterlow)';
+  const jk=val('p.jk'),th=u?u.th:NaN,w=bbK;let sc=NaN;
+  if(w>0&&!isNaN(th)&&(jk==='L'||jk==='P')){const t=th<3?0:th<10?1:2;sc=jk==='L'?[59.512*w-30.4,22.706*w+504.3,17.686*w+658.2][t]:[58.317*w-31.1,20.315*w+485.9,13.384*w+692.6][t]}
+  setO('kb-sch',isNaN(sc)?`isi ${nmK}, tgl lahir & L/P`:`${Math.round(sc)} kkal · ${kg}`);
+  const rd=num(val('k.rda'));setO('kb-rda',bbK>0&&rd>0?`${Math.round(bbK*rd)} kkal · ${kg}`:'___')}
  // balance
  const iwlAuto=u&&bb>0?Math.max(0,30-u.th)*bb:NaN;
  const iwlIn=$('#iwl24');iwlIn.placeholder=isNaN(iwlAuto)?'isi BB & tgl lahir':`${r1(iwlAuto)} oto`;
@@ -624,35 +691,55 @@ function recalc(){
  setO('bl-diu-4',T.any&&bb>0&&T.h>0?r1(T.urin/bb/T.h):'');
  {const v=b24/bb/T.h;setO('bl-bkg-4',T.any&&bb>0&&T.h>0?(v>0?'+':'')+v.toFixed(2):'',v<0)}
  setO('bl-kum-4',T.any||!isNaN(k0)?sgn(kum):'',kum<0);
- colorize(u);
+ colorize(u);cekAlergi();cekVerif();cekWajar();renderStrip(u);
  markNow(tgl);drawChart();
 }
 
 /* ---------- zona warna & PEWS ---------- */
-let Z=JSON.parse(JSON.stringify(ZDEF));
-try{const z=JSON.parse(localStorage.getItem(KEY+'-zona'));if(z&&z.hr)Z=Object.assign(Z,z)}catch(e){}
+// Pengaturan dari localStorage dicocokkan dengan bentuk ZDEF: hanya angka/teks di posisi yang benar yang diterima.
+function cleanZ(z){const fit=(d,v)=>Array.isArray(d)?(Array.isArray(v)&&v.length===d.length?d.map((x,i)=>fit(x,v[i])):d):typeof d==='number'?(typeof v==='number'&&isFinite(v)?v:d):(typeof v==='string'?v:d);
+ const out=JSON.parse(JSON.stringify(ZDEF));if(z&&typeof z==='object')Object.keys(out).forEach(k=>out[k]=fit(out[k],z[k]));return out}
+let Z=cleanZ(null);
+try{Z=cleanZ(JSON.parse(localStorage.getItem(KEY+'-zona')))}catch(e){}
 let band=-1;
 function bandOf(u){if(!u)return-1;const m=u.th*12+u.bl;return BANDS.findIndex(([,a,b])=>m>=a&&m<b)}
 function zRange(v,[lo,hi]){if(isNaN(v))return'';const p=Z.pct/100;if(v<lo*(1-p)||v>hi*(1+p))return'r';if(v<lo||v>hi)return'y';return''}
 function pewsLevel(score,parts){if(isNaN(score))return 0;const[t1,t2,t3]=Z.pews;if(score>=t3||(parts&&parts.some(x=>x===3)))return 3;if(score>=t2)return 2;if(score>=t1)return 1;return 0}
 const pewsParts=i=>{const s=val(`g.pewsd.${i}`);return s?s.split(',').map(Number):null};
+// Skor minimal kardio & respirasi dari angka TTV. Warna kulit, retraksi & perilaku tidak terbaca dari angka:
+// tetap dinilai perawat, jadi hasil ini hanya batas bawah.
+function pewsAuto(i){
+ const why={c:[],r:[]};let c=null,r=null;const up=(k,s,t)=>{if(k==='c'){if(c===null||s>c)c=s}else if(r===null||s>r)r=s;if(s>0)why[k].push(t)};
+ const crt=num(val(`g.crt.${i}`));if(!isNaN(crt))up('c',crt>=5?3:crt>=4?2:crt>=3?1:0,`CRT ${crt} dtk`);
+ const hr=num(val(`g.nadi.${i}`)),rr=num(val(`g.rr.${i}`));
+ if(band>=0){const[lo,hi]=Z.hr[band];
+  if(!isNaN(hr))up('c',hr<lo?3:hr>=hi+30?3:hr>=hi+20?2:0,hr<lo?`nadi ${hr} bradikardia (<${lo})`:`nadi ${hr} (+${hr-hi} di atas normal)`);
+  const[rlo,rhi]=Z.rr[band];
+  if(!isNaN(rr)){up('r',rr>rhi+20?2:rr>rhi+10?1:0,`napas ${rr} (+${rr-rhi} di atas normal)`);if(rr<=rlo-5)why.r.push(`napas ${rr} ≥5 di bawah normal: nilai 3 bila ada retraksi / grunting`)}}
+ const f=num(val(`g.fio2.${i}`));
+ if(!isNaN(f))f<=15?up('r',f>=8?3:f>=6?2:f>=3?1:0,`O₂ ${f} lpm`):up('r',f>=50?3:f>=40?2:f>=30?1:0,`FiO₂ ${f}%`);
+ return c===null&&r===null?null:{c,r,why,min:(c||0)+(r||0)};
+}
 function colorize(u){
  band=bandOf(u);
  const setZ=(row,i,z)=>{const c=document.querySelector(`[data-k="g.${row}.${i}"]`).parentNode;c.classList.remove('z-y','z-o','z-r');if(z)c.classList.add('z-'+z)};
+ // Target SpO₂ khusus pasien (mis. PJB sianotik): kuning di luar target, merah bila >5 di bawah batas bawah.
+ const tLo=num(val('p.spo2lo')),tHi=num(val('p.spo2hi'));
  for(let i=0;i<24;i++){
   if(band>=0){
    setZ('nadi',i,zRange(num(val(`g.nadi.${i}`)),Z.hr[band]));
    setZ('rr',i,zRange(num(val(`g.rr.${i}`)),Z.rr[band]));
    const td=val(`g.td.${i}`).match(/(\d+(?:[.,]\d+)?)/);setZ('td',i,td?zRange(num(td[1]),Z.sbp[band]):'');
   }else['nadi','rr','td'].forEach(r=>setZ(r,i,''));
-  const sp=num(val(`g.spo2.${i}`));setZ('spo2',i,isNaN(sp)?'':sp<Z.spo2[1]?'r':sp<Z.spo2[0]?'y':'');
+  const sp=num(val(`g.spo2.${i}`));setZ('spo2',i,isNaN(sp)?'':!isNaN(tLo)?(sp<tLo-5?'r':sp<tLo||(!isNaN(tHi)&&sp>tHi)?'y':''):sp<Z.spo2[1]?'r':sp<Z.spo2[0]?'y':'');
   const t=num(val(`g.suhu.${i}`));setZ('suhu',i,isNaN(t)?'':(t<Z.suhu[2]||t>=Z.suhu[3])?'r':(t<Z.suhu[0]||t>=Z.suhu[1])?'y':'');
   const c=num(val(`g.crt.${i}`));setZ('crt',i,isNaN(c)?'':c>Z.crt[1]?'r':c>Z.crt[0]?'y':'');
   const lv=pewsLevel(num(val(`g.pews.${i}`)),pewsParts(i));setZ('pews',i,['','y','o','r'][lv]);
+  const pa=pewsAuto(i),pc=document.querySelector(`[data-k="g.pews.${i}"]`);pc.placeholder=pa?`≥${pa.min}`:'';pc.title=pa&&!pc.value?`Skor minimal dari TTV ${pa.min}. Klik untuk menilai PEWS lengkap.`:'';
  }
  const sw=c=>`<span class="sw" style="background:${c}"></span>`;
  $('#zinfo').innerHTML=band>=0
-  ?`<b>Zona warna (usia ${BANDS[band][0]}):</b> Nadi ${Z.hr[band].join('–')} · Napas ${Z.rr[band].join('–')} · TD sistol ${Z.sbp[band].join('–')} · SpO₂ ≥ ${Z.spo2[0]}% &nbsp; ${sw('#FFE7A0')}di luar normal ${sw('#FFB8AE')}>${Z.pct}% di luar normal / bahaya · PEWS ${sw('#FFE7A0')}≥${Z.pews[0]} ${sw('#FFC98A')}≥${Z.pews[1]} ${sw('#FFB8AE')}≥${Z.pews[2]}`
+  ?`<b>Zona warna (usia ${BANDS[band][0]}):</b> Nadi ${Z.hr[band].join('–')} · Napas ${Z.rr[band].join('–')} · TD sistol ${Z.sbp[band].join('–')} · SpO₂ ${!isNaN(tLo)?`target pasien ${tLo}${!isNaN(tHi)?'–'+tHi:''}%`:'≥ '+Z.spo2[0]+'%'} &nbsp; ${sw('#FFE7A0')}di luar normal ${sw('#FFB8AE')}>${Z.pct}% di luar normal / bahaya · PEWS ${sw('#FFE7A0')}≥${Z.pews[0]} ${sw('#FFC98A')}≥${Z.pews[1]} ${sw('#FFB8AE')}≥${Z.pews[2]}`
   :`<b>Zona warna:</b> isi tanggal lahir supaya nadi, napas & TD diwarnai sesuai usia. SpO₂, suhu, CRT & PEWS tetap diwarnai.`;
  // banner: PEWS jam terakhir yang terisi
  let last=-1;for(let i=23;i>=0;i--)if(val(`g.pews.${i}`)!==''){last=i;break}
@@ -661,13 +748,82 @@ function colorize(u){
   if(lv>0){bar.hidden=false;bar.className='alertbar l'+lv;bar.innerHTML=`PEWS ${sc} pada jam ${String(HOURS[last]).padStart(2,'0')}.00 → ${esc(Z.esc[lv-1])}. <a href="#eskalasi">Catat di tabel eskalasi</a>`}else bar.hidden=true}
  else bar.hidden=true;
 }
+/* ---------- cek alergi & verifikasi obat salinan ---------- */
+const MEDROWS=GROUPS.flatMap(g=>g.rows.filter(r=>r[3]==='freeroute'||r[3]==='name').map(r=>r[0]));
+// Samakan ejaan Inggris/Indonesia: ceftriaxone → seftriakson, ampicillin → ampisilin.
+const normObat=s=>String(s).toLowerCase().replace(/ph/g,'f').replace(/x/g,'ks').replace(/c(?=[eiy])/g,'s').replace(/c/g,'k').replace(/y/g,'i').replace(/([a-z])\1+/g,'$1').replace(/e\b/g,'');
+const ALG_STOP=new Set(['tidak','ada','alergi','obat','makanan','ruam','gatal','sesak','bengkak','merah','kemerahan','riwayat','disangkal','belum','diketahui','nihil','dengan','atau','berat','ringan','reaksi','syok','urtikaria','napas','kulit']);
+const ALG_KELAS={penisilin:['penisilin','ampisilin','amoksisilin','piperasilin','oksasilin','kloksasilin','benzatin','sultamisilin'],sefalosporin:['sef'],sulfa:['sulfa','kotrimoksazol','trimetoprim'],
+ nsaid:['ibuprofen','ketorolak','mefenamat','diklofenak','aspirin','asetosal','metamizol','antalgin','naproksen'],opioid:['morfin','fentanil','kodein','petidin','tramadol']};
+ALG_KELAS.ains=ALG_KELAS.nsaid;ALG_KELAS.penicillin=ALG_KELAS.penisilin;ALG_KELAS.cephalosporin=ALG_KELAS.sefalosporin;
+function cekAlergi(){
+ const alg=val('p.alergi'),words=normObat(alg).split(/[^a-z0-9]+/).filter(w=>w.length>=4&&!ALG_STOP.has(w));
+ const kelas=words.flatMap(w=>Object.entries(ALG_KELAS).filter(([k])=>normObat(k)===w).flatMap(([,v])=>v));
+ const hits=[];
+ MEDROWS.forEach(id=>{const el=document.querySelector(`[data-k="g.${id}.nama"]`);if(!el)return;const nm=normObat(el.value),mw=nm.split(/[^a-z0-9]+/);
+  const hit=el.value&&(words.some(w=>nm.includes(w))||kelas.some(k=>mw.some(m=>m.startsWith(k))));
+  el.closest('.lab').classList.toggle('alergi',!!hit);if(hit)hits.push(el.value)});
+ const bar=$('#alergibar');bar.hidden=!hits.length;
+ if(hits.length)bar.innerHTML=`⚠ Cek alergi: <b>${hits.map(esc).join(', ')}</b> cocok dengan alergi “${esc(alg)}”. Konfirmasi ke DPJP sebelum diberikan. <small style="font-weight:500">(pencocokan otomatis sederhana — tetap cek manual)</small>`;
+}
+const verifList=()=>($('#obverif').value||'').split(',').filter(Boolean);
+function setVerif(list){$('#obverif').value=list.join(',');onEdit()}
+function cekVerif(){
+ const list=verifList().filter(id=>val(`g.${id}.nama`));
+ MEDROWS.forEach(id=>{const el=document.querySelector(`[data-k="g.${id}.nama"]`);if(el)el.closest('.lab').classList.toggle('verif',list.includes(id))});
+ const bar=$('#verifbar');bar.hidden=!list.length;
+ if(list.length)bar.innerHTML=`${list.length} obat / cairan disalin dari lembar kemarin — cocokkan dengan advice DPJP hari ini:`+list.map(id=>`<button type="button" data-v="${id}">✓ ${esc(val(`g.${id}.nama`))}</button>`).join('')+`<button type="button" data-v="*">Semua sudah dicek</button>`;
+}
+$('#verifbar').addEventListener('click',e=>{const b=e.target.closest('[data-v]');if(!b)return;const v=b.dataset.v;setVerif(v==='*'?[]:verifList().filter(id=>id!==v))});
+// Nama obat salinan diedit = sudah ditinjau perawat.
+$('#hourgrid').addEventListener('change',e=>{const m=(e.target.dataset.k||'').match(/^g\.(\w+)\.nama$/);if(m&&verifList().includes(m[1]))setVerif(verifList().filter(id=>id!==m[1]))});
+/* ---------- angka tidak wajar, strip pasien, BB kemarin ---------- */
+// Batas "mungkin salah ketik" (bukan batas klinis): sel diberi garis ungu putus-putus, data tetap tersimpan.
+const WAJAR={nadi:[20,300],suhu:[30,45],rr:[4,150],spo2:[30,100],crt:[0,10],cvp:[-5,40],comfort:[6,30],flacc:[0,10],
+ rrset:[0,150],peep:[0,30],pins:[0,60],ps:[0,40],vt:[1,1000],fio2:[.1,100],ppeak:[0,80],rrv:[0,150],vte:[0,1000],mve:[0,30],leak:[0,100]};
+[...INTAKE,...OUTPUT].forEach(k=>WAJAR[k]=[0,1000]);
+function tandai(el,msg){const c=el.closest('.c,.f');if(!c)return;c.classList.toggle('bad',!!msg);if(msg)c.title=msg;else if(c.dataset.badt)c.title='';msg?c.dataset.badt=1:delete c.dataset.badt}
+function cekWajar(){
+ for(let i=0;i<24;i++){
+  Object.entries(WAJAR).forEach(([k,[lo,hi]])=>{const el=document.querySelector(`[data-k="g.${k}.${i}"]`);if(!el)return;const n=num(el.value);
+   let m=!isNaN(n)&&(n<lo||n>hi)?`${n} di luar batas wajar (${lo}–${hi}) — cek salah ketik`:'';
+   if(!m&&k==='fio2'&&n>15&&n<21)m=`${n}: FiO₂ % minimal 21, O₂ lpm biasanya ≤15 — cek satuan`;tandai(el,m)});
+  const td=document.querySelector(`[data-k="g.td.${i}"]`),mt=td.value.match(/(\d+(?:[.,]\d+)?)\s*\/\s*(\d+(?:[.,]\d+)?)/);let m='';
+  if(td.value&&!mt)m='Tulis TD sebagai sistol/diastol, mis. 100/60';
+  else if(mt){const a=num(mt[1]),b=num(mt[2]);if(a<20||a>260||b<5||b>200)m=`TD ${a}/${b} di luar batas wajar — cek salah ketik`;else if(b>=a)m='Diastol ≥ sistol — cek urutan';}
+  tandai(td,m);
+ }
+ [['p.bb',.3,150,'BB'],['k.bbi',.3,150,'BB ideal'],['p.tb',20,200,'TB'],['p.spo2lo',50,100,'Target SpO₂'],['p.spo2hi',50,100,'Target SpO₂']].forEach(([k,lo,hi,l])=>{const el=document.querySelector(`[data-k="${k}"]`),n=num(el.value);
+  tandai(el,!isNaN(n)&&(n<lo||n>hi)?`${l} ${n} tidak wajar — ${k==='p.tb'?'isi dalam cm':k.startsWith('p.spo2')?'isi persen (50–100)':'isi dalam kg, bukan gram'}`:'')});
+}
+function renderStrip(u){
+ const v=k=>esc(val(k)),bb=val('p.bb'),bbi=val('k.bbi');
+ $('#pstrip').innerHTML=`<b>${v('p.nama')||'Tanpa nama'}</b><span>RM ${v('p.rm')||'–'}</span><span>Bed ${v('p.bed')||'–'}</span><span>${u?esc($('#o-umur').textContent):'umur –'}</span><span>BB ${bb?esc(bb)+' kg':'–'}${bbi?' · BBI '+esc(bbi)+' kg':''}</span>${v('p.prio')?'<span><b>'+v('p.prio')+'</b></span>':''}<span class="al">⚠ Alergi: ${v('p.alergi')||'belum diisi'}</span>`;
+ $('#bbk').hidden=!val('p.bbcek');$('#f-bb').classList.toggle('cek',!!val('p.bbcek'));
+}
+// Strip identitas muncul di toolbar begitu kotak identitas tergulir keluar layar.
+if('IntersectionObserver' in window)new IntersectionObserver(([e])=>{$('#pstrip').hidden=e.isIntersecting},{rootMargin:'-60px 0px 0px 0px'}).observe($('.idg'));
+const clearBBcek=()=>{const h=document.querySelector('[data-k="p.bbcek"]');if(h.value){h.value='';onEdit()}};
+$('#bbk').addEventListener('click',e=>{e.preventDefault();clearBBcek()});
+document.querySelector('[data-k="p.bb"]').addEventListener('change',clearBBcek);
 function renderEscGuide(){
  const[t1,t2,t3]=Z.pews;
  $('#escGuide').innerHTML=[[`0–${t1-1}`,'Observasi rutin sesuai jadwal'],[`${t1}`+(t2-t1>1?`–${t2-1}`:''),Z.esc[0]],[`${t2}`+(t3-t2>1?`–${t3-1}`:''),Z.esc[1]],[`≥ ${t3} atau skor 3 di satu kategori`,Z.esc[2]]].map(([a,b],i)=>`<div class="lv" style="background:${['#fff','#FFE7A0','#FFC98A','#FFB8AE'][i]}">PEWS ${a}</div><div>${esc(b)}</div>`).join('');
 }
+// Pengaturan zona berlaku untuk semua pasien: dikunci, dibuka dengan nama, setiap perubahan dicatat.
+let zBy=null;
+const ZLABEL={pct:'Batas merah (% di luar normal)','spo2.0':'SpO₂ kuning <','spo2.1':'SpO₂ merah <','suhu.0':'Suhu kuning <','suhu.1':'Suhu kuning ≥','suhu.2':'Suhu merah <','suhu.3':'Suhu merah ≥',
+ 'crt.0':'CRT kuning >','crt.1':'CRT merah >','pews.0':'PEWS kuning ≥','pews.1':'PEWS oranye ≥','pews.2':'PEWS merah ≥','esc.0':'Teks eskalasi kuning','esc.1':'Teks eskalasi oranye','esc.2':'Teks eskalasi merah'};
+const ZLOG=KEY+'-zona-log';
+const zLog=()=>{try{return JSON.parse(localStorage.getItem(ZLOG))||[]}catch(e){return[]}};
+function addZLog(k,a,b){const l=zLog();l.unshift({t:Date.now(),n:zBy,k,a,b});try{localStorage.setItem(ZLOG,JSON.stringify(l.slice(0,200)))}catch(e){}}
+function renderZLog(){const lg=zLog().slice(0,8),fmt=t=>new Date(t).toLocaleString('id-ID',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+ $('#zlog').innerHTML=`<b>Riwayat perubahan</b>${lg.length?lg.map(x=>`<div>${fmt(x.t)} · ${esc(x.n)} · ${esc(x.k)}: ${esc(x.a)} → ${esc(x.b)}</div>`).join(''):'<div>Belum ada perubahan.</div>'}`}
 function renderSettings(){
  const row=(k,l)=>`<tr><th style="text-align:left">${l}</th>${BANDS.map((b,i)=>`<td><input data-z="${k}.${i}.0" value="${Z[k][i][0]}" inputmode="decimal" aria-label="${l} ${b[0]} batas bawah"> – <input data-z="${k}.${i}.1" value="${Z[k][i][1]}" inputmode="decimal" aria-label="${l} ${b[0]} batas atas"></td>`).join('')}</tr>`;
- $('#sbody').innerHTML=`
+ const lock=zBy?`<div class="zlock on">🔓 Dibuka oleh <b>${esc(zBy)}</b> — setiap perubahan dicatat dan berlaku untuk semua pasien di browser ini. <button type="button" id="zClose">Kunci lagi</button></div>`
+  :`<div class="zlock">🔒 Terkunci. Perubahan berlaku untuk semua pasien di browser ini dan dicatat. <input id="zNama" class="wide" style="width:220px" placeholder="Nama / NIP yang mengubah"> <button type="button" id="zOpen">Buka kunci</button> <span id="zHint"></span></div>`;
+ $('#sbody').innerHTML=lock+`
  <p class="warnnote">Angka bawaan adalah contoh dari tabel nilai normal APLS dan PEWS format Brighton. Cocokkan dengan acuan &amp; SPO PICU RSSA sebelum dipakai. Pengaturan tersimpan di browser ini.</p>
  <table><tr><th>Batas normal</th>${BANDS.map(b=>`<th>${b[0]}</th>`).join('')}</tr>${row('hr','Nadi (x/mnt)')}${row('rr','Napas (x/mnt)')}${row('sbp','TD sistol (mmHg)')}</table>
  <div class="fld">
@@ -683,22 +839,31 @@ function renderSettings(){
   <label>Oranye: <input class="wide" data-z="esc.1" value="${esc(Z.esc[1])}"></label>
   <label>Merah: <input class="wide" data-z="esc.2" value="${esc(Z.esc[2])}"></label>
   <span><button type="button" id="zReset">Kembalikan angka bawaan</button></span>
- </div>`;
- $('#zReset').onclick=()=>{Z=JSON.parse(JSON.stringify(ZDEF));saveZ();renderSettings()};
+ </div><div class="zlog" id="zlog"></div>`;renderZLog();
+ $$('#sbody [data-z],#zReset').forEach(e=>e.disabled=!zBy);
+ $('#zReset').onclick=()=>{if(!zBy)return;Z=JSON.parse(JSON.stringify(ZDEF));addZLog('Semua pengaturan','(diubah)','angka bawaan');saveZ();renderSettings()};
+ if(zBy)$('#zClose').onclick=()=>{zBy=null;renderSettings()};
+ else $('#zOpen').onclick=()=>{const n=$('#zNama').value.trim();if(n.length<3){$('#zHint').textContent='Isi nama dulu';return}zBy=n;renderSettings()};
 }
 function saveZ(){try{localStorage.setItem(KEY+'-zona',JSON.stringify(Z))}catch(e){}renderEscGuide();recalc()}
-$('#sbody').addEventListener('input',e=>{const k=e.target.dataset.z;if(!k)return;const p=k.split('.');const v=p[0]==='esc'?e.target.value:num(e.target.value);if(p[0]!=='esc'&&isNaN(v))return;
+$('#sbody').addEventListener('focusin',e=>{if(e.target.dataset.z)e.target.dataset.old=e.target.value});
+$('#sbody').addEventListener('change',e=>{const t=e.target;if(!t.dataset.z||!zBy||t.dataset.old===t.value)return;
+ const lb=ZLABEL[t.dataset.z]||t.getAttribute('aria-label')||t.dataset.z;addZLog(lb,t.dataset.old,t.value);t.dataset.old=t.value;renderZLog()});
+$('#settings').addEventListener('toggle',()=>{if(!$('#settings').open&&zBy){zBy=null;renderSettings()}});
+$('#sbody').addEventListener('input',e=>{const k=e.target.dataset.z;if(!k||!zBy)return;const p=k.split('.');const v=p[0]==='esc'?e.target.value:num(e.target.value);if(p[0]!=='esc'&&isNaN(v))return;
  if(p.length===1)Z[p[0]]=v;else if(p.length===2)Z[p[0]][+p[1]]=v;else Z[p[0]][+p[1]][+p[2]]=v;saveZ()});
 
 /* PEWS popover */
 let popCol=-1;
 function openPews(i,anchor){
- popCol=i;const parts=pewsParts(i)||[null,null,null,0];const h=String(HOURS[i]).padStart(2,'0');
+ popCol=i;const pa=pewsAuto(i),saved=pewsParts(i),parts=saved||[null,pa?pa.c:null,pa?pa.r:null,0];const h=String(HOURS[i]).padStart(2,'0');
+ const sug=pa?[null,pa.c,pa.r]:[];
+ const autoTxt=pa?`<div class="auto"><b>Otomatis dari TTV${saved?' (skor tersimpan tidak diubah)':''}:</b> Kardio ≥ ${pa.c??'–'}${pa.why.c.length?' ('+pa.why.c.map(esc).join(', ')+')':''} · Respirasi ≥ ${pa.r??'–'}${pa.why.r.length?' ('+pa.why.r.map(esc).join(', ')+')':''}. Warna kulit, retraksi &amp; perilaku tetap dinilai perawat — naikkan bila perlu.${band<0?' <i>Isi tgl lahir supaya nadi &amp; napas ikut dinilai.</i>':''}</div>`:'';
  const ref=['nadi','rr','crt','spo2','fio2'].map(k=>[k,val(`g.${k}.${i}`)]).filter(([,v])=>v).map(([k,v])=>`${{nadi:'Nadi',rr:'Napas',crt:'CRT',spo2:'SpO₂',fio2:'FiO₂/O₂'}[k]} ${esc(v)}`).join(' · ');
  const pop=$('#pewsPop');
  pop.innerHTML=`<header><span>PEWS jam ${h}.00</span><button type="button" data-x="close" aria-label="Tutup" style="background:none;border:0;color:#fff;font-size:18px">×</button></header>
- <div class="ref">${ref||'Belum ada tanda vital jam ini.'}${band>=0?` · Normal usia ${BANDS[band][0]}: nadi ${Z.hr[band].join('–')}, napas ${Z.rr[band].join('–')}`:''}</div>
- ${PEWS_CAT.map(([k,l,o],ci)=>`<fieldset><legend>${l}</legend>${o.map((t,s)=>`<label><input type="radio" name="pw-${k}" value="${s}" ${parts[ci]===s?'checked':''}><b>${s}</b><span>${esc(t)}</span></label>`).join('')}</fieldset>`).join('')}
+ <div class="ref">${ref||'Belum ada tanda vital jam ini.'}${band>=0?` · Normal usia ${BANDS[band][0]}: nadi ${Z.hr[band].join('–')}, napas ${Z.rr[band].join('–')}`:''}</div>${autoTxt}
+ ${PEWS_CAT.map(([k,l,o],ci)=>`<fieldset><legend>${l}</legend>${o.map((t,s)=>`<label${sug[ci]===s?' class="sug" title="Saran dari TTV"':''}><input type="radio" name="pw-${k}" value="${s}" ${parts[ci]===s?'checked':''}><b>${s}</b><span>${esc(t)}</span></label>`).join('')}</fieldset>`).join('')}
  <fieldset><label><input type="checkbox" id="pw-x" ${parts[3]?'checked':''}><span>${PEWS_X}</span></label></fieldset>
  <div class="foot2"><span class="tot" id="pw-tot"></span><button type="button" data-x="clear">Kosongkan</button><button type="button" class="ok" data-x="save">Simpan</button></div>`;
  pop.hidden=false;
@@ -756,17 +921,40 @@ $('#hourgrid').addEventListener('keydown',e=>{
 $('#sheetSel').onchange=e=>load(e.target.value);
 $('#btnNew').onclick=()=>{newSheet();load(store.current)};
 $('#btnNext').onclick=()=>{
- const d=collect(),n={};
- const keep=k=>/^p\./.test(k)&&k!=='p.tanggal'||/^a\./.test(k)||/^sp\./.test(k)&&!/\.(p1|p2)$/.test(k)||/^m\.\d+\.(nama|rute|jadwal)$/.test(k)||/^dx\.[^.]+\.(on|kode|nama|muncul|teratasi)$/.test(k)||/^k\./.test(k)||/^g\.(cair1|cair2|transf|ob\d+|sp\d)\.nama$/.test(k);
+ flushSave();const d=collect(),n={};
+ const keep=k=>/^p\./.test(k)&&k!=='p.tanggal'||/^a\./.test(k)||/^sp\./.test(k)&&!/\.(p1|p2)$/.test(k)||/^m\.\d+\.(nama|rute|jadwal)$/.test(k)||/^dx\.[^.]+\.(on|kode|nama|muncul|teratasi)$/.test(k)||/^k\./.test(k)||/^g\.(cair1|cair2|ob\d+|sp\d)\.nama$/.test(k);
  Object.keys(d).forEach(k=>{if(keep(k))n[k]=d[k]});
+ const ver=Object.keys(n).map(k=>(k.match(/^g\.(\w+)\.nama$/)||[])[1]).filter(Boolean);if(ver.length)n.obverif=ver.join(',');
  n['p.tanggal']=d['p.tanggal']?addDays(d['p.tanggal'],1):todayISO();
+ if(d['p.bb'])n['p.bbcek']='1';
  const kum=$('#bl-kum-4').textContent.replace('+','');if(kum!=='')n['bal.kum0']=kum;const b24=$('#bl-bal-4').textContent.replace('+','');if(b24!=='')n['bal.kemarin']=b24;
  newSheet(n);load(store.current);setStatus('Lembar hari berikutnya dibuat');
 };
-$('#btnDel').onclick=()=>{const s=cur();if(!confirm(`Hapus lembar "${label(s)}"? Data lembar ini akan hilang dari browser ini.`))return;delete store.sheets[store.current];const ids=Object.keys(store.sheets);if(ids.length)store.current=ids[0];else newSheet();load(store.current)};
-$('#btnExport').onclick=()=>{const s=cur();s.data=collect();const blob=new Blob([JSON.stringify(store,null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`kardeks-picu-cadangan-${todayISO()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)};
+$('#btnDel').onclick=()=>{const s=cur();if(!confirm(`Hapus lembar "${label(s)}"? Data lembar ini akan hilang dari browser ini.`))return;clearTimeout(saveT);saveT=0;deleted.add(store.current);delete store.sheets[store.current];const ids=Object.keys(store.sheets);if(ids.length)store.current=ids[0];else newSheet();load(store.current)};
 $('#btnImport').onclick=()=>$('#fileImport').click();
-$('#fileImport').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const s=JSON.parse(await f.text());if(!s.sheets)throw 0;let n=0;Object.entries(s.sheets).forEach(([id,v])=>{if(v&&v.data){store.sheets[id]=v;n++}});load(Object.keys(s.sheets)[0]);setStatus(`${n} lembar dipulihkan`)}catch(err){alert('File cadangan tidak bisa dibaca. Pilih file .json dari tombol Cadangkan.')}e.target.value=''};
+// Cadangan per pasien: lembar dikelompokkan menurut No. RM (atau nama bila RM kosong).
+const pkey=d=>(d['p.rm']||'').trim()?'rm:'+d['p.rm'].trim():'nm:'+(d['p.nama']||'').trim().toLowerCase();
+const sheetsOfCur=()=>{const k=pkey(cur().data);return Object.keys(store.sheets).filter(id=>pkey(store.sheets[id].data)===k)};
+const fileTag=()=>{const rm=(val('p.rm')||'').replace(/[^\w-]/g,'');return rm?'RM-'+rm:'tanpa-RM'};
+function unduh(ids,name){const out={sheets:Object.fromEntries(ids.map(id=>[id,store.sheets[id]])),current:ids.includes(store.current)?store.current:ids[0]};
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,1)],{type:'application/json'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+$('#btnExport').onclick=()=>{flushSave();const ids=sheetsOfCur();unduh(ids,`kardeks-picu-${fileTag()}-${todayISO()}.json`);setStatus(`${ids.length} lembar pasien ini dicadangkan`)};
+$('#btnExportAll').onclick=()=>{flushSave();const ids=Object.keys(store.sheets);unduh(ids,`kardeks-picu-semua-${todayISO()}.json`);setStatus(`${ids.length} lembar (semua pasien) dicadangkan`)};
+$('#btnPulang').onclick=()=>{flushSave();const d=cur().data;if(!(d['p.rm']||d['p.nama'])){setStatus('Isi nama / No. RM dulu');return}
+ const ids=sheetsOfCur();
+ if(!confirm(`Pasien pulang / pindah: ${label(cur())}\n\n${ids.length} lembar pasien ini akan disimpan ke file cadangan, lalu DIHAPUS dari browser ini.\nPastikan file .json muncul di folder Downloads.\n\nLanjutkan?`))return;
+ unduh(ids,`kardeks-picu-${fileTag()}-pulang-${todayISO()}.json`);
+ ids.forEach(id=>{deleted.add(id);delete store.sheets[id]});
+ const rest=Object.keys(store.sheets);if(rest.length)store.current=rest[0];else newSheet();load(store.current);setStatus(`${ids.length} lembar diarsipkan & dihapus dari browser`)};
+$('#fileImport').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;flushSave();
+ let ok;try{const s=JSON.parse(await f.text());if(!s||typeof s.sheets!=='object')throw 0;
+  ok=Object.entries(s.sheets).filter(([id,v])=>/^[a-z0-9]{4,24}$/.test(id)&&v&&v.data&&typeof v.data==='object');if(!ok.length)throw 0}
+ catch(err){alert('File cadangan tidak bisa dibaca. Pilih file .json dari tombol Cadangkan.');return}
+ const ada=ok.filter(([id])=>store.sheets[id]),baru=ada.filter(([id,v])=>(store.sheets[id].updated||0)>(+v.updated||0));
+ if(ada.length&&!confirm(`File berisi ${ok.length} lembar. ${ada.length} lembar sudah ada di browser ini${baru.length?` — ${baru.length} di antaranya versi di browser LEBIH BARU`:''}.\n\nLembar itu akan ditimpa dengan isi dari file. Lanjutkan?`))return;
+ // Hanya teks / centang yang diterima; waktu diperbarui supaya tidak kalah saat digabung dengan tab lain.
+ ok.forEach(([id,v])=>{store.sheets[id]={data:Object.fromEntries(Object.entries(v.data).filter(([,x])=>typeof x==='string'||x===true)),updated:Date.now()};deleted.delete(id)});
+ load(ok[0][0]);setStatus(`${ok.length} lembar dipulihkan`)};
 
 /* ---------- print ---------- */
 const PAPER={a3:[297,420],besar:[480,650],a4:[210,297]};
@@ -787,7 +975,7 @@ addEventListener('beforeprint',preparePrint);addEventListener('afterprint',endPr
 const framed=(()=>{try{return window.self!==window.top}catch(e){return true}})();
 const blockedMsg=f=>setStatus(`${f} hanya berfungsi di versi lokal (file index.html di laptop)`)||($('#status').style.display='inline');
 $('#btnPrint').onclick=()=>{if(framed){blockedMsg('Cetak');return}preparePrint();setTimeout(()=>window.print(),50)};
-if(framed){const ex=$('#btnExport');ex.onclick=()=>blockedMsg('Cadangkan');ex.title='Hanya di versi lokal';$('#btnPrint').title='Hanya di versi lokal'}
+if(framed){[['#btnExport','Cadangkan'],['#btnExportAll','Cadangkan'],['#btnPulang','Pasien pulang']].forEach(([q,f])=>{const ex=$(q);ex.onclick=()=>blockedMsg(f);ex.title='Hanya di versi lokal'});$('#btnPrint').title='Hanya di versi lokal'}
 
 /* ---------- boot ---------- */
 setPage();
