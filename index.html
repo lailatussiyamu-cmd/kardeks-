@@ -52,7 +52,7 @@ input[type=checkbox]{accent-color:var(--navy);width:16px;height:16px;margin:0;cu
 
 /* Sheet */
 .sheet{background:#fff;max-width:1814px;margin:16px auto 24px;padding:40px;box-shadow:0 4px 24px rgba(19,54,92,.15);display:flex;flex-direction:column;gap:12px;scroll-margin-top:60px}
-@media screen and (max-width:1846px){.sheet{margin-inline:16px}}
+@media screen and (max-width:1846px){body:not(.printing) .sheet{margin-inline:16px}}
 .fhead{display:flex;align-items:center;gap:20px;padding-bottom:10px;border-bottom:4px solid var(--navy);font-family:var(--display);flex-wrap:wrap}
 .logo{width:68px;height:68px;border:1.5px dashed var(--dot);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--mute);text-align:center;flex:none}
 .logoimg{width:58px;height:75px;object-fit:contain;flex:none}
@@ -174,7 +174,7 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 .sysg label:nth-child(odd){border-right:1px solid var(--line)}
 .sysg span{flex:0 0 112px;font-weight:600;color:var(--navy);font-size:12.5px}
 .sysg input{border:0;border-bottom:1px dotted var(--dot);background:transparent;flex:1 1 auto;min-width:0;height:24px}
-@media screen and (max-width:1100px){.bottom.bgrid{grid-template-columns:minmax(0,1fr);grid-template-areas:"prog" "sp" "add" "cat";grid-template-rows:none}}
+@media screen and (max-width:1100px){body:not(.printing) .bottom.bgrid{grid-template-columns:minmax(0,1fr);grid-template-areas:"prog" "sp" "add" "cat";grid-template-rows:none}}
 .badd textarea,.bcat textarea{flex:1 1 auto;min-height:168px}
 .advg{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(4,minmax(0,1fr))}
 .advg>div{display:flex;flex-direction:column;min-width:0}
@@ -301,23 +301,23 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 
 /* Narrow screens (not print) */
 @media screen and (max-width:1300px){
-  .side,.bottom>.b3{max-width:none}
-  .idg,.idg.back{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
-  .f{border-bottom:1px solid var(--line)}
-  .f.top{border-top:0}
-  .f[style*="span"]{grid-column:auto!important}
-  .pewsbox,.sbar,.edu{grid-template-columns:minmax(0,1fr)}
-  .pewsbox>div:first-child{border-right:0;border-bottom:2px solid var(--navy)}
-  .pewsbox .mt{overflow-x:auto}
-  .sbar>div:not(:last-child){border-right:0;border-bottom:1px solid var(--line)}
-  .sign{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .sheet{padding:20px 16px}
+  body:not(.printing) .side,body:not(.printing) .bottom>.b3{max-width:none}
+  body:not(.printing) .idg,body:not(.printing) .idg.back{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+  body:not(.printing) .f{border-bottom:1px solid var(--line)}
+  body:not(.printing) .f.top{border-top:0}
+  body:not(.printing) .f[style*="span"]{grid-column:auto!important}
+  body:not(.printing) .pewsbox,body:not(.printing) .sbar,body:not(.printing) .edu{grid-template-columns:minmax(0,1fr)}
+  body:not(.printing) .pewsbox>div:first-child{border-right:0;border-bottom:2px solid var(--navy)}
+  body:not(.printing) .pewsbox .mt{overflow-x:auto}
+  body:not(.printing) .sbar>div:not(:last-child){border-right:0;border-bottom:1px solid var(--line)}
+  body:not(.printing) .sign{grid-template-columns:repeat(2,minmax(0,1fr))}
+  body:not(.printing) .sheet{padding:20px 16px}
 }
 @media screen and (max-width:640px){
-  .sign{grid-template-columns:minmax(0,1fr)}
-  .ttl b{font-size:22px}
-  .pref{grid-template-columns:90px repeat(4,minmax(110px,1fr))}
-  .pewsbox>div:first-child{overflow-x:auto}
+  body:not(.printing) .sign{grid-template-columns:minmax(0,1fr)}
+  body:not(.printing) .ttl b{font-size:22px}
+  body:not(.printing) .pref{grid-template-columns:90px repeat(4,minmax(110px,1fr))}
+  body:not(.printing) .pewsbox>div:first-child{overflow-x:auto}
 }
 
 /* Print */
@@ -329,6 +329,10 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 @media print{.alertbar,.settings,.pop{display:none!important}}
 .printing .sheet{width:1814px;max-width:none;margin:0;padding:48px;box-shadow:none;break-after:page;page-break-after:always}
 .printing .sheet:last-of-type{break-after:auto;page-break-after:auto}
+.pcont{display:none}
+.printing.dua .pcont{display:block;break-before:page;page-break-before:always}
+.pcont .pid{font-size:15px;font-weight:600;color:var(--navy);padding:0 0 6px}
+.printing.dua .side>.box,.printing.dua .bottom>.box,.printing.dua .sign{break-inside:avoid}
 .printing .gscroll{overflow:visible}
 .printing ::placeholder{color:transparent}
 .printing .kosong,.printing .kosong::-webkit-datetime-edit{color:transparent}
@@ -360,6 +364,12 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
       <option value="a3">A3</option>
       <option value="besar">48 × 65 cm (asli)</option>
       <option value="a4">A4</option>
+    </select>
+  </label>
+  <label>Halaman
+    <select id="hal" title="2 halaman: isi memenuhi lebar kertas (cetak bolak-balik seperti formulir asli). 1 halaman: semua diperkecil ke satu sisi">
+      <option value="2">2 (penuh)</option>
+      <option value="1">1 (perkecil)</option>
     </select>
   </label>
   <button class="primary" id="btnPrint">Cetak</button>
@@ -471,9 +481,11 @@ const inp=(k,a='')=>`<input data-k="${k}" ${a}>`;
 const cb=k=>`<input type="checkbox" data-k="${k}">`;
 
 function buildGrid(){
- let h=`<div class="row shiftrow"><div class="lab" style="font-weight:600;color:var(--navy)">SHIFT</div><div style="grid-column:span 7;border-left:1px solid var(--line)">PAGI</div><div style="grid-column:span 7;border-left:2px solid var(--navy)">SORE</div><div style="grid-column:span 10;border-left:2px solid var(--navy);background:var(--soft2)">MALAM</div></div>`;
+ const hShift=`<div class="row shiftrow"><div class="lab" style="font-weight:600;color:var(--navy)">SHIFT</div><div style="grid-column:span 7;border-left:1px solid var(--line)">PAGI</div><div style="grid-column:span 7;border-left:2px solid var(--navy)">SORE</div><div style="grid-column:span 10;border-left:2px solid var(--navy);background:var(--soft2)">MALAM</div></div>`;
+ let h=hShift;
  h+=`<div class="row blokrow"><div class="lab" style="font-weight:600;color:var(--teal-d);font-size:12.5px">BLOK BALANCE</div>${['06–12','12–18','18–24','24–06'].map(t=>`<div style="grid-column:span 6">${t}</div>`).join('')}</div>`;
- h+=`<div class="row" style="border-bottom:2px solid var(--navy)"><div class="lab" style="font-weight:600;color:var(--navy)">JAM</div>${HOURS.map((x,i)=>`<div class="hc${colCls(i)}" data-col="${i}">${String(x).padStart(2,'0')}</div>`).join('')}</div>`;
+ const hJam=`<div class="row" style="border-bottom:2px solid var(--navy)"><div class="lab" style="font-weight:600;color:var(--navy)">JAM</div>${HOURS.map((x,i)=>`<div class="hc${colCls(i)}" data-col="${i}">${String(x).padStart(2,'0')}</div>`).join('')}</div>`;
+ h+=hJam;
  const cells=(id,flag)=>HOURS.map((x,i)=>flag==='s2'||flag==='s4'
   ?`<div class="c split${colCls(i)}" data-col="${i}">${Array.from({length:flag==='s2'?2:4},(_,j)=>`<input data-k="g.${id}.${i}.${j}" aria-label="${id} ${j+1} jam ${String(x).padStart(2,'0')}" autocomplete="off">`).join('')}</div>`
   :flag==='pews'
@@ -481,6 +493,8 @@ function buildGrid(){
   :`<div class="c${colCls(i)}" data-col="${i}"><input data-k="g.${id}.${i}" aria-label="${id} jam ${String(x).padStart(2,'0')}" ${flag==='calc'?'readonly tabindex="-1" class="calc"':''} ${flag==='num'||flag==='name'?'inputmode="decimal"':''} autocomplete="off"></div>`).join('');
  const empty=HOURS.map((x,i)=>`<div class="c${colCls(i)}" data-col="${i}"></div>`).join('');
  GROUPS.forEach(g=>{
+  // Cetak 2 halaman: halaman 2 mulai di blok obat, dengan identitas & baris jam diulang.
+  if(g.t.startsWith('PEMBERIAN OBAT'))h+=`<div class="pcont" aria-hidden="true"><div class="pid" id="pid"></div>${hShift}${hJam}</div>`;
   h+=`<div class="sec">${g.t}</div>`;
   if(g.graph){
    h+=`<div class="grow" style="height:22px;background:var(--soft)"><div class="lab" style="font-size:13px;font-weight:600"><span>Grafik nadi ●</span><span>suhu ×</span></div>${empty}</div><div class="chartbox">`;
@@ -961,15 +975,23 @@ const PAPER={a3:[297,420],besar:[480,650],a4:[210,297]};
 try{const p=localStorage.getItem(KEY+'-paper');if(p&&PAPER[p])$('#paper').value=p}catch(e){}
 function setPage(){const[w,h]=PAPER[$('#paper').value];$('#pagestyle').textContent=`@page{size:${w}mm ${h}mm;margin:6mm}`}
 $('#paper').onchange=()=>{setPage();try{localStorage.setItem(KEY+'-paper',$('#paper').value)}catch(e){}};
+try{const h=localStorage.getItem(KEY+'-hal');if(h==='1'||h==='2')$('#hal').value=h}catch(e){}
+$('#hal').onchange=()=>{try{localStorage.setItem(KEY+'-hal',$('#hal').value)}catch(e){}};
 let printing=false;
 function preparePrint(){
  if(printing)return;printing=true;setPage();document.body.classList.add('printing');
  $$('[data-k]').forEach(el=>el.classList.toggle('kosong',el.type!=='checkbox'&&!el.value));
  const[w,h]=PAPER[$('#paper').value],mm=3.7795,pw=(w-12)*mm,ph=(h-12)*mm;
- $$('.sheet').forEach(s=>{s.style.zoom='';s.style.zoom=Math.min(pw/s.offsetWidth,ph/s.offsetHeight)*.99});
+ const dua=$('#hal').value==='2';document.body.classList.toggle('dua',dua);
+ if(dua){const v=k=>val(k).trim();$('#pid').textContent=[v('p.nama')||'Nama: ________',v('p.rm')?'RM '+v('p.rm'):'RM: ________',v('p.tanggal')?'Tanggal '+fmtDate(v('p.tanggal')):'','halaman 2'].filter(Boolean).join(' · ')}
+ $$('.sheet').forEach(s=>{s.style.zoom='';
+  if(!dua){s.style.zoom=Math.min(pw/s.offsetWidth,ph/s.offsetHeight)*.99;return}
+  // Isi selebar kertas; perkecil hanya bila salah satu halaman lebih tinggi dari kertas.
+  const top=s.getBoundingClientRect().top,cut=s.querySelector('.pcont').getBoundingClientRect().top-top,h2=s.offsetHeight-cut+Math.max(0,s.querySelector('.side').getBoundingClientRect().bottom-top-cut-(s.querySelector('.gridbox').getBoundingClientRect().bottom-top-cut));
+  s.style.zoom=Math.min(pw/s.offsetWidth,ph/cut,ph/h2)*.99});
  drawChart();
 }
-function endPrint(){printing=false;document.body.classList.remove('printing');$$('.sheet').forEach(s=>s.style.zoom='');$$('.kosong').forEach(e=>e.classList.remove('kosong'));drawChart()}
+function endPrint(){printing=false;document.body.classList.remove('printing','dua');$$('.sheet').forEach(s=>s.style.zoom='');$$('.kosong').forEach(e=>e.classList.remove('kosong'));drawChart()}
 addEventListener('beforeprint',preparePrint);addEventListener('afterprint',endPrint);
 // Di dalam bingkai (mis. tampilan artifact) cetak & unduh diblokir: beri tahu, jangan diam saja.
 const framed=(()=>{try{return window.self!==window.top}catch(e){return true}})();
