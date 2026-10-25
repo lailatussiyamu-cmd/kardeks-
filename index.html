@@ -393,8 +393,8 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 /* login & riwayat */
 body.locked>*:not(#authOv):not(script){filter:blur(10px);user-select:none}
 #authOv{position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow-y:auto;overflow-x:hidden;padding:36px 20px;font-family:var(--display);background:#0B1D33}
-#authOv::before{content:'';position:absolute;inset:0;background:url(bg-login.jpg) center/cover no-repeat;filter:grayscale(1) brightness(.8) contrast(1.05);opacity:.18;pointer-events:none}
-#authOv::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% -10%,rgba(28,138,196,.22),transparent 55%),linear-gradient(180deg,rgba(11,29,51,.45) 0%,rgba(8,20,37,.8) 100%)}
+#authOv::before{content:'';position:absolute;inset:0;background:url(bg-login.jpg) center/cover no-repeat;filter:grayscale(1) contrast(1.45) brightness(.7);opacity:.35;mix-blend-mode:luminosity;pointer-events:none}
+#authOv::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(11,29,51,.35) 0%,rgba(8,20,37,.72) 100%)}
 .loginwrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;width:min(380px,100%);animation:wrise .55s cubic-bezier(.22,1,.36,1) both}
 @keyframes wrise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .logincard{width:100%;max-width:100%;box-sizing:border-box;border-radius:16px;padding:34px 30px 26px;color:#fff;text-align:center;
