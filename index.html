@@ -392,9 +392,10 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 .printing .dx.on>div{background:#fff}
 /* login & riwayat */
 body.locked>*:not(#authOv):not(script){filter:blur(10px);user-select:none}
-#authOv{position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow-y:auto;overflow-x:hidden;padding:36px 20px;font-family:var(--display);
- background:radial-gradient(120% 80% at 50% -20%,#F3F7FB 0%,#E7EEF4 55%,#DCE5EE 100%)}
-.loginwrap{display:flex;flex-direction:column;align-items:center;gap:16px;width:min(380px,100%);animation:wrise .55s cubic-bezier(.22,1,.36,1) both}
+#authOv{position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow-y:auto;overflow-x:hidden;padding:36px 20px;font-family:var(--display);background:#0B1D33}
+#authOv::before{content:'';position:absolute;inset:0;background:url(bg-login.jpg) center/cover no-repeat;filter:grayscale(1) brightness(.8) contrast(1.05);opacity:.18;pointer-events:none}
+#authOv::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% -10%,rgba(28,138,196,.22),transparent 55%),linear-gradient(180deg,rgba(11,29,51,.45) 0%,rgba(8,20,37,.8) 100%)}
+.loginwrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;width:min(380px,100%);animation:wrise .55s cubic-bezier(.22,1,.36,1) both}
 @keyframes wrise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .logincard{width:100%;max-width:100%;box-sizing:border-box;border-radius:16px;padding:34px 30px 26px;color:#fff;text-align:center;
  background:linear-gradient(160deg,#1C8AC4 0%,#0A5EA0 50%,#023C84 100%);
@@ -418,10 +419,8 @@ body.locked>*:not(#authOv):not(script){filter:blur(10px);user-select:none}
 .logincard .aerr{color:#FFDAD6;min-height:16px;font-size:12.5px;font-weight:600;text-align:center}
 .logincard a{color:#fff;text-decoration:underline;opacity:.92}
 .logincard .afrm,.logincard .arow{justify-content:center}
-.lc-foot{font-size:11px;color:var(--mute);opacity:.7;text-align:center}
+.lc-foot{font-size:11px;color:rgba(255,255,255,.65);opacity:.9;text-align:center}
 @media (prefers-color-scheme:dark){
- #authOv{background:radial-gradient(120% 80% at 50% -20%,#12273C 0%,#0C1B2C 60%,#0A1725 100%)}
- .lc-foot{color:#8097AD}
  .logincard{box-shadow:0 30px 70px rgba(0,0,0,.5)}}
 /* paksa gaya di dalam kartu biru (menang atas .abox dasar) */
 .logincard .abox{background:transparent;border:0;box-shadow:none;padding:0;backdrop-filter:none;-webkit-backdrop-filter:none;animation:none}
