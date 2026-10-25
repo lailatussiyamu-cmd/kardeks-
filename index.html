@@ -89,12 +89,46 @@ input[type=checkbox]{accent-color:var(--navy);width:16px;height:16px;margin:0;cu
 .mid,.bottom{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
 .gridbox{flex:1 1 900px;display:flex;flex-direction:column}
 .side{flex:1 1 560px;max-width:560px;display:flex;flex-direction:column;gap:12px}
+.scol{display:contents}
+#escLog>.xr{display:none}
+.bodymap{padding:6px 10px 2px;border-bottom:1px solid var(--line)}
+.bodymap svg{display:block;width:100%;max-height:230px;cursor:crosshair}
+.printing .bodymap{padding:2px 6px 0}.printing .bodymap svg{max-height:120px}.printing #lukabox .bt small{display:none}
+.bm-o line{stroke:#7F8C9B;stroke-linecap:round}
+.bm-f line{stroke:#EEF3F7;stroke-linecap:round}
+.bm-s{fill:#EEF3F7;stroke:#7F8C9B;stroke-width:1}
+.bm-d{fill:none;stroke:#9AA6B4;stroke-width:.8;stroke-dasharray:2 2}
+.bm-t{font-size:8px;font-weight:700;fill:var(--navy);text-anchor:middle;letter-spacing:.08em}
+.bm-k{font-size:7px;fill:var(--mute);text-anchor:middle}
+.lk-pt circle{fill:#B42318;stroke:#fff;stroke-width:1.2;cursor:pointer}
+.lk-pt text{fill:#fff;font-size:7px;font-weight:700;text-anchor:middle;pointer-events:none}
+.lukat .lk-no{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;background:var(--soft2);color:var(--navy);font-size:11px;font-weight:700}
+.lukat .lk-no.on{background:#B42318;color:#fff}
 .gscroll{overflow-x:auto}
 .hg{min-width:1100px}
 .row,.grow{display:grid;grid-template-columns:200px repeat(24,minmax(0,1fr));border-bottom:1px solid #9AA6B4;height:28px}
 .grow{height:21px;border-bottom:1px dotted #B5BFCB}
 .lab{display:flex;align-items:center;justify-content:space-between;gap:4px;padding:0 7px;font-size:14px;border-right:1px solid var(--line-d);background:var(--soft);white-space:nowrap;overflow:hidden;position:sticky;left:0;z-index:2}
 .lab.t{background:var(--tealbg);font-weight:600;color:var(--teal-d)}
+.tkr.tkoff{display:none}
+.lab .tkx{flex:none;border:0;background:none;color:var(--mute);font-size:11px;line-height:1;padding:2px 3px;cursor:pointer;border-radius:3px;opacity:.55}
+.lab .tkx:hover{opacity:1;color:#B42318;background:#FBEBEB}
+.tkadd{border-bottom:1px solid #9AA6B4;background:var(--soft)}
+.tkbar{position:sticky;left:0;display:flex;align-items:center;gap:8px;padding:4px 7px;width:max-content;max-width:100vw}
+#tkOpen{border:1px solid var(--teal);background:#fff;color:var(--teal-d);font-weight:600;font-size:12.5px;border-radius:4px;padding:3px 10px;cursor:pointer}
+#tkOpen[aria-expanded="true"]{background:var(--teal);color:#fff}
+#tkCari{width:220px;border:0;border-bottom:1px dotted var(--dot);background:transparent;font-size:13px;padding:2px}
+#tkInfo{font-size:12px;color:var(--mute)}
+.tkpanel{position:sticky;left:0;padding:6px 7px 10px;max-width:min(100%,100vw);box-sizing:border-box}
+.tkg{display:flex;gap:10px;align-items:flex-start;padding:3px 0}
+.tkgl{flex:0 0 150px;font-size:12px;font-weight:700;color:var(--navy);padding-top:4px}
+.tkchips{display:flex;flex-wrap:wrap;gap:5px}
+.tkc{border:1px solid var(--line-d);background:#fff;border-radius:14px;padding:3px 10px;font-size:12.5px;cursor:pointer;color:var(--navy)}
+.tkc:hover{border-color:var(--teal);color:var(--teal-d)}
+.tkc.on{background:var(--tealbg);border-color:var(--teal);color:var(--teal-d);cursor:default}
+.tkc.on::before{content:'✓ '}
+#tkBebas{width:220px;border:0;border-bottom:1px dotted var(--dot);background:transparent;font-size:13px;padding:2px}
+.printing .tkadd,.printing .lab .tkx{display:none}
 .lab .labin{border:0;border-bottom:1px dotted var(--dot);background:transparent;width:100%;min-width:0;font-size:13.5px;padding:0 2px}
 .u{font-size:12px;color:var(--mute);flex:none}
 .c,.hc{border-left:1px solid var(--line);min-width:0;position:relative}
@@ -110,6 +144,21 @@ input[type=checkbox]{accent-color:var(--navy);width:16px;height:16px;margin:0;cu
 .c input{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;text-align:center;font-size:13px;padding:0 1px}
 .c input:focus,.mt input:focus,.f input:focus,textarea:focus{outline:2px solid var(--teal);outline-offset:-2px;background:var(--focus)}
 .c input.calc{font-weight:700;color:var(--teal-d)}
+/* Jadwal obat: kotak centang + paraf di jam pemberian */
+.c input.ok{display:none;inset:auto;left:3px;top:50%;transform:translateY(-50%);width:13px;height:13px;z-index:1}
+.c.jdw input.ok,.c input.ok:checked{display:block}
+.c.jdw{background:#fff;box-shadow:inset 0 0 0 2px var(--navy)}
+.c.jdw input:not(.ok),.c:has(input.ok:checked) input:not(.ok){padding-left:17px;font-size:12px;font-weight:600;text-align:left}
+.c.jdw input:not(.ok)::placeholder{color:#8A96A6;font-size:10.5px;font-weight:400}
+.c.nopar{background:#FFF1C2;box-shadow:inset 0 0 0 2px #E8A15A}
+/* transfusi & tindakan: kotak centang tersembunyi, muncul saat sel diklik; yang sudah dicentang tetap tampil */
+.c.ckc:focus-within input.ok{display:block}
+.c.ckc:focus-within input:not(.ok),.c.ckc:has(input.ok:checked) input:not(.ok){padding-left:17px;font-size:11.5px;text-align:left}
+.lab input.tflb{flex:0 0 74px}
+/* sel transfusi: ☐ · cc */
+.c.ckc.tf input.tfv{padding:0 3px 0 17px;text-align:right;font-weight:600}
+.c.tf:not(:focus-within) input::placeholder{color:transparent}
+.printing .c.nopar{background:#fff;box-shadow:inset 0 0 0 2px var(--navy)}
 .lab .route{flex:none;font-size:11.5px;font-weight:600;color:var(--teal-d);min-width:30px}
 .c.split{display:flex}
 .c.split input{position:static;flex:1 1 0;min-width:0;height:100%;padding:0}
@@ -136,6 +185,8 @@ input[type=checkbox]{accent-color:var(--navy);width:16px;height:16px;margin:0;cu
 .mt select{border:0;background:transparent;width:100%;min-width:0;height:27px;padding:0 4px;font:inherit;font-size:13.5px;font-weight:600;color:var(--teal-d)}
 .mt input.hdr{font-weight:600;color:var(--navy);font-size:12.5px;padding:0}
 .mt input[type=time]::-webkit-calendar-picker-indicator{display:none}
+.mt input[type=time]::-webkit-datetime-edit,.mt input[type=time]::-webkit-datetime-edit-fields-wrapper{padding:0}
+.mt select{padding-left:2px}
 .mt output{font-weight:700;color:var(--teal-d);font-variant-numeric:tabular-nums}
 .mt output.neg{color:#B42318}
 .note{padding:7px 10px;font-size:12.5px;color:var(--sub);line-height:1.45;background:var(--soft)}
@@ -150,8 +201,8 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 .bottom>.b5{flex:1 1 420px;display:flex;flex-direction:column;align-self:stretch}
 .b5 textarea{flex:1 1 auto;min-height:252px}
 
-/* satu halaman: PEWS & laporan shift di kolom samping */
-.side .pref{grid-template-columns:86px repeat(4,minmax(0,1fr));font-size:11.5px}
+/* satu halaman: PAT & laporan shift di kolom samping */
+.side .pref{grid-template-columns:96px minmax(0,1fr);font-size:11.5px}
 .side .esc{font-size:12.5px}
 .side .sbar{grid-template-columns:minmax(0,1fr)}
 .side .sbar>div:not(:last-child){border-right:0;border-bottom:1px solid var(--line)}
@@ -169,11 +220,6 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 .bgrid>.badd{grid-area:add}.bgrid>.bcat{grid-area:cat}
 .bgrid>.badd,.bgrid>.bcat{display:flex;flex-direction:column}
 .bprog .advg{flex:1 1 auto}.advg textarea{flex:1 1 auto}
-.sysg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:2px solid var(--navy)}
-.sysg label{display:flex;align-items:center;gap:8px;padding:0 10px;height:30px;border-bottom:1px solid var(--line);font-size:13.5px;min-width:0}
-.sysg label:nth-child(odd){border-right:1px solid var(--line)}
-.sysg span{flex:0 0 112px;font-weight:600;color:var(--navy);font-size:12.5px}
-.sysg input{border:0;border-bottom:1px dotted var(--dot);background:transparent;flex:1 1 auto;min-width:0;height:24px}
 @media screen and (max-width:1100px){body:not(.printing) .bottom.bgrid{grid-template-columns:minmax(0,1fr);grid-template-areas:"prog" "sp" "add" "cat";grid-template-rows:none}}
 .badd textarea,.bcat textarea{flex:1 1 auto;min-height:168px}
 .advg{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(4,minmax(0,1fr))}
@@ -222,15 +268,14 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 .sbar .ho input.jam{flex:0 0 70px}
 .foot{font-size:12.5px;color:var(--mute);font-style:italic;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
-/* Zona warna & PEWS */
+/* Zona warna & PAT */
 .c.z-y,.printing .c.z-y{background:#FFE7A0!important}
 .c.z-o,.printing .c.z-o{background:#FFC98A!important}
 .c.z-r,.printing .c.z-r{background:#FFB8AE!important}
 .c.z-r input{color:#8A1C12;font-weight:700}
-.c.pewsc input{cursor:pointer;font-weight:700}
-.c.pewsc input::placeholder{color:#8A6A2A;font-weight:600;font-style:italic}
-.printing .c.pewsc input::placeholder{color:transparent}
-@media print{.c.pewsc input::placeholder{color:transparent}}
+.c.patc input{cursor:pointer;font-weight:700;font-size:11.5px;letter-spacing:-.01em}
+.glegend{grid-column:span 24;display:flex;align-items:center;justify-content:center;gap:18px;font-size:12.5px;font-weight:600;color:var(--sub);border-left:1px solid var(--line)}
+.glegend b{font-size:14px;margin-right:3px}
 .pop .auto{padding:6px 12px;background:#FFF1C2;color:#6B4A00;font-size:12.5px;border-bottom:1px solid #E9C766}
 .pop label.sug span{text-decoration:underline dotted}
 .zinfo{display:inline-flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
@@ -272,11 +317,9 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 .pop .tot{font-family:var(--display);font-weight:700;font-size:18px;margin-right:auto;flex-basis:100%}
 .pop button{border:1px solid var(--line-d);background:#fff;border-radius:8px;padding:6px 12px;cursor:pointer}
 .pop button.ok{background:var(--navy);color:#fff;border-color:var(--navy)}
-.pewsbox{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
-.pewsbox>div:first-child{border-right:2px solid var(--navy)}
-.pref{display:grid;grid-template-columns:120px repeat(4,minmax(0,1fr));font-size:12.5px;line-height:1.3}
+.pref{display:grid;grid-template-columns:120px minmax(0,1fr);font-size:12.5px;line-height:1.3}
 .pref>div{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:5px 6px}
-.pref>div:nth-child(5n){border-right:0}
+.pref>div:nth-child(2n){border-right:0}
 .pref>.h{background:var(--soft2);font-weight:600;color:var(--navy)}
 .pref>.l{background:var(--soft);font-weight:600;color:var(--navy)}
 .esc{display:grid;grid-template-columns:auto 1fr;font-size:13px}
@@ -288,13 +331,20 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 @media screen and (max-width:1859px){
   body:not(.printing) .mid{flex-direction:column;align-items:stretch}
   body:not(.printing) .gridbox{flex:none}
-  body:not(.printing) .side{max-width:none;display:block;columns:3 360px;column-gap:16px}
-  body:not(.printing) .side>.box{break-inside:avoid;margin-bottom:12px}
+  body:not(.printing) .side{flex:none;max-width:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+  body:not(.printing) .scol{display:flex;flex-direction:column;gap:12px;min-width:0}
+  /* PAT & hand over memanjang sampai sejajar kolom terpanjang */
+  body:not(.printing) .scol>#eskalasi,body:not(.printing) .scol>.sbarbox{flex:1 1 auto;display:flex;flex-direction:column}
+  body:not(.printing) #escLog{flex:1 1 auto;align-content:start}
+  body:not(.printing) .scol>.sbarbox .sbar{flex:1 1 auto}
+  body:not(.printing) .scol>.sbarbox .sbar>div{flex:1 1 auto}
+  body:not(.printing) .scol>.sbarbox .sbar textarea.r{flex:1 1 auto}
   body:not(.printing) .bottom:not(.bgrid){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
   body:not(.printing) .bottom>.b3,body:not(.printing) .bottom>.b4{grid-column:1/-1;max-width:none}
   body:not(.printing) .b3 textarea{min-height:200px}
 }
 @media screen and (max-width:1100px){
+  body:not(.printing) .side{grid-template-columns:minmax(0,1fr)}
   body:not(.printing) .bottom:not(.bgrid){grid-template-columns:minmax(0,1fr)}
   body:not(.printing) .bottom .mt{overflow-x:auto}
 }
@@ -306,9 +356,7 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
   body:not(.printing) .f{border-bottom:1px solid var(--line)}
   body:not(.printing) .f.top{border-top:0}
   body:not(.printing) .f[style*="span"]{grid-column:auto!important}
-  body:not(.printing) .pewsbox,body:not(.printing) .sbar,body:not(.printing) .edu{grid-template-columns:minmax(0,1fr)}
-  body:not(.printing) .pewsbox>div:first-child{border-right:0;border-bottom:2px solid var(--navy)}
-  body:not(.printing) .pewsbox .mt{overflow-x:auto}
+  body:not(.printing) .sbar,body:not(.printing) .edu{grid-template-columns:minmax(0,1fr)}
   body:not(.printing) .sbar>div:not(:last-child){border-right:0;border-bottom:1px solid var(--line)}
   body:not(.printing) .sign{grid-template-columns:repeat(2,minmax(0,1fr))}
   body:not(.printing) .sheet{padding:20px 16px}
@@ -316,8 +364,7 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 @media screen and (max-width:640px){
   body:not(.printing) .sign{grid-template-columns:minmax(0,1fr)}
   body:not(.printing) .ttl b{font-size:22px}
-  body:not(.printing) .pref{grid-template-columns:90px repeat(4,minmax(110px,1fr))}
-  body:not(.printing) .pewsbox>div:first-child{overflow-x:auto}
+  body:not(.printing) .pref{grid-template-columns:90px minmax(0,1fr)}
 }
 
 /* Print */
@@ -343,15 +390,109 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 .printing textarea,.printing .idg .dxf textarea{resize:none;overflow:hidden}
 .printing select{appearance:none;-webkit-appearance:none}
 .printing .dx.on>div{background:#fff}
+/* login & riwayat */
+body.locked>*:not(#authOv):not(script){filter:blur(10px);user-select:none}
+#authOv{position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow-y:auto;overflow-x:hidden;padding:36px 20px;font-family:var(--display);
+ background:radial-gradient(120% 80% at 50% -20%,#F3F7FB 0%,#E7EEF4 55%,#DCE5EE 100%)}
+.loginwrap{display:flex;flex-direction:column;align-items:center;gap:16px;width:min(380px,100%);animation:wrise .55s cubic-bezier(.22,1,.36,1) both}
+@keyframes wrise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.logincard{width:100%;max-width:100%;box-sizing:border-box;border-radius:16px;padding:34px 30px 26px;color:#fff;text-align:center;
+ background:linear-gradient(160deg,#1C8AC4 0%,#0A5EA0 50%,#023C84 100%);
+ box-shadow:0 30px 70px rgba(2,40,100,.35),0 6px 18px rgba(2,40,100,.25)}
+.lc-logo{width:92px;height:92px;border-radius:50%;background:#fff;margin:0 auto 18px;display:grid;place-items:center;box-shadow:0 8px 22px rgba(2,40,100,.25);font-size:30px;color:#0A5EA0}
+.lc-logo img{width:56px;height:56px;object-fit:contain}
+.lc-brand{color:rgba(255,255,255,.8);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;text-align:center;margin:-4px 0 10px;font-weight:600}
+.logincard h2{margin:0 0 4px;font-size:22px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.logincard .am{color:rgba(255,255,255,.82);font-size:12.5px;margin:0 0 18px;line-height:1.4}
+.logincard .am.small{font-size:11.5px;color:rgba(255,255,255,.7);margin-top:14px}
+.logincard label{display:block;text-align:left;margin:0 0 16px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.logincard input,.logincard select{width:100%;margin-top:5px;border:0;border-bottom:1.5px solid rgba(255,255,255,.45);background:transparent;color:#fff;font-size:15px;padding:7px 2px 7px 28px;border-radius:0;
+ background-repeat:no-repeat;background-position:2px 55%;background-size:16px 16px}
+.logincard input::placeholder{color:rgba(255,255,255,.6)}
+.logincard input:focus,.logincard select:focus{outline:none;border-bottom-color:#fff;box-shadow:none}
+.logincard select{color:#fff}.logincard select option{color:#13365C}
+.logincard input[type=password]{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255,255,255,.75)'%3E%3Cpath d='M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 8V7a3 3 0 0 1 6 0v3z'/%3E%3C/svg%3E")}
+.logincard #aUser,.logincard #aNama,.logincard #pkUser{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255,255,255,.75)'%3E%3Cpath d='M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-4 0-8 2-8 5v1h16v-1c0-3-4-5-8-5z'/%3E%3C/svg%3E")}
+.logincard .pri{width:100%;margin-top:6px;background:#fff;color:#0A5EA0;border:0;border-radius:999px;padding:12px;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 6px 16px rgba(2,40,100,.18);transition:transform .12s,box-shadow .12s}
+.logincard .pri:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(2,40,100,.26)}
+.logincard .aerr{color:#FFDAD6;min-height:16px;font-size:12.5px;font-weight:600;text-align:center}
+.logincard a{color:#fff;text-decoration:underline;opacity:.92}
+.logincard .afrm,.logincard .arow{justify-content:center}
+.lc-foot{font-size:11px;color:var(--mute);opacity:.7;text-align:center}
+@media (prefers-color-scheme:dark){
+ #authOv{background:radial-gradient(120% 80% at 50% -20%,#12273C 0%,#0C1B2C 60%,#0A1725 100%)}
+ .lc-foot{color:#8097AD}
+ .logincard{box-shadow:0 30px 70px rgba(0,0,0,.5)}}
+/* paksa gaya di dalam kartu biru (menang atas .abox dasar) */
+.logincard .abox{background:transparent;border:0;box-shadow:none;padding:0;backdrop-filter:none;-webkit-backdrop-filter:none;animation:none}
+.logincard .abox h2{color:#fff;font-size:20px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;text-align:center;white-space:normal;overflow-wrap:anywhere;max-width:100%;padding:0;line-height:1.2;margin:0 0 4px}
+.logincard .abox .am{color:rgba(255,255,255,.82);text-align:center}
+.logincard .abox .am.small{color:rgba(255,255,255,.7)}
+.logincard .abox label{text-align:left;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.logincard .abox input,.logincard .abox select{border:0;border-bottom:1.5px solid rgba(255,255,255,.45);border-radius:0;background:transparent;color:#fff;font-size:15px;padding:7px 2px 7px 28px;background-repeat:no-repeat;background-position:2px 58%;background-size:16px 16px;max-width:100%;box-sizing:border-box}
+.logincard .abox select{padding-right:26px;text-overflow:ellipsis;font-size:14px}
+.logincard .abox input::placeholder{color:rgba(255,255,255,.6)}
+.logincard .abox input:focus,.logincard .abox select:focus{outline:none;border-color:#fff;border-bottom-color:#fff;box-shadow:none}
+.logincard .abox select option{color:#13365C}
+.logincard .abox input[type=password]{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255,255,255,.75)'%3E%3Cpath d='M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 8V7a3 3 0 0 1 6 0v3z'/%3E%3C/svg%3E")}
+.logincard .abox #aUser,.logincard .abox #aNama,.logincard .abox #pkUser{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(255,255,255,.75)'%3E%3Cpath d='M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-4 0-8 2-8 5v1h16v-1c0-3-4-5-8-5z'/%3E%3C/svg%3E")}
+.logincard .abox .pri{width:100%;background:#fff;color:#0A5EA0;border:0;border-radius:999px;padding:12px;font-size:15px;font-weight:700;box-shadow:0 6px 16px rgba(2,40,100,.18)}
+.logincard .abox .pri:hover{background:#fff;transform:translateY(-1px)}
+.logincard .abox .aerr{color:#FFDAD6;text-align:center}
+.logincard .abox a{color:#fff;text-decoration:underline}
+#authOv[hidden],#mdl[hidden]{display:none}
+.abox{background:#fff;border-radius:12px;padding:22px 24px;width:min(380px,92vw);box-shadow:0 20px 50px rgba(0,0,0,.3);display:flex;flex-direction:column;gap:10px;font-family:var(--display)}
+.abox h2{margin:0;font-size:18px;color:var(--navy)}
+.abox label{display:flex;flex-direction:column;gap:3px;font-size:13px;font-weight:600;color:var(--navy)}
+.abox input,.abox select{font:inherit;font-weight:400;font-size:15px;padding:7px 9px;border:1px solid var(--line-d);border-radius:7px}
+.pri{background:var(--navy);color:#fff;border:0;border-radius:7px;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer}
+.am{margin:0;font-size:13px;color:var(--sub)}.am.small{font-size:12px}.am.warn{color:#8A1C12;background:#FFF1EF;padding:6px 8px;border-radius:6px}
+.aerr{min-height:16px;font-size:13px;color:#B42318;font-weight:600}
+#mdl{position:fixed;inset:0;z-index:90;display:grid;place-items:center;background:rgba(15,37,64,.45)}
+.mbox{background:#fff;border-radius:12px;width:min(620px,94vw);max-height:88vh;display:flex;flex-direction:column;box-shadow:0 20px 50px rgba(0,0,0,.3);font-family:var(--display)}
+#mdl.wide .mbox{width:min(1200px,96vw)}
+.mhead{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);color:var(--navy);font-size:16px}
+.mhead button{border:0;background:none;font-size:16px;cursor:pointer;color:var(--mute)}
+#mBody{padding:12px 16px 16px;overflow:auto;font-size:14px}
+#mBody h3{font-size:14px;color:var(--navy);margin:14px 0 6px}
+.arow,.afrm{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0}
+.afrm input,.afrm select{font:inherit;font-size:13.5px;padding:5px 7px;border:1px solid var(--line-d);border-radius:6px}
+.arow button:not(.pri),.atab button,.rflt button{border:1px solid var(--line-d);background:#fff;border-radius:6px;padding:4px 9px;cursor:pointer;font:inherit;font-size:13px}
+.atab,.rlist table{border-collapse:collapse;width:100%;font-size:13px}
+.atab th,.atab td,.rlist th,.rlist td{border-bottom:1px solid var(--line);padding:4px 6px;text-align:left;vertical-align:top}
+.rlist th{position:sticky;top:0;background:var(--soft2);color:var(--navy)}
+.rlist tr.ev td{background:var(--soft);color:var(--sub)}
+.rlist td.o{color:var(--mute);text-decoration:line-through}.rlist td.n{font-weight:600;color:var(--navy)}
+.rflt{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rflt select,.rflt input{font:inherit;font-size:13px;padding:4px 6px;border:1px solid var(--line-d);border-radius:6px}
+.rint{padding:6px 10px;border-radius:6px;font-size:13px;font-weight:600}.rint.ok{background:#E5F4E4;color:#1D5B1A}.rint.bad{background:#FFD6D0;color:#8A1C12}
+.toolbar .who{font-weight:600}
+[data-k].noakses{cursor:not-allowed}
+.toolbar button.noakses{opacity:.4;cursor:not-allowed}
+.reckey{font:700 20px/1.5 ui-monospace,Menlo,monospace;letter-spacing:2px;background:var(--soft2);border:1px dashed var(--navy);border-radius:8px;padding:12px;text-align:center;color:var(--navy);user-select:all;margin:8px 0}
+.toolbar .bkok{background:#E7F1FB;color:#17436E}
+.toolbar .bkwarn{background:#FFE7B8;color:#5C3B00;cursor:pointer}
+.toolbar .cetakinfo{background:#E5F4E4;color:#1D5B1A}
+.toolbar .rolebar{font-size:12.5px;padding:3px 9px;border-radius:6px;background:#FFE7B8;color:#5C3B00;font-weight:600;white-space:nowrap}
+body.role-dokter .tkadd,body.role-dokter .lab .tkx{display:none}
+body.role-dokter #lukaSvg{pointer-events:none}
+@media print{#authOv,#mdl{display:none!important}body.locked>*{filter:none!important}}
 </style>
 
 <div class="toolbar">
   <span class="brand">Kardeks PICU · F6.1</span>
+  <button id="btnUser" class="who">👤 —</button>
+  <button id="btnLog" title="Riwayat perubahan: siapa mengubah apa & kapan">🕘 Riwayat</button>
+  <button id="btnCadangan" title="Cadangan otomatis terenkripsi ke folder pilihan">💾 Cadangan</button>
   <select id="sheetSel" aria-label="Pilih lembar"></select>
   <button id="btnNew" title="Lembar kosong untuk pasien baru">+ Lembar baru</button>
-  <button id="btnNext" title="Salin identitas, alat, obat & balance kumulatif ke tanggal berikutnya">Hari berikutnya</button>
+  <button id="btnNext" title="Salin identitas, alat, obat, luka & balance kumulatif ke tanggal berikutnya">Hari berikutnya</button>
   <button id="btnDel">Hapus lembar</button>
+  <button id="btnArsip" title="Lembar lebih dari 7 hari dipindah ke arsip supaya daftar tetap ringkas">Arsip</button>
   <span class="sp"></span>
+  <span class="rolebar bkinfo" id="bkInfo" hidden></span>
+  <span class="rolebar cetakinfo" id="cetakInfo" hidden></span>
+  <span class="rolebar" id="roleBar" hidden title="Isian keperawatan hanya bisa dibaca. Dokter mengisi Catatan Program Terapi &amp; TTD DPJP; identitas, alat, kebutuhan, lab, nilai kritis &amp; advice diisi bersama.">🩺 Mode dokter</span>
   <span class="status" id="status"></span>
   <span class="mem" id="mem" title="Pemakaian memori browser untuk kardeks (batas ±5 juta karakter per alamat)"></span>
   <button id="btnExport" title="Simpan semua lembar pasien yang sedang dibuka (No. RM sama) ke file">Cadangkan pasien</button>
@@ -374,18 +515,20 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
   </label>
   <button class="primary" id="btnPrint">Cetak</button>
   <div class="tbar" id="savebar" role="alert" hidden></div>
+  <div class="tbar l3" id="tamperBar" role="alert" hidden></div>
+  <div class="tbar l2" id="pulangBar" role="status" hidden></div>
   <div class="pstrip" id="pstrip" hidden></div>
 </div>
 
-<p class="notice"><b>Versi coba.</b> Data tersimpan otomatis hanya di browser perangkat ini, tidak dikirim ke mana pun. MAP, total intake/output per jam, balance, diuresis, IWL, kebutuhan per 24 jam, umur, hari rawat dan hari alat terhitung otomatis (teks hijau). Kolom jam yang sedang berjalan diberi bingkai hijau. Sel tanda vital berwarna kuning/merah bila di luar batas usia; klik sel PEWS untuk menghitung skor.</p>
+<p class="notice"><b>Versi coba.</b> Data tersimpan otomatis hanya di browser perangkat ini, tidak dikirim ke mana pun. MAP, total intake/output per jam, balance, diuresis, IWL, kebutuhan per 24 jam, umur, hari rawat dan hari alat terhitung otomatis (teks hijau). Kolom jam yang sedang berjalan diberi bingkai hijau. Sel tanda vital berwarna kuning/merah bila di luar batas usia. Grafik memuat nadi, TD, napas, SpO₂ dan suhu; klik sel PAT untuk menilai Pediatric Assessment Triangle.</p>
 <div class="alertbar" id="alertbar" hidden></div>
 <div class="alertbar l3" id="alergibar" role="alert" hidden></div>
 <div class="alertbar l2" id="verifbar" hidden></div><input type="hidden" data-k="obverif" id="obverif">
 <details class="settings" id="settings">
-  <summary>Pengaturan zona warna &amp; PEWS</summary>
+  <summary>Pengaturan zona warna &amp; eskalasi</summary>
   <div class="sbody" id="sbody"></div>
 </details>
-<div class="pop" id="pewsPop" hidden role="dialog" aria-label="Hitung PEWS"></div>
+<div class="pop" id="patPop" hidden role="dialog" aria-label="Penilaian PAT"></div>
 
 <section class="sheet" id="depan">
   <div class="fhead">
@@ -418,7 +561,7 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
   <div class="mid">
     <div class="box gridbox">
       <div class="gscroll"><div class="hg" id="hourgrid"></div></div>
-      <div class="legend"><b>Mode napas:</b> S = spontan · NK = nasal kanul · SM = simple mask · NRM · HF = HFNC · CP = CPAP · V = ventilator (tulis modenya) &nbsp;·&nbsp; <b>TD</b> ditulis sistol/diastol, mis. 100/60 &nbsp;·&nbsp; <b>Kekuatan otot</b> (0–5): kanan atas | kiri atas | kanan bawah | kiri bawah &nbsp;·&nbsp; <b>Pupil</b> mm & <b>respon cahaya</b> (+/−): kanan | kiri &nbsp;·&nbsp; <b>Nebul</b>: tulis obat + dosis/pengencer di label &nbsp;·&nbsp; <b>Topikal</b> = salep / tetes mata &nbsp;·&nbsp; <b>Restrain:</b> sirkulasi ditulis pulsasi K/L; visual ✓ baik / ✗ ada cedera &nbsp;·&nbsp; <b>Balance</b> = intake − (output + IWL); cc/kg/jam = balance ÷ BB ÷ 6 (÷ lama jam bila blok belum penuh); diuresis = urin ÷ BB ÷ jam; IWL (30 − umur) × BB / 24 jam<br><span class="zinfo" id="zinfo"></span></div>
+      <div class="legend"><b>Mode napas:</b> S = spontan · NK = nasal kanul · SM = simple mask · NRM · HF = HFNC · CP = CPAP · V = ventilator (tulis modenya) &nbsp;·&nbsp; <b>TD</b> ditulis sistol/diastol, mis. 100/60 &nbsp;·&nbsp; <b>Kekuatan otot</b> (0–5): kanan atas | kiri atas | kanan bawah | kiri bawah &nbsp;·&nbsp; <b>Pupil</b> mm & <b>respon cahaya</b> (+/−): kanan | kiri &nbsp;·&nbsp; <b>Obat</b>: tulis frekuensi di nama (3x500 mg, tiap 6 jam) → kotak jam otomatis 1x 08 · 2x 08/20 · 3x 08/16/24 · 4x 06/12/18/24 · 6x tiap 4 jam; jam lain tulis “jam 06-14-22”; k/p tanpa kotak &nbsp;·&nbsp; <b>Transfusi</b>: pilih jenis &amp; tulis no. labu di label; klik sel jam masuk, centang ☐, isi cc (otomatis masuk intake) &nbsp;·&nbsp; <b>Nebul</b>: tulis obat + dosis/pengencer di label &nbsp;·&nbsp; <b>Topikal</b> = salep / tetes mata &nbsp;·&nbsp; <b>Restrain:</b> sirkulasi ditulis pulsasi K/L; visual ✓ baik / ✗ ada cedera &nbsp;·&nbsp; <b>Balance</b> = intake − (output + IWL); cc/kg/jam = balance ÷ BB ÷ 6 (÷ lama jam bila blok belum penuh); diuresis = urin ÷ BB ÷ jam; IWL (30 − umur) × BB / 24 jam<br><span class="zinfo" id="zinfo"></span></div>
     </div>
     <aside class="side" id="side"></aside>
   </div>
@@ -435,23 +578,47 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
 
 
 
+<div id="authOv" hidden><div class="loginwrap">
+ <div class="logincard">
+  <div class="lc-logo"><img src="logo-rssa.png" alt="RSSA" onerror="this.parentNode.innerHTML='&#9617;'"></div>
+  <div class="lc-brand">Kardeks&nbsp;PICU</div>
+  <div id="authBox" class="abox"></div>
+ </div>
+ <div class="lc-foot">RSUD Dr. Saiful Anwar Malang · Kardeks PICU F6.1</div>
+</div></div>
+<div id="mdl" hidden><div class="mbox"><div class="mhead"><b id="mTitle"></b><button id="mClose" aria-label="Tutup">✕</button></div><div id="mBody"></div></div></div>
 <script>
 /* ---------- definitions ---------- */
 const HOURS=Array.from({length:24},(_,i)=>(7+i)%24);
 const colCls=i=>(i===7||i===14?' s':'')+(i===6||i===12||i===18?' b':'')+(i>=14?' n':'');
 // [id,label,unit,flag]  flag: num | calc | name
 const GROUPS=[
- {t:'HEMODINAMIK',graph:true,rows:[['nadi','Nadi ●','x/mnt','num'],['suhu','Suhu ×','°C','num'],['td','TD sistol / diastol','mmHg'],['map','MAP','mmHg','calc'],['cvp','CVP','cmH₂O','num'],['rr','Frekuensi napas','x/mnt','num'],['spo2','SpO₂','%','num'],['crt','CRT','detik','num'],['akral','Akral (H/D)',''],['ekg','Irama EKG',''],['pews','PEWS (klik)','skor','pews']]},
+ {t:'HEMODINAMIK',graph:true,rows:[['nadi','Nadi ●','x/mnt','num'],['suhu','Suhu ×','°C','num'],['td','TD sistol ˅ / diastol ˄','mmHg'],['map','MAP','mmHg','calc'],['cvp','CVP','cmH₂O','num'],['rr','Frekuensi napas ▲','x/mnt','num'],['spo2','SpO₂ ○','%','num'],['crt','CRT','detik','num'],['akral','Akral (H/D)',''],['ekg','Irama EKG',''],['pat','PAT (klik)','','pat']]},
  {t:'NEUROLOGI · NYERI · SEDASI',rows:[['gcs','GCS (E / V / M)',''],['four','FOUR score (E/M/B/R)','skor'],['pup','Lebar pupil','ka | ki','s2'],['rc','Respon cahaya','ka | ki','s2'],['otot','Kekuatan otot','atas | bawah','s4'],['comfort','COMFORT-B / sedasi','skor','num'],['flacc','FLACC / nyeri','skor','num']]},
  {t:'RESPIRASI · SETTING VENTILATOR',rows:[['mode','Mode ventilator','kode'],['rrset','Frekuensi','x/mnt'],['peep','PEEP','cmH₂O'],['pins','P insp','cmH₂O'],['ps','PS','cmH₂O'],['vt','V target','ml'],['fio2','FiO₂','%'],['ie','I : E','rasio'],['pramp','P ramp','']]},
  {t:'RESPIRASI · PEMANTAUAN',rows:[['ppeak','P peak','cmH₂O'],['rrv','RR terukur','x/mnt'],['vte','Vte','ml'],['mve','MVe','L/mnt'],['leak','Leak','%'],['sekret','Konsistensi sputum','']]},
- {t:'TINDAKAN KEPERAWATAN · tulis ✓ di jam dikerjakan',rows:[['tk1','Batuk efektif / napas dalam',''],['tk2','Suctioning',''],['tk3','Inhalasi / fisioterapi dada',''],['tk4','Rawat ETT·trakeo / sirkuit',''],['tk5','CVC·PICC: asistensi / rawat',''],['tk6','IV line: pasang / rawat',''],['tk7','Arteri line: asist / rawat',''],['tk8','NGT·OGT: pasang / cek',''],['tk9','Kateter urin: pasang / lepas',''],['tk11','ROM pasif / aktif',''],['tk21','Cegah foot drop',''],['tk12','Massage / back rub',''],['tk13','Rawat luka / aff drain',''],['tk14','Kasur dekubitus / ganti linen',''],['tk15','Oral hygiene',''],['tk16','Personal hygiene / keramas',''],['tk17','Selimut hangat / kompres',''],['tk18','Penanda jatuh·side rail·rem',''],['tk19','Perawatan stoma',''],['tk20','Lain-lain','','free']]},
+ {t:'TINDAKAN KEPERAWATAN · + Tambah tindakan untuk membuka baris, klik sel di jam dikerjakan, centang ☐ (bisa tambah paraf)',rows:[['tk1','Tindakan','','tk'],['tk2','Tindakan','','tk'],['tk3','Tindakan','','tk'],['tk4','Tindakan','','tk'],['tk5','Tindakan','','tk'],['tk6','Tindakan','','tk'],['tk7','Tindakan','','tk'],['tk8','Tindakan','','tk'],['tk9','Tindakan','','tk'],['tk11','Tindakan','','tk'],['tk21','Tindakan','','tk'],['tk12','Tindakan','','tk'],['tk13','Tindakan','','tk'],['tk14','Tindakan','','tk'],['tk15','Tindakan','','tk'],['tk16','Tindakan','','tk'],['tk17','Tindakan','','tk'],['tk18','Tindakan','','tk'],['tk19','Tindakan','','tk'],['tk20','Tindakan','','tk']]},
  {t:'PEMANTAUAN RESTRAIN',rows:[['rs2','Sirkulasi',''],['rs1','Visual (cedera / kulit)','✓/✗']]},
- {t:'PEMBERIAN OBAT · tulis nama + dosis, centang / paraf di jam diberikan (cek 5 benar)',rows:[['ob1','IV','','freeroute'],['ob2','IV','','freeroute'],['ob3','IV','','freeroute'],['ob4','IV','','freeroute'],['ob5','IV','','freeroute'],['ob6','IV','','freeroute'],['ob7','IM / SC','','freeroute'],['ob8','IM / SC','','freeroute'],['ob9','PO','','freeroute'],['ob10','PO','','freeroute'],['ob11','PO','','freeroute'],['ob12','PO','','freeroute'],['ob13','PO','','freeroute'],['ob14','PO','','freeroute'],['ob17','Nebul','','freeroute'],['ob18','Nebul','','freeroute'],['ob15','Topikal','','freeroute'],['ob16','Topikal','','freeroute']]},
- {t:'INTAKE',rows:[['cair1','Infus 1','cc','name'],['cair2','Infus 2','cc','name'],['obativ','Obat infus / IV','cc','num'],['sp1','SP 1','cc','name'],['sp2','SP 2','cc','name'],['sp3','SP 3','cc','name'],['sp4','SP 4','cc','name'],['sp5','SP 5','cc','name'],['sp6','SP 6','cc','name'],['sp7','SP 7','cc','name'],['obor','Obat oral','cc','num'],['sonde','Diet (ASI / susu / sonde)','cc','num'],['oral','Rehidrasi / minum','cc','num'],['transf','Transfusi 1 · jenis · no. labu','cc','name'],['transf2','Transfusi 2 · jenis · no. labu','cc','name'],['transf3','Transfusi 3 · jenis · no. labu','cc','name']]},
+ {t:'PEMBERIAN OBAT · tulis nama + dosis + frekuensi (mis. 3x500 mg) → kotak jam muncul otomatis · centang ✓ + paraf saat diberikan (cek 5 benar)',rows:[['ob1','IV','','freeroute'],['ob2','IV','','freeroute'],['ob3','IV','','freeroute'],['ob4','IV','','freeroute'],['ob5','IV','','freeroute'],['ob6','IV','','freeroute'],['ob7','IM / SC','','freeroute'],['ob8','IM / SC','','freeroute'],['ob9','PO','','freeroute'],['ob10','PO','','freeroute'],['ob11','PO','','freeroute'],['ob12','PO','','freeroute'],['ob13','PO','','freeroute'],['ob14','PO','','freeroute'],['ob17','Nebul','','freeroute'],['ob18','Nebul','','freeroute'],['ob15','Topikal','','freeroute'],['ob16','Topikal','','freeroute']]},
+ {t:'INTAKE',rows:[['cair1','Infus 1','cc','name'],['cair2','Infus 2','cc','name'],['obativ','Obat infus / IV','cc','num'],['sp1','SP 1','cc','name'],['sp2','SP 2','cc','name'],['sp3','SP 3','cc','name'],['sp4','SP 4','cc','name'],['sp5','SP 5','cc','name'],['sp6','SP 6','cc','name'],['sp7','SP 7','cc','name'],['obor','Obat oral','cc','num'],['sonde','Diet (ASI / susu / sonde)','cc','num'],['oral','Rehidrasi / minum','cc','num'],['transf','Transfusi 1','cc','transf'],['transf2','Transfusi 2','cc','transf'],['transf3','Transfusi 3','cc','transf']]},
  {t:'OUTPUT',rows:[['urin','Urin','cc','num'],['iwl','IWL (otomatis)','cc','calc'],['drain','WSD / drain','cc','num'],['perd','Darah','cc','num'],['residu','Residu lambung','cc','num'],['ngt','Muntah / NGT','cc','num'],['bab','BAB','frek / konsist.']]},
  {t:'BALANCE PER JAM',rows:[['tin','Total intake','cc','calc'],['tout','Total output + IWL','cc','calc'],['bal','Balance','cc','calc'],['kum','Balance kumulatif','cc','calc']]},
 ];
+const TRANSF=['transf','transf2','transf3'];
+// Pilihan tindakan keperawatan, dikelompokkan untuk panel "+ Tambah tindakan" (bisa juga diketik bebas).
+const TK_GROUPS=[
+ ['Respirasi',['Suctioning ETT / trakeostomi','Suctioning oral / nasal','Inhalasi / nebulisasi','Fisioterapi dada','Batuk efektif','Napas dalam','Rawat ETT','Rawat trakeostomi','Fiksasi ulang ETT','Ganti sirkuit ventilator']],
+ ['Alat invasif',['Asistensi pasang CVC / PICC','Rawat CVC / PICC','Pasang IV line','Rawat IV line','Aff IV line','Asistensi pasang arteri line','Rawat arteri line','Pasang NGT / OGT','Cek posisi NGT / OGT','Pasang kateter urin','Rawat kateter urin','Lepas kateter urin','Rawat WSD / drain','Aff drain']],
+ ['Mobilisasi & kulit',['Alih baring / reposisi','ROM pasif','ROM aktif','Cegah foot drop','Massage / back rub','Rawat luka','Kasur dekubitus','Ganti linen']],
+ ['Kebersihan',['Oral hygiene','Personal hygiene','Keramas','Perawatan mata','Perawatan stoma']],
+ ['Keamanan & kenyamanan',['Penanda risiko jatuh','Side rail / rem bed','Cek sirkulasi restrain','Selimut hangat','Kompres hangat','Kompres dingin']],
+ ['Lainnya',['Ambil sampel darah','Cek GDS','Edukasi keluarga']]];
+const TK_LIST=TK_GROUPS.flatMap(g=>g[1]);
+// Lembar baru langsung membuka tindakan favorit; sisanya dipilih lewat panel.
+const TK_FAV=['Suctioning ETT / trakeostomi','Alih baring / reposisi','Oral hygiene','Rawat IV line','Cek posisi NGT / OGT'];
+// Label baris lama (sebelum bisa dipilih): dipakai hanya untuk lembar lama yang sudah ada centangnya.
+const TK_OLD={tk1:'Batuk efektif / napas dalam',tk2:'Suctioning',tk3:'Inhalasi / fisioterapi dada',tk4:'Rawat ETT·trakeo / sirkuit',tk5:'CVC·PICC: asistensi / rawat',tk6:'IV line: pasang / rawat',tk7:'Arteri line: asist / rawat',tk8:'NGT·OGT: pasang / cek',tk9:'Kateter urin: pasang / lepas',tk11:'ROM pasif / aktif',tk21:'Cegah foot drop',tk12:'Massage / back rub',tk13:'Rawat luka / aff drain',tk14:'Kasur dekubitus / ganti linen',tk15:'Oral hygiene',tk16:'Personal hygiene / keramas',tk17:'Selimut hangat / kompres',tk18:'Penanda jatuh·side rail·rem',tk19:'Perawatan stoma',tk20:'Lain-lain'};
+const TF_JENIS=['PRC','PRC leukodepleted','WE (washed erythrocyte)','Whole blood (WB)','TC (trombosit konsentrat)','TC apheresis','FFP','Kriopresipitat','Albumin 5%','Albumin 20%','Albumin 25%','IVIG'];
 const INTAKE=['cair1','cair2','obativ','sp1','sp2','sp3','sp4','sp5','sp6','sp7','obor','sonde','oral','transf','transf2','transf3'];
 const OUTPUT=['urin','drain','perd','residu','ngt'];
 const ROW_IDS=GROUPS.flatMap(g=>g.rows.filter(r=>r[3]!=='calc').map(r=>r[0]));
@@ -459,19 +626,33 @@ const ALAT=[['ett','ETT / Trakeostomi'],['cvc','CVC'],['iv','IV line perifer'],[
 const BUNDLE=[['VAP',[['vap1','Head up 30–45°'],['vap2','Oral care (sesuai SPO)'],['vap3','Cek tekanan cuff / posisi ETT'],['vap4','Evaluasi sedasi harian / weaning']]],['CLABSI',[['cl1','Kebersihan tangan & scrub the hub'],['cl2','Dressing bersih, kering, utuh'],['cl3','Kaji indikasi — lepas bila tak perlu']]],['CAUTI',[['ca1','Kantong urin di bawah kandung kemih'],['ca2','Perawatan meatus & kaji indikasi']]],['KIDSAFE',[['ks1','Kebutuhan tumbuh kembang anak'],['ks2','Pencegahan infeksi'],['ks3','Profilaksis DVT (sesuai indikasi)'],['ks4','Integritas kulit'],['ks5','Sedasi & analgesia sesuai target'],['ks6','Keterlibatan keluarga'],['ks7','Nutrisi enteral dini'],['ks8','Profilaksis stress ulcer'],['ks9','Kontrol glukosa']]]];
 const SKOR=[['braden','Braden Q (luka tekan)'],['humpty','Humpty Dumpty (jatuh)'],['kaki','Cek kaki / foot drop']];
 const LAB=[['bga','pH / pCO₂ / pO₂'],['hco3','HCO₃ / BE'],['sat','SaO₂ / SvO₂'],['lakt','Laktat'],['elek','Na / K / Ca'],['dl','Hb / Leu / Trombo']];
-// PEWS (format Brighton/Monaghan). Teks kriteria = contoh; sesuaikan dengan PEWS versi RSSA.
-const PEWS_CAT=[
- ['b','Perilaku',['Bermain / sesuai','Tidur','Rewel / iritabel','Letargi / bingung, respons nyeri menurun']],
- ['c','Kardiovaskular',['Merah muda, CRT 1–2 dtk','Pucat atau CRT 3 dtk','Keabuan atau CRT 4 dtk, atau takikardia ≥20 di atas normal','Keabuan & mottled, atau CRT ≥5 dtk, atau takikardia ≥30 di atas normal, atau bradikardia']],
- ['r','Respirasi',['Normal, tanpa retraksi','>10 di atas normal, otot bantu napas, atau FiO₂ ≥30% / O₂ ≥3 lpm','>20 di atas normal, retraksi, tracheal tug, atau FiO₂ ≥40% / O₂ ≥6 lpm','≥5 di bawah normal dengan retraksi sternal, tracheal tug, grunting, atau FiO₂ ≥50% / O₂ ≥8 lpm']],
+// Pediatric Assessment Triangle (PALS / AAP). Tiap sisi dinilai normal / abnormal dari pengamatan, bukan dari angka TTV.
+const PAT_K=[
+ ['a','Penampilan','P','Tonus, interaksi, dapat ditenangkan, tatapan, suara / tangis (TICLS)','Lemas, tidak berinteraksi, tidak dapat ditenangkan, tatapan kosong, tangis lemah / melengking'],
+ ['b','Usaha napas','N','Tanpa suara napas abnormal, tanpa retraksi','Stridor, wheezing, grunting, retraksi, napas cuping hidung, head bobbing, posisi tripod / sniffing'],
+ ['c','Sirkulasi kulit','S','Kulit merah muda','Pucat, mottled (belang), sianosis'],
 ];
-const PEWS_X='Nebulisasi tiap 15 menit atau muntah persisten pasca-operasi (+2)';
+// kunci = penampilan·napas·sirkulasi (1 = abnormal): [singkatan di sel, kesan umum]
+const PAT_KESAN={'000':['Stabil','Stabil'],'100':['SSP','Disfungsi SSP primer atau masalah sistemik (metabolik, toksik, sepsis)'],'010':['Distres','Distres napas'],'001':['Syok K','Syok terkompensasi'],
+ '110':['Gagal N','Gagal napas'],'101':['Syok D','Syok dekompensasi (hipotensif)'],'011':['Ds+Sir','Distres napas dengan gangguan sirkulasi — evaluasi syok'],'111':['GKP','Gagal kardiopulmonal']};
 const BANDS=[['< 1 th',0,12],['1–2 th',12,24],['2–5 th',24,60],['5–12 th',60,144],['> 12 th',144,1e9]];
 // Angka contoh dari tabel nilai normal APLS — WAJIB dicocokkan dengan acuan RSSA.
 const ZDEF={hr:[[110,160],[100,150],[95,140],[80,120],[60,100]],rr:[[30,40],[25,35],[25,30],[20,25],[15,20]],sbp:[[70,90],[85,95],[85,100],[90,110],[100,120]],
- pct:20,spo2:[95,92],suhu:[36,38,35,39.5],crt:[2,3],pews:[3,4,5],
+ pct:20,spo2:[95,92],suhu:[36,38,35,39.5],crt:[2,3],
  esc:['Tingkatkan frekuensi observasi, lapor perawat penanggung jawab shift','Lapor dokter jaga / residen, evaluasi ≤ 30 menit','Lapor DPJP, panggil tim segera, evaluasi saat itu juga']};
+const CH={nadi:'#B42318',td:'#0B5F5E',rr:'#B54708',spo2:'#6941C6',suhu:'#13365C'};
 const EDU=['Kondisi pasien & rencana perawatan','Kebersihan tangan & aturan kunjungan','Pencegahan jatuh & pengaman tempat tidur','Nutrisi / ASI perah','Obat, alat & tindakan yang dijalani','Persiapan pindah ruang / pulang'];
+const LUKA_JENIS=['Dekubitus / luka tekan','Luka tekan alat medis (MDRPI)','MARSI (plester / perekat)','Ekstravasasi / infiltrasi infus','Luka insersi alat (CVC / arteri / drain) — masih terpasang','Bekas aff alat (CVC / arteri / drain / WSD)','IAD / ruam popok','Luka operasi','Luka bakar','Abrasi / laserasi','Lainnya'];
+const LUKA_N=6;
+const ESK_MIN=8,ESK_MAX=30; // log eskalasi: 8 baris, ditambah otomatis sampai kotak penuh
+// Siluet anak: depan di x=60, belakang di x=180 (viewBox 240×156). Ka/Ki = sisi pasien.
+const bodyFig=(x,back)=>{const limbs=o=>[[-19,42,-30,90,9],[19,42,30,90,9],[-8,94,-10,140,12],[8,94,10,140,12]].map(([x1,y1,x2,y2,w])=>`<line x1="${x+x1}" y1="${y1}" x2="${x+x2}" y2="${y2}" stroke-width="${w+o}"/>`).join('');
+ return`<g class="bm-o">${limbs(2)}</g><g class="bm-f">${limbs(0)}</g>
+ <circle class="bm-s" cx="${x}" cy="20" r="13"/><rect class="bm-s" x="${x-5}" y="31" width="10" height="9"/>
+ <path class="bm-s" d="M${x-20},39 Q${x},34 ${x+20},39 L${x+19},94 Q${x},101 ${x-19},94 Z"/>
+ ${back?`<line class="bm-d" x1="${x}" y1="42" x2="${x}" y2="86"/><path class="bm-d" d="M${x-9},92 Q${x},97 ${x+9},92"/>`:`<circle class="bm-d" cx="${x}" cy="72" r="1.3"/><path class="bm-d" d="M${x-5},18 h3 M${x+2},18 h3 M${x-3},25 Q${x},27 ${x+3},25"/>`}
+ <text x="${x}" y="153" class="bm-t">${back?'BELAKANG':'DEPAN'}</text>
+ <text x="${x-38}" y="62" class="bm-k">${back?'Ki':'Ka'}</text><text x="${x+38}" y="62" class="bm-k">${back?'Ka':'Ki'}</text>`};
 const DEFAULTS={'k.target':'≥ 1 cc/kg/jam (atau sesuai DPJP)'};
 
 /* ---------- build ---------- */
@@ -488,23 +669,30 @@ function buildGrid(){
  h+=hJam;
  const cells=(id,flag)=>HOURS.map((x,i)=>flag==='s2'||flag==='s4'
   ?`<div class="c split${colCls(i)}" data-col="${i}">${Array.from({length:flag==='s2'?2:4},(_,j)=>`<input data-k="g.${id}.${i}.${j}" aria-label="${id} ${j+1} jam ${String(x).padStart(2,'0')}" autocomplete="off">`).join('')}</div>`
-  :flag==='pews'
-  ?`<div class="c pewsc${colCls(i)}" data-col="${i}"><input data-k="g.pews.${i}" readonly aria-label="PEWS jam ${String(x).padStart(2,'0')}, tekan spasi untuk menghitung"><input type="hidden" data-k="g.pewsd.${i}"></div>`
-  :`<div class="c${colCls(i)}" data-col="${i}"><input data-k="g.${id}.${i}" aria-label="${id} jam ${String(x).padStart(2,'0')}" ${flag==='calc'?'readonly tabindex="-1" class="calc"':''} ${flag==='num'||flag==='name'?'inputmode="decimal"':''} autocomplete="off"></div>`).join('');
+  :flag==='pat'
+  ?`<div class="c patc${colCls(i)}" data-col="${i}"><input data-k="g.pat.${i}" readonly aria-label="PAT jam ${String(x).padStart(2,'0')}, tekan spasi untuk menilai"><input type="hidden" data-k="g.patd.${i}"></div>`
+  :flag==='transf'
+  ?`<div class="c ckc tf${colCls(i)}" data-col="${i}"><input type="checkbox" class="ok" data-k="g.${id}.${i}.v" aria-label="${id} jam ${String(x).padStart(2,'0')} masuk"><input class="tfv" data-k="g.${id}.${i}" inputmode="decimal" placeholder="cc" aria-label="${id} cc jam ${String(x).padStart(2,'0')}" autocomplete="off"></div>`
+  :`<div class="c${/^tk\d/.test(id)?' ckc':''}${colCls(i)}" data-col="${i}">${flag==='freeroute'||/^tk\d/.test(id)?`<input type="checkbox" class="ok" data-k="g.${id}.${i}.v" aria-label="${id} jam ${String(x).padStart(2,'0')} ${/^tk\d/.test(id)?'dikerjakan':'sudah diberikan'}">`:''}<input data-k="g.${id}.${i}" aria-label="${id} jam ${String(x).padStart(2,'0')}" ${flag==='calc'?'readonly tabindex="-1" class="calc"':''} ${flag==='num'||flag==='name'?'inputmode="decimal"':''} autocomplete="off"></div>`).join('');
  const empty=HOURS.map((x,i)=>`<div class="c${colCls(i)}" data-col="${i}"></div>`).join('');
  GROUPS.forEach(g=>{
   // Cetak 2 halaman: halaman 2 mulai di blok obat, dengan identitas & baris jam diulang.
   if(g.t.startsWith('PEMBERIAN OBAT'))h+=`<div class="pcont" aria-hidden="true"><div class="pid" id="pid"></div>${hShift}${hJam}</div>`;
   h+=`<div class="sec">${g.t}</div>`;
   if(g.graph){
-   h+=`<div class="grow" style="height:22px;background:var(--soft)"><div class="lab" style="font-size:13px;font-weight:600"><span>Grafik nadi ●</span><span>suhu ×</span></div>${empty}</div><div class="chartbox">`;
-   [[200,41],[180,40],[160,39],[140,38],[120,37],[100,36],[80,35],[60,34]].forEach(([a,b])=>{h+=`<div class="grow"><div class="lab" style="font-size:13px"><span>${a}</span><span>${b} °C</span></div>${empty}</div>`});
+   const L=(c,m,t)=>`<span><b style="color:${c}">${m}</b>${t}</span>`;
+   h+=`<div class="grow" style="height:24px;background:var(--soft)"><div class="lab" style="font-size:12px;font-weight:600"><span>Nadi·TD·RR</span><span>°C</span><span>SpO₂</span></div><div class="glegend">${L(CH.nadi,'●','Nadi')}${L(CH.td,'˅˄','TD sistol / diastol')}${L(CH.rr,'▲','Napas')}${L(CH.spo2,'○','SpO₂')}${L(CH.suhu,'×','Suhu')}</div></div><div class="chartbox">`;
+   // 10 baris, tiga skala: angka (nadi, TD, napas) 200→20 · suhu 41→32 °C · SpO₂ 100→55 %
+   for(let r=0;r<10;r++)h+=`<div class="grow"><div class="lab" style="font-size:12.5px"><span>${200-20*r}</span><span>${41-r}°</span><span>${100-5*r}%</span></div>${empty}</div>`;
    h+=`<svg id="chart" aria-hidden="true"></svg></div>`;
   }
   g.rows.forEach(([id,l,u,f])=>{
-   const lab=f==='freeroute'?`<span class="route">${l}</span><input class="labin" data-k="g.${id}.nama" placeholder="nama · dosis">`:f==='free'?`<input class="labin" data-k="g.${id}.nama" placeholder="${l}: ________">`:f==='name'?`<input class="labin" data-k="g.${id}.nama" placeholder="${l}: ________">`:`<span>${l}</span>`;
-   h+=`<div class="row"><div class="lab${f==='calc'&&id!=='map'?' t':''}">${lab}<span class="u">${u}</span></div>${cells(id,f)}</div>`;
+   const lab=f==='transf'?`<input class="labin" list="tfList" data-k="g.${id}.nama" placeholder="${l}: jenis" title="Pilih jenis: PRC, TC, FFP, WB, albumin … atau ketik"><input class="labin tflb" data-k="g.${id}.labu" placeholder="no. labu" title="Nomor labu (pisahkan dengan koma bila lebih dari satu)">`:f==='freeroute'?`<span class="route">${l}</span><input class="labin" data-k="g.${id}.nama" placeholder="nama · dosis">`:f==='tk'?`<input class="labin" list="tkList" data-k="g.${id}.nama" placeholder="tulis tindakan" title="Nama tindakan (bisa diganti)"><button type="button" class="tkx" title="Tutup baris ini" aria-label="Tutup baris tindakan">✕</button>`:f==='free'?`<input class="labin" data-k="g.${id}.nama" placeholder="${l}: ________">`:f==='name'?`<input class="labin" data-k="g.${id}.nama" placeholder="${l}: ________">`:`<span>${l}</span>`;
+   h+=`<div class="row${f==='tk'?' tkr':''}"${f==='tk'?` data-tk="${id}"`:''}><div class="lab${f==='calc'&&id!=='map'?' t':''}">${lab}<span class="u">${u}</span></div>${cells(id,f)}</div>`;
   });
+  if(g.rows.some(r=>r[3]==='tk'))h+=`<div class="tkadd"><div class="tkbar"><button type="button" id="tkOpen" aria-expanded="false">+ Tambah tindakan</button><input id="tkCari" list="tkList" placeholder="ketik untuk cari, Enter" aria-label="Cari tindakan" autocomplete="off"><span id="tkInfo"></span></div>
+   <div class="tkpanel" id="tkPanel" hidden>${TK_GROUPS.map(([gl,it])=>`<div class="tkg"><span class="tkgl">${gl}</span><div class="tkchips">${it.map(t=>`<button type="button" class="tkc" data-t="${esc(t)}">${esc(t)}</button>`).join('')}</div></div>`).join('')}
+   <div class="tkg"><span class="tkgl">Lain</span><div class="tkchips"><input id="tkBebas" placeholder="tulis tindakan lain" autocomplete="off"><button type="button" class="tkc tkplus" id="tkBebasOk">Tambah</button></div></div></div></div>`;
  });
  const blk=(lab,fn)=>`<div class="row blk"><div class="lab t">${lab}</div>${[0,1,2,3].map(b=>`<div>${fn(b)}</div>`).join('')}</div>`;
  h+=`<div class="sec">BALANCE PER 6 JAM · ${['06–12','12–18','18–24','24–06'].join(' · ')}</div>`;
@@ -514,7 +702,7 @@ function buildGrid(){
  h+=blk('Diuresis cc/kg/jam',b=>`<output id="bl-diu-${b}"></output>`);
  h+=blk('Kumulatif',b=>`<output id="bl-kum-${b}"></output>`);
  h+=`<div class="tot24"><b>TOTAL 24 JAM</b><span>Intake <output id="bl-in-4"></output></span><span>Output <output id="bl-out-4"></output></span><span>IWL <output id="bl-iwl-4"></output></span><span>Balance <output id="bl-bal-4"></output></span><span>cc/kg/jam <output id="bl-bkg-4"></output></span><span>Diuresis <output id="bl-diu-4"></output> cc/kg/jam</span><span>Kumulatif <output id="bl-kum-4"></output></span><span style="color:var(--mute);font-size:12.5px">(<output id="bl-h-4"></output> jam)</span></div>`;
- $('#hourgrid').innerHTML=h;
+ $('#hourgrid').innerHTML=h+`<datalist id="tfList">${TF_JENIS.map(j=>`<option value="${esc(j)}">`).join('')}</datalist><datalist id="tkList">${TK_LIST.map(j=>`<option value="${esc(j)}">`).join('')}</datalist>`;
 }
 function buildSide(){
  const ac=`grid-template-columns:150px repeat(${ALAT.length},minmax(0,1fr))`;
@@ -529,31 +717,37 @@ function buildSide(){
   <div class="k">RDA × BB</div><div class="e" style="grid-column:span 2"><output id="kb-rda"></output></div>
   <div>Kebutuhan dipakai</div><div class="in e" style="grid-column:span 2">${inp('k.pakai','placeholder="mis. HS / Schofield × faktor stres"')}</div>`;
  const lab=LAB.map(([id,l])=>`<div>${l}</div>`+[1,2,3].map(j=>`<div class="in${j===3?' e':''}">${inp(`lab.${id}.${j}`)}</div>`).join('')).join('');
- $('#side').innerHTML=`
+ $('#side').innerHTML=`<div class="scol">
  <div class="box"><div class="bt">BUNDLE CARE <small>(centang per shift)</small></div><div class="mt" style="grid-template-columns:1fr 38px 38px 38px">
   <div class="h">Tindakan</div><div class="h ctr">P</div><div class="h ctr">S</div><div class="h e ctr">M</div>${bundle}</div></div>
  <div class="box"><div class="bt">KEBUTUHAN &amp; PROGRAM</div><div class="mt" style="grid-template-columns:1.1fr 1fr 1fr">
   <div class="h">Hitungan kalori</div><div class="h e" style="grid-column:span 2">kkal / 24 jam</div>${keb}
   <div>Diet / formula</div><div class="in e" style="grid-column:span 2">${inp('k.diet')}</div>
   <div>Target diuresis</div><div class="in e" style="grid-column:span 2">${inp('k.target')}</div></div></div>
- <div class="box"><div class="bt">RIWAYAT BALANCE KEMARIN <small>· hitungan hari ini ada di bawah grid jam</small></div><div class="mt" style="grid-template-columns:1.25fr 1fr">
+ <div class="box"><div class="bt">RIWAYAT BALANCE KEMARIN <small>· hitungan hari ini ada di bawah grid jam</small></div><div class="mt" style="grid-template-columns:1.1fr 2fr">
   <div>Balance 24 jam kemarin</div><div class="in e">${inp('bal.kemarin','inputmode="decimal" placeholder="cc"')}</div>
   <div>Kumulatif s/d kemarin</div><div class="in e">${inp('bal.kum0','inputmode="decimal" placeholder="0"')}</div>
   <div style="font-size:12.5px">Pasien baru masuk jam</div><div class="in e">${inp('bal.masuk','type="time" id="masuk" title="Isi hanya di hari pasien masuk"')}</div>
-  <div style="font-size:12.5px">Dasar BB IWL · diuresis · balance/kg</div><div class="in e"><select data-k="k.dasarkg" title="BB untuk IWL, diuresis cc/kg/jam & balance cc/kg/jam"><option value="">BB aktual</option><option value="bbi">BB ideal</option></select></div>
-  <div style="font-size:12.5px">IWL 24 jam (bila beda SPO)</div><div class="in e">${inp('bal.iwl24','id="iwl24" inputmode="decimal" title="IWL per 24 jam. Kosongkan untuk memakai rumus otomatis"')}</div></div></div>
+  <div style="font-size:12.5px" title="Dasar BB untuk IWL, diuresis cc/kg/jam & balance cc/kg/jam">Dasar BB hitungan</div><div class="in e"><select data-k="k.dasarkg" title="BB untuk IWL, diuresis cc/kg/jam & balance cc/kg/jam"><option value="">BB aktual</option><option value="bbi">BB ideal</option></select></div>
+  <div style="font-size:12.5px" title="Isi hanya bila IWL beda dari rumus SPO">IWL 24 jam manual</div><div class="in e">${inp('bal.iwl24','id="iwl24" inputmode="decimal" title="IWL per 24 jam. Kosongkan untuk memakai rumus otomatis"')}</div></div></div>
+ <div class="box" id="lukabox"><div class="bt">LUKA &amp; INTEGRITAS KULIT <small>· klik gambar untuk menandai, klik titik untuk menghapus</small></div>
+  <div class="bodymap"><svg id="lukaSvg" viewBox="0 0 240 156" role="img" aria-label="Gambar tubuh depan dan belakang untuk menandai lokasi luka">${bodyFig(60,0)}${bodyFig(180,1)}<g id="lukaPts"></g></svg>${inp('luka.map','type="hidden"')}</div>
+  <div class="mt lukat" style="grid-template-columns:26px 1.1fr 1.3fr 34px .8fr 1.2fr">
+   <div class="h ctr">No</div><div class="h">Lokasi</div><div class="h">Jenis</div><div class="h ctr" title="Stadium / grade">Gr</div><div class="h">Ukuran</div><div class="h e">Perawatan</div>
+   ${Array.from({length:LUKA_N},(_,n)=>`<div class="ctr"><span class="lk-no">${n+1}</span></div><div class="in">${inp(`luka.${n+1}.lok`)}</div><div class="in">${inp(`luka.${n+1}.jenis`,'list="lukaList"')}</div><div class="in">${inp(`luka.${n+1}.gr`,'placeholder="1–4"')}</div><div class="in">${inp(`luka.${n+1}.uk`,'placeholder="p×l cm"')}</div><div class="in e">${inp(`luka.${n+1}.rawat`)}</div>`).join('')}
+  </div><datalist id="lukaList">${LUKA_JENIS.map(j=>`<option value="${esc(j)}">`).join('')}</datalist></div>
+</div><div class="scol">
  <div class="box"><div class="bt">LAB / BGA KUNCI</div><div class="mt" style="grid-template-columns:1.3fr 1fr 1fr 1fr">
   <div class="h">Parameter</div>${[1,2,3].map(j=>`<div class="h${j===3?' e':''}">Jam&nbsp;${inp(`lab.jam${j}`,'class="hdr" type="time"')}</div>`).join('')}${lab}</div></div>
- <div class="box" id="eskalasi"><div class="bt">PEWS &amp; ESKALASI <small>· klik sel PEWS di grid untuk menghitung</small></div><div class="pref" id="pref"></div><div class="esc" id="escGuide"></div><div class="mt" id="escLog" style="grid-template-columns:62px 44px 1.3fr 1fr 1.3fr .6fr"></div></div>
- <div class="box sbarbox"><div class="bt">LAPORAN PERAWAT SHIFT &amp; HAND OVER <small>· CPPT lengkap di SIMRS</small></div><div class="sbar" id="sbar"></div></div>`;
+ <div class="box" id="eskalasi"><div class="bt">PAT &amp; ESKALASI <small>· klik sel PAT di grid untuk menilai</small></div><div class="pref" id="pref"></div><div class="esc" id="escGuide"></div><div class="mt" id="escLog" style="grid-template-columns:62px 44px 1.3fr 1fr 1.3fr .6fr"></div></div>
+</div><div class="scol">
+ <div class="box sbarbox"><div class="bt">LAPORAN PERAWAT SHIFT &amp; HAND OVER <small>· CPPT lengkap di SIMRS</small></div><div class="sbar" id="sbar"></div></div></div>`;
 }
 function buildBottom(){
  const ta=(k,lab,ph='')=>`<textarea class="lined" data-k="${k}" aria-label="${lab}" placeholder="${ph}"></textarea>`;
- const SYS=[['kardio','Kardiovaskular'],['infeksi','Infeksi'],['metab','Metabolik'],['hema','Hematologi'],['nefro','Nefrologi'],['neuro','Neurologi'],['alim','Alimentary'],['resp','Respirasi']];
  $('#bottom').classList.add('bgrid');
  $('#bottom').innerHTML=`
  <div class="box bprog"><div class="bt">CATATAN PROGRAM TERAPI <small>· advice dokter / DPJP</small></div>
-  <div class="sysg">${SYS.map(([k,l])=>`<label><span>${l}</span>${inp(`pt.${k}`)}</label>`).join('')}</div>
   <div class="advg">
    <div><span class="sl">Medikasi</span>${ta('advc.umum','Medikasi','IV / PO / topikal · dosis · jadwal')}</div>
    <div><span class="sl">Program cairan</span>${ta('advc.cairan','Program cairan','maintenance · resusitasi')}</div>
@@ -566,9 +760,9 @@ function buildBottom(){
  <div class="box bcat"><div class="bt">CATATAN PERAWAT</div>${ta('catatan','Catatan perawat')}</div>`;
 }
 function buildBack(){
- $('#pref').innerHTML=`<div class="h">Kriteria</div><div class="h">0</div><div class="h">1</div><div class="h">2</div><div class="h">3</div>`+PEWS_CAT.map(([k,l,o])=>`<div class="l">${l}</div>`+o.map(t=>`<div>${esc(t)}</div>`).join('')).join('')+`<div class="l">Tambahan</div><div style="grid-column:span 4;border-right:0">${PEWS_X}</div>`;
- const cols=[['jam','Jam','time'],['skor','PEWS'],['temuan','Temuan / kondisi'],['lapor','Lapor ke · jam'],['tind','Instruksi / tindakan'],['paraf','Paraf']];
- $('#escLog').innerHTML=cols.map(([,l],j)=>`<div class="h${j===cols.length-1?' e':''}">${l}</div>`).join('')+Array.from({length:8},(_,n)=>cols.map(([c,,t],j)=>`<div class="in${j===cols.length-1?' e':''}">${inp(`esk.${n}.${c}`,t?`type="${t}"`:'')}</div>`).join('')).join('');
+ $('#pref').innerHTML=`<div class="h">Sisi PAT</div><div class="h">Abnormal bila</div>`+PAT_K.map(([,l,s,,ab])=>`<div class="l">${s} · ${l}</div><div>${esc(ab)}</div>`).join('');
+ const cols=[['jam','Jam','time'],['skor','PAT / TTV'],['temuan','Temuan / kondisi'],['lapor','Lapor ke · jam'],['tind','Instruksi / tindakan'],['paraf','Paraf']];
+ $('#escLog').innerHTML=cols.map(([,l],j)=>`<div class="h${j===cols.length-1?' e':''}">${l}</div>`).join('')+Array.from({length:ESK_MAX},(_,n)=>cols.map(([c,,t],j)=>`<div class="in er${j===cols.length-1?' e':''}" data-r="${n}">${inp(`esk.${n}.${c}`,t?`type="${t}"`:'')}</div>`).join('')).join('');
  const rows=(pre,cols)=>[1,2,3,4,5].map(n=>cols.map((c,j)=>`<div class="in${j===cols.length-1?' e':''}">${inp(`${pre}.${n}.${c}`,c==='mulai'||c==='selesai'?'type="time"':'')}</div>`).join('')).join('');
  $('#sbar').innerHTML=['DINAS PAGI','DINAS SORE','DINAS MALAM'].map((n,i)=>`<div><h4>${n}</h4><div class="who" style="padding-top:0">${inp(`cppt.${i}.jam`,'class="jam" type="time" aria-label="Jam"')}${inp(`cppt.${i}.ppa`,'placeholder="Perawat penanggung jawab"')}</div><span class="sl">Laporan / implementasi</span><textarea class="lined r" data-k="cppt.${i}.soap" aria-label="${n} laporan perawat shift" placeholder="1. Memonitor hemodinamik&#10;2. Memonitor balance cairan&#10;3. …"></textarea><div class="ho"><span class="hot">HAND OVER</span>${inp(`cppt.${i}.hojam`,'class="jam" type="time" aria-label="Jam hand over"')}${inp(`cppt.${i}.pemberi`,'placeholder="Nama / TTD pemberi"')}${inp(`cppt.${i}.penerima`,'placeholder="Nama / TTD penerima"')}</div></div>`).join('');
 }
@@ -579,47 +773,183 @@ const KEY='kardeks-picu-f61';
 const todayISO=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
 const addDays=(iso,n)=>{const d=new Date(iso+'T00:00:00');d.setDate(d.getDate()+n);d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
 let store={sheets:{},current:null};
+// Penyimpanan lembar: IndexedDB (kapasitas ratusan MB–GB, jauh di atas localStorage ±5 MB).
+// Di memori hanya lembar AKTIF; lembar >7 hari (kecuali lembar terbaru tiap pasien) diarsipkan dan dibuka bila perlu.
+// Versi lama menyimpan di localStorage[KEY] → dipindah sekali saat pertama dibuka, diverifikasi, baru dihapus.
 const readStore=()=>{try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.sheets)return s}catch(e){}return null};
-store=readStore()||store;
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
-// Beberapa tab bisa membuka kardeks bersamaan: sebelum menulis, gabungkan dulu dengan isi terbaru
-// (lembar yang lebih baru menang) supaya lembar dari tab lain tidak tertimpa.
-const deleted=new Set();
-function mergeLatest(){const s=readStore();if(!s)return false;let curChanged=false;
- Object.entries(s.sheets).forEach(([id,v])=>{if(deleted.has(id)||!v||!v.data)return;const m=store.sheets[id];if(!m||(v.updated||0)>(m.updated||0)){store.sheets[id]=v;if(id===store.current)curChanged=true}});
- deleted.forEach(id=>delete store.sheets[id]);return curChanged}
-function persist(){try{mergeLatest();localStorage.setItem(KEY,JSON.stringify(store));setStatus('Tersimpan '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}));showMem(false)}catch(e){setStatus('Gagal menyimpan di browser ini — gunakan Cadangkan');showMem(true)}}
-// Jatah localStorage Chrome ±5 juta karakter per alamat, dipakai bersama semua lembar.
+const ARSIP_HARI=7,deleted=new Set(),dirty=new Set();
+var dataDB=null,writeQ=Promise.resolve();
+function ddb(){return dataDB||(dataDB=new Promise((res,rej)=>{const r=indexedDB.open(KEY+'-data',2);
+ r.onupgradeneeded=()=>{const db=r.result;if(!db.objectStoreNames.contains('sheets'))db.createObjectStore('sheets',{keyPath:'id'});if(!db.objectStoreNames.contains('ringkas'))db.createObjectStore('ringkas',{keyPath:'id'});if(!db.objectStoreNames.contains('misc'))db.createObjectStore('misc',{keyPath:'id'})};
+ r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}))}
+const idbReq=q=>new Promise((res,rej)=>{q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)});
+const dgetRaw=(st,id)=>ddb().then(db=>idbReq(db.transaction(st).objectStore(st).get(id)));
+const dallRaw=st=>ddb().then(db=>idbReq(db.transaction(st).objectStore(st).getAll()));
+/* ---------- enkripsi data (AES-GCM; DEK dibungkus PIN tiap pengguna + kunci pemulihan) ---------- */
+// Semua isi lembar & riwayat disimpan terenkripsi. DEK (kunci data) hanya ada di memori setelah login.
+const KKEY=KEY+'-keys',DKEY=KEY+'-dek';var DEK=null;
+const b64=b=>btoa(String.fromCharCode(...new Uint8Array(b))),ub64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0)),rndB=n=>crypto.getRandomValues(new Uint8Array(n));
+const encKeysLoad=()=>{try{return JSON.parse(localStorage.getItem(KKEY))}catch(e){return null}};
+const encKeysSave=o=>localStorage.setItem(KKEY,JSON.stringify(o));
+const enkripsiAktif=()=>!!encKeysLoad();
+async function deriveKEK(secret,salt){const k=await crypto.subtle.importKey('raw',enc(secret),'PBKDF2',false,['deriveKey']);
+ return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:150000,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['wrapKey','unwrapKey'])}
+async function wrapFor(secret){const salt=rndB(16),kek=await deriveKEK(secret,salt),iv=rndB(12),w=await crypto.subtle.wrapKey('raw',DEK,kek,{name:'AES-GCM',iv});return{salt:b64(salt),iv:b64(iv),ct:b64(w)}}
+async function unwrapWith(secret,w){const kek=await deriveKEK(secret,ub64(w.salt));return crypto.subtle.unwrapKey('raw',ub64(w.ct),kek,{name:'AES-GCM',iv:ub64(w.iv)},{name:'AES-GCM',length:256},true,['encrypt','decrypt'])}
+async function encObj(o){const iv=rndB(12),ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},DEK,enc(JSON.stringify(o)));return{iv:b64(iv),ct:b64(ct)}}
+async function decObj(e){const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:ub64(e.iv)},DEK,ub64(e.ct));return JSON.parse(new TextDecoder().decode(pt))}
+function recGen(){const a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',b=rndB(20);let s='';for(let i=0;i<20;i++){s+=a[b[i]%32];if(i%4===3&&i<19)s+='-'}return s}
+// simpan DEK untuk tab ini saja (bertahan saat muat ulang, hilang saat tab/keluar) — tidak pernah ke disk permanen
+async function dekSesiSimpan(){try{sessionStorage.setItem(DKEY,b64(await crypto.subtle.exportKey('raw',DEK)))}catch(e){}}
+async function dekSesiMuat(){try{const b=sessionStorage.getItem(DKEY);if(!b)return false;DEK=await crypto.subtle.importKey('raw',ub64(b),{name:'AES-GCM',length:256},true,['encrypt','decrypt']);return true}catch(e){return false}}
+const dekSesiHapus=()=>{try{sessionStorage.removeItem(DKEY)}catch(e){}};
+// pasang enkripsi pertama kali (install baru / install lama yang belum terenkripsi): buat DEK + kunci pemulihan, enkripsi semua data lama
+async function encSetup(userId,pin){DEK=await crypto.subtle.generateKey({name:'AES-GCM',length:256},true,['encrypt','decrypt']);
+ const rec=recGen();encKeysSave({v:1,wrap:{[userId]:await wrapFor(pin)},rec:await wrapFor(rec)});await encAllPlain();await dekSesiSimpan();return rec}
+async function encAllPlain(){
+ const sh=await dallRaw('sheets'),ns=[];for(const r of sh){if(r.enc||!r.data)continue;ns.push({id:r.id,updated:r.updated||0,arsip:r.arsip?1:0,cetak:r.cetak||null,enc:await encObj(r.data)})}
+ const rk=await dallRaw('ringkas'),nr=[];for(const r of rk){if(r.enc)continue;nr.push({id:r.id,tgl:r.tgl||'',updated:r.updated||0,arsip:r.arsip?1:0,cetak:r.cetak||null,enc:await encObj({label:r.label,pk:r.pk})})}
+ if(ns.length||nr.length)await ddb().then(db=>new Promise(res=>{const tx=db.transaction(['sheets','ringkas'],'readwrite');ns.forEach(r=>tx.objectStore('sheets').put(r));nr.forEach(r=>tx.objectStore('ringkas').put(r));tx.oncomplete=tx.onerror=tx.onabort=()=>res()}));
+ const lg=await auditRaw(),nl=[];for(const r of lg){if(r.enc)continue;const {i,t,s,p,h,...pl}=r;nl.push({i,t,s:s||'',p:p||'0',h:h||'',enc:await encObj(pl)})}
+ if(nl.length)await idb().then(db=>new Promise(res=>{const tx=db.transaction('log','readwrite');nl.forEach(r=>tx.objectStore('log').put(r));tx.oncomplete=tx.onerror=tx.onabort=()=>res()}))}
+// record → bentuk tersimpan (terenkripsi bila DEK ada)
+async function encSheetRec(id,s,arsip){const o={id,updated:s.updated||0,arsip:arsip?1:0,cetak:s.cetak||null};if(DEK)o.enc=await encObj(s.data);else o.data=s.data;return o}
+async function encRingkasRec(id,s,arsip){const o={id,tgl:s.data['p.tanggal']||'',updated:s.updated||0,arsip:arsip?1:0,cetak:s.cetak||null};if(DEK)o.enc=await encObj({label:label(s),pk:pkey(s.data)});else{o.label=label(s);o.pk=pkey(s.data)}return o}
+async function decSheet(r){if(!r)return null;const o={id:r.id,updated:r.updated,cetak:r.cetak||null};o.data=r.enc?await decObj(r.enc):r.data;return o}
+async function decRingkas(r){const o={id:r.id,tgl:r.tgl||'',updated:r.updated||0,arsip:r.arsip||0,cetak:r.cetak||null};if(r.enc){const d=await decObj(r.enc);o.label=d.label;o.pk=d.pk}else{o.label=r.label;o.pk=r.pk}return o}
+async function dget(st,id){const r=await dgetRaw(st,id);if(!r)return null;return st==='sheets'?decSheet(r):st==='ringkas'?decRingkas(r):r}
+async function dall(st){const rs=await dallRaw(st);return st==='sheets'?Promise.all(rs.map(decSheet)):st==='ringkas'?Promise.all(rs.map(decRingkas)):rs}
+const ARSIP_HARIv=ARSIP_HARI;
+const bc='BroadcastChannel' in window?new BroadcastChannel(KEY):null;
+function mergeLatest(){return false}
+function persist(){if(store.current)dirty.add(store.current);try{localStorage.setItem(KEY+'-cur',store.current||'')}catch(e){}
+ const ids=[...dirty],dels=[...deleted];dirty.clear();
+ writeQ=writeQ.then(async()=>{const recs=[];for(const id of ids){const s=store.sheets[id];if(s)recs.push([await encSheetRec(id,s,0),await encRingkasRec(id,s,0)])}
+  const db=await ddb();await new Promise((res,rej)=>{const tx=db.transaction(['sheets','ringkas'],'readwrite');
+   recs.forEach(([sh,rk])=>{tx.objectStore('sheets').put(sh);tx.objectStore('ringkas').put(rk)});
+   dels.forEach(id=>{tx.objectStore('sheets').delete(id);tx.objectStore('ringkas').delete(id)});
+   tx.oncomplete=res;tx.onerror=tx.onabort=()=>rej(tx.error)})})
+ .then(()=>{dels.forEach(id=>deleted.delete(id));setStatus('Tersimpan '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}));showMem(false);if(bc&&(ids.length||dels.length))bc.postMessage({ids,dels})})
+ .catch(()=>{ids.forEach(i=>dirty.add(i));setStatus('Gagal menyimpan di browser ini — gunakan Cadangkan');showMem(true)});return writeQ}
+function arsipkan(ids){ids=ids.filter(id=>store.sheets[id]&&id!==store.current);if(!ids.length)return Promise.resolve(0);const snap=ids.map(id=>[id,store.sheets[id]]);ids.forEach(id=>delete store.sheets[id]);
+ return writeQ=writeQ.then(async()=>{const recs=[];for(const [id,s] of snap)recs.push([await encSheetRec(id,s,1),await encRingkasRec(id,s,1)]);
+  const db=await ddb();await new Promise(res=>{const tx=db.transaction(['sheets','ringkas'],'readwrite');recs.forEach(([sh,rk])=>{tx.objectStore('sheets').put(sh);tx.objectStore('ringkas').put(rk)});tx.oncomplete=tx.onerror=tx.onabort=()=>res()})}).then(()=>ids.length)}
+async function bukaArsip(id){const r=await dget('sheets',id);if(!r)return false;store.sheets[id]={data:r.data,updated:Date.now(),cetak:r.cetak||null};dirty.add(id);return true}
+function arsipOtomatis(){const batas=addDays(todayISO(),-ARSIP_HARI),baru={};
+ Object.entries(store.sheets).forEach(([id,s])=>{const k=pkey(s.data),t=s.data['p.tanggal']||'';if(!baru[k]||t>baru[k][1])baru[k]=[id,t]});
+ const terbaru=new Set(Object.values(baru).map(x=>x[0]));
+ return arsipkan(Object.entries(store.sheets).filter(([id,s])=>!terbaru.has(id)&&(s.data['p.tanggal']||'')&&s.data['p.tanggal']<batas).map(([id])=>id))}
+// migrasi localStorage lama → IndexedDB (teks biasa; dienkripsi kemudian saat encSetup)
+async function migrasiLS(){const old=readStore();if(!(old&&Object.keys(old.sheets||{}).length))return;
+ const ent=Object.entries(old.sheets).filter(([,v])=>v&&v.data),ada=new Map((await dallRaw('sheets')).map(r=>[r.id,r]));
+ await ddb().then(db=>new Promise((res,rej)=>{const tx=db.transaction(['sheets','ringkas'],'readwrite');
+  ent.forEach(([id,v])=>{const e=ada.get(id);if(!e||(v.updated||0)>(e.updated||0)){tx.objectStore('sheets').put({id,data:v.data,updated:v.updated||0,arsip:0,cetak:v.cetak||null});tx.objectStore('ringkas').put({id,label:label(v),tgl:v.data['p.tanggal']||'',pk:pkey(v.data),updated:v.updated||0,arsip:0,cetak:v.cetak||null})}});
+  tx.oncomplete=res;tx.onerror=tx.onabort=()=>rej(tx.error)}));
+ const cek=new Map((await dallRaw('sheets')).map(r=>[r.id,r]));
+ if(ent.every(([id,v])=>{const r=cek.get(id);return r&&(JSON.stringify(r.data)===JSON.stringify(v.data)||(r.updated||0)>(v.updated||0))})){
+  try{localStorage.setItem(KEY+'-cur',old.current||'');localStorage.setItem(KEY+'-dipindah',new Date().toISOString()+' · '+ent.length+' lembar');localStorage.removeItem(KEY)}catch(e){}}}
+// muat lembar ke memori (perlu DEK) — dipanggil setelah login
+async function dataReady(){store.sheets={};const rk=await dall('ringkas'),aktif=rk.filter(r=>!r.arsip).map(r=>r.id),cur0=localStorage.getItem(KEY+'-cur')||'';
+ const rows=await Promise.all(aktif.map(id=>dget('sheets',id)));rows.forEach(r=>{if(r)store.sheets[r.id]={data:r.data,updated:r.updated,cetak:r.cetak||null}});
+ store.current=store.sheets[cur0]?cur0:null;await arsipOtomatis()}
+if(bc)bc.onmessage=async e=>{if(!DEK)return;const {ids=[],dels=[]}=e.data||{};
+ for(const id of ids){const r=await dget('sheets',id);if(!r)continue;const raw=await dgetRaw('sheets',id);if(raw&&raw.arsip){if(id!==store.current)delete store.sheets[id];continue}
+  const m=store.sheets[id];if(!m||(r.updated||0)>(m.updated||0)||(r.cetak&&!m.cetak)){store.sheets[id]={data:r.data,updated:r.updated,cetak:r.cetak||null};
+   if(id===store.current){if(saveT)setStatus('Lembar ini juga sedang diedit di tab lain — tutup salah satu tab');else{apply(cur().data);recalc();setStatus('Lembar ini diperbarui dari tab lain')}}}}
+ dels.forEach(id=>{if(id!==store.current)delete store.sheets[id]});renderSel()};
+// Pengukur: pemakaian penyimpanan browser untuk situs ini (lembar + riwayat) dibanding jatah dari browser.
 const QUOTA=5e6;
 function memUsed(){let n=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);n+=k.length+localStorage.getItem(k).length}}catch(e){}return n}
 function showMem(fail){
- const pct=Math.min(100,Math.round(memUsed()/QUOTA*100)),m=$('#mem'),sb=$('#savebar');
- m.textContent=`Memori ${pct}% · ${Object.keys(store.sheets).length} lembar`;m.className='mem'+(fail||pct>=90?' x':pct>=80?' w':'');
- if(fail){sb.hidden=false;sb.className='tbar l3';sb.textContent='⛔ GAGAL MENYIMPAN — perubahan terakhir belum tersimpan di browser. Jangan tutup halaman: tekan Cadangkan sekarang, lalu hapus lembar pasien yang sudah pulang.'}
- else if(pct>=80){sb.hidden=false;sb.className='tbar l2';sb.textContent=`Memori kardeks ${pct}% terpakai. Cadangkan lalu hapus lembar pasien yang sudah pulang sebelum penuh.`}
- else sb.hidden=true}
+ const m=$('#mem'),sb=$('#savebar'),n=Object.keys(store.sheets).length;
+ const tulis=(pct,mb)=>{m.textContent=`Lembar aktif ${n}${mb!=null?` · ${mb} MB`:''}`;m.title=`Penyimpanan browser untuk kardeks${pct!=null?`: ${pct}% dari jatah`:''} (lembar aktif, arsip & riwayat)`;m.className='mem'+(fail||pct>=90?' x':pct>=80?' w':'');
+  if(fail){sb.hidden=false;sb.className='tbar l3';sb.textContent='⛔ GAGAL MENYIMPAN — perubahan terakhir belum tersimpan di browser. Jangan tutup halaman: tekan Cadangkan sekarang.'}
+  else if(pct>=80){sb.hidden=false;sb.className='tbar l2';sb.textContent=`Penyimpanan browser ${pct}% terpakai. Cadangkan lalu hapus arsip pasien yang sudah pulang.`}
+  else sb.hidden=true};
+ tulis(null,null);if(navigator.storage&&navigator.storage.estimate)navigator.storage.estimate().then(e=>tulis(e.quota?Math.round(e.usage/e.quota*100):null,(e.usage/1048576).toFixed(1))).catch(()=>{})}
 function setStatus(t){$('#status').textContent=t}
 function collect(){const d={};$$('[data-k]').forEach(el=>{if(el.classList.contains('calc'))return;if(el.type==='checkbox'){if(el.checked)d[el.dataset.k]=true}else if(el.value!=='')d[el.dataset.k]=el.value});return d}
-function apply(d){$$('[data-k]').forEach(el=>{const k=el.dataset.k;if(el.classList.contains('calc'))return;if(el.type==='checkbox')el.checked=!!d[k];else el.value=d[k]??DEFAULTS[k]??''})}
+function apply(d){const add={};if(!Object.keys(d).some(k=>/^g\.tk\d+\./.test(k)))Object.assign(add,tkDefaults());Object.keys(TK_OLD).forEach(id=>{const k=`g.${id}.nama`;if(!d[k]&&Object.keys(d).some(x=>x.startsWith(`g.${id}.`)))add[k]=TK_OLD[id]});Object.assign(d,add);
+ if(Object.keys(add).length&&typeof auditSys==='function')auditSys(Object.entries(add).map(([k,n])=>({s:store.current,k,o:'',n})));$$('[data-k]').forEach(el=>{const k=el.dataset.k;if(el.classList.contains('calc'))return;if(el.type==='checkbox')el.checked=!!d[k];else el.value=d[k]??DEFAULTS[k]??''})}
 function cur(){return store.sheets[store.current]}
-function newSheet(data){flushSave();const id=uid();store.sheets[id]={data:data||{'p.tanggal':todayISO()},updated:Date.now()};store.current=id;return id}
+function tkDefaults(){const d={};GROUPS.flatMap(g=>g.rows).filter(r=>r[3]==='tk').forEach(([id],i)=>{if(TK_FAV[i])d[`g.${id}.nama`]=TK_FAV[i]});return d}
+function newSheet(data){flushSave();const id=uid();store.sheets[id]={data:data||{'p.tanggal':todayISO(),...tkDefaults()},updated:Date.now()};store.current=id;dirty.add(id);if(typeof auditSnap==='function')auditSnap(id,'lembar dibuat');return id}
 function fmtDate(iso){if(!iso)return'';const[y,m,d]=iso.split('-');return`${d}/${m}/${y}`}
 function label(s){const d=s.data;return`${d['p.bed']?'Bed '+d['p.bed']+' · ':''}${d['p.nama']||'Tanpa nama'} · ${fmtDate(d['p.tanggal'])||'tanpa tanggal'}`}
 function renderSel(){const ids=Object.keys(store.sheets).sort((a,b)=>(store.sheets[b].data['p.tanggal']||'').localeCompare(store.sheets[a].data['p.tanggal']||'')||store.sheets[b].updated-store.sheets[a].updated);
- $('#sheetSel').innerHTML=ids.map(id=>`<option value="${id}" ${id===store.current?'selected':''}>${esc(label(store.sheets[id]))}</option>`).join('')}
-function load(id){flushSave();mergeLatest();store.current=id;apply(cur().data);recalc();renderSel();persist()}
+ $('#sheetSel').innerHTML=ids.map(id=>`<option value="${id}" ${id===store.current?'selected':''}>${store.sheets[id].cetak?'🖨 ':''}${esc(label(store.sheets[id]))}</option>`).join('')}
+function load(id){flushSave();mergeLatest();store.current=id;apply(cur().data);recalc();renderSel();persist();if(typeof renderCetak==='function')renderCetak();if(typeof cekLembar==='function')cekLembar(id)}
 let saveT=0;
-function saveNow(){saveT=0;const s=cur();s.data=collect();s.updated=Date.now();persist();renderSel()}
+function saveNow(){saveT=0;const s=cur(),nw=collect();if(typeof AUTH!=='undefined'&&AUTH.user)new Set([...Object.keys(s.data||{}),...Object.keys(nw)]).forEach(k=>{if(!bolehIsi(k)&&String(nw[k]??'')!==String((s.data||{})[k]??'')){if(s.data&&k in s.data)nw[k]=s.data[k];else delete nw[k];const el=document.querySelector(`[data-k="${CSS.escape(k)}"]`);if(el){if(el.type==='checkbox')el.checked=!!nw[k];else el.value=nw[k]??''}}});auditDiff(store.current,s.data||{},nw);s.data=nw;s.updated=Date.now();persist();renderSel()}
 function flushSave(){if(saveT){clearTimeout(saveT);saveNow()}}
 function onEdit(){recalc();clearTimeout(saveT);saveT=setTimeout(saveNow,350)}
-// Tab lain menyimpan: ambil lembar baru/berubah, buang yang dihapus di sana.
-addEventListener('storage',e=>{if(e.key!==KEY)return;const s=readStore();if(!s)return;
- Object.keys(store.sheets).forEach(id=>{if(!s.sheets[id]&&id!==store.current)delete store.sheets[id]});
- const curChanged=mergeLatest();
- if(curChanged){if(saveT)setStatus('Lembar ini juga sedang diedit di tab lain — tutup salah satu tab');else{apply(cur().data);recalc();setStatus('Lembar ini diperbarui dari tab lain')}}
- renderSel()});
 document.addEventListener('input',e=>{if(e.target.closest('.sheet'))onEdit()});
 document.addEventListener('change',e=>{if(e.target.closest('.sheet'))onEdit()});
+
+/* ---------- tindakan keperawatan: baris terbuka setelah dipilih ---------- */
+const TK_IDS=GROUPS.flatMap(g=>g.rows).filter(r=>r[3]==='tk').map(r=>r[0]);
+const tkNama=id=>val(`g.${id}.nama`).trim();
+const tkIsi=id=>$$(`[data-k^="g.${id}."]`).some(e=>e.dataset.k!==`g.${id}.nama`&&(e.type==='checkbox'?e.checked:e.value));
+// Layar: hanya baris yang sudah dipilih. Cetak: ditambah 3 baris kosong (8 bila belum ada pilihan) untuk tulisan tangan.
+function syncTk(){const act=document.activeElement,cetak=document.body.classList.contains('printing');
+ const dipilih=TK_IDS.filter(id=>tkNama(id));let extra=cetak?(dipilih.length?3:8):0;
+ TK_IDS.forEach(id=>{const r=document.querySelector(`.tkr[data-tk="${id}"]`);if(!r)return;let on=!!tkNama(id)||tkIsi(id)||r.contains(act);if(!on&&extra>0){on=true;extra--}r.classList.toggle('tkoff',!on)});
+ const ada=new Set(dipilih.map(id=>tkNama(id).toLowerCase()));
+ $$('.tkc[data-t]').forEach(b=>{const on=ada.has(b.dataset.t.toLowerCase());b.classList.toggle('on',on);b.disabled=on;b.title=on?'Sudah dipilih':'Tambah baris ini'});
+ const sisa=TK_IDS.length-dipilih.length;$('#tkInfo').textContent=sisa?`${dipilih.length} tindakan · sisa ${sisa} baris`:`penuh (${TK_IDS.length} baris)`}
+function tkTambah(t){t=String(t||'').trim();if(!t)return;
+ if(TK_IDS.some(id=>tkNama(id).toLowerCase()===t.toLowerCase())){setStatus(`"${t}" sudah ada`);return}
+ const id=TK_IDS.find(id=>!tkNama(id)&&!tkIsi(id));if(!id){setStatus(`Baris tindakan penuh (${TK_IDS.length})`);return}
+ $$(`[data-k^="g.${id}."]`).forEach(e=>{if(e.type==='checkbox')e.checked=false;else e.value=''});
+ document.querySelector(`[data-k="g.${id}.nama"]`).value=t;syncTk();onEdit()}
+function tkTutup(id){
+ if(tkIsi(id)&&!confirm(`Tutup baris "${tkNama(id)}"? Centang & paraf di baris ini ikut terhapus.`))return;
+ $$(`[data-k^="g.${id}."]`).forEach(e=>{if(e.type==='checkbox')e.checked=false;else e.value=''});
+ document.activeElement.blur();syncTk();onEdit()}
+$('#tkOpen').onclick=()=>{const p=$('#tkPanel'),buka=p.hidden;p.hidden=!buka;$('#tkOpen').setAttribute('aria-expanded',buka)};
+$('#tkPanel').addEventListener('click',e=>{const b=e.target.closest('.tkc[data-t]');if(b&&!b.disabled)tkTambah(b.dataset.t)});
+$('#tkBebasOk').onclick=()=>{tkTambah($('#tkBebas').value);$('#tkBebas').value=''};
+$('#tkBebas').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('#tkBebasOk').click()}});
+$('#tkCari').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tkTambah(e.target.value);e.target.value=''}});
+$('#tkCari').addEventListener('change',e=>{if(TK_LIST.includes(e.target.value)){tkTambah(e.target.value);e.target.value=''}});
+$('#hourgrid').addEventListener('click',e=>{const x=e.target.closest('.tkx');if(x)tkTutup(x.closest('.tkr').dataset.tk)});
+document.addEventListener('focusout',e=>{if(e.target.closest&&e.target.closest('.tkr'))setTimeout(syncTk,0)});
+
+/* ---------- log eskalasi: isi sisa tinggi kolom dengan baris, bukan baris yang melar ---------- */
+function fitEsc(){const log=$('#escLog');if(!log)return;const cells=$$('#escLog .er'),has=new Set();
+ cells.forEach(c=>{if(c.querySelector('input').value)has.add(+c.dataset.r)});
+ const show=n=>{cells.forEach(c=>c.classList.toggle('xr',!(+c.dataset.r<n||has.has(+c.dataset.r))))};
+ show(ESK_MIN);
+ if(getComputedStyle(log).flexGrow!=='1')return; // cetak / layar sangat lebar: 8 baris
+ const last=cells.filter(c=>!c.classList.contains('xr')).pop();if(!last)return;
+ const rh=last.offsetHeight||27,free=log.getBoundingClientRect().bottom-last.getBoundingClientRect().bottom;
+ if(free>=rh)show(ESK_MIN+Math.min(ESK_MAX-ESK_MIN,Math.floor(free/rh)))}
+addEventListener('resize',()=>requestAnimationFrame(fitEsc));
+new ResizeObserver(()=>requestAnimationFrame(fitEsc)).observe($('#side'));
+
+/* ---------- peta luka ---------- */
+// luka.map = "1:45.2,60.1;2:..." (koordinat viewBox). Nomor titik = nomor baris tabel.
+const lukaPts=()=>{const m={};(val('luka.map')||'').split(';').forEach(s=>{const r=s.match(/^(\d+):([\d.]+),([\d.]+)$/);if(r)m[r[1]]=[+r[2],+r[3]]});return m};
+function lukaSet(m){const el=document.querySelector('[data-k="luka.map"]');el.value=Object.keys(m).sort((a,b)=>a-b).map(n=>`${n}:${m[n][0]},${m[n][1]}`).join(';');onEdit()}
+function renderLuka(){const g=$('#lukaPts');if(!g)return;const m=lukaPts();
+ g.innerHTML=Object.keys(m).map(n=>`<g class="lk-pt" data-n="${n}"><circle cx="${m[n][0]}" cy="${m[n][1]}" r="5.5"><title>Luka ${n} · klik untuk menghapus</title></circle><text x="${m[n][0]}" y="${m[n][1]+2.4}">${n}</text></g>`).join('');
+ $$('.lukat .lk-no').forEach((e,i)=>e.classList.toggle('on',!!m[i+1]))}
+// Perkiraan lokasi dari posisi klik; hanya mengisi kolom Lokasi yang masih kosong.
+function lukaLokasi(x,y){const back=x>120,dx=x-(back?180:60),sisi=(back?dx>0:dx<0)?'ka':'ki';
+ if(y<34)return back?'Oksiput':'Wajah / kepala';
+ if(y<40)return back?'Tengkuk':'Leher';
+ if(Math.abs(dx)>18&&y<96)return`Lengan ${sisi}`;
+ if(y<66)return back?'Punggung atas':'Dada';
+ if(y<88)return back?'Punggung bawah':'Perut';
+ if(y<100)return back?'Sakrum / bokong':'Lipat paha / perineum';
+ if(y>=132)return back?`Tumit ${sisi}`:`Kaki ${sisi}`;
+ return`Tungkai ${sisi}`}
+$('#lukaSvg').addEventListener('click',e=>{const m=lukaPts(),pt=e.target.closest('.lk-pt');
+ if(pt){delete m[pt.dataset.n];lukaSet(m);return}
+ const n=Array.from({length:LUKA_N},(_,i)=>String(i+1)).find(i=>!m[i]);if(!n){setStatus(`Maksimal ${LUKA_N} titik luka`);return}
+ const svg=e.currentTarget,p=new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse()),x=r1(p.x),y=r1(p.y);
+ m[n]=[x,y];const lok=document.querySelector(`[data-k="luka.${n}.lok"]`);if(lok&&!lok.value)lok.value=lukaLokasi(x,y);lukaSet(m)});
 
 /* ---------- calculations ---------- */
 const val=k=>{const el=document.querySelector(`[data-k="${k}"]`);return el?el.value:''};
@@ -629,6 +959,7 @@ const setO=(id,v,neg)=>{const o=document.getElementById(id);if(!o)return;o.textC
 function days(a,b){return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/864e5)}
 function umur(lahir,tgl){if(!lahir||!tgl)return null;const a=new Date(lahir+'T00:00:00'),b=new Date(tgl+'T00:00:00');if(b<a)return null;let m=(b.getFullYear()-a.getFullYear())*12+b.getMonth()-a.getMonth();if(b.getDate()<a.getDate())m--;const th=Math.floor(m/12);return{th,bl:m%12,hr:days(lahir,tgl)}}
 function recalc(){
+ renderLuka();syncTk();requestAnimationFrame(fitEsc);
  // Tiap DPJP bisa memilih BB aktual atau BB ideal: bb = dasar IWL/diuresis/balance per kg, bbK = dasar kebutuhan.
  const wj=n=>n>=.3&&n<=150?n:NaN,tgl=val('p.tanggal'),bba=wj(num(val('p.bb'))),bbi0=wj(num(val('k.bbi'))),pickBB=k=>val(k)==='bbi'?bbi0:bba,bb=pickBB('k.dasarkg'),bbK=pickBB('k.dasar'),nmK=val('k.dasar')==='bbi'?'BB ideal':'BB aktual';
  // umur & hari rawat
@@ -705,11 +1036,11 @@ function recalc(){
  setO('bl-diu-4',T.any&&bb>0&&T.h>0?r1(T.urin/bb/T.h):'');
  {const v=b24/bb/T.h;setO('bl-bkg-4',T.any&&bb>0&&T.h>0?(v>0?'+':'')+v.toFixed(2):'',v<0)}
  setO('bl-kum-4',T.any||!isNaN(k0)?sgn(kum):'',kum<0);
- colorize(u);cekAlergi();cekVerif();cekWajar();renderStrip(u);
+ colorize(u);cekJadwal();cekTransf();cekAlergi();cekVerif();cekWajar();renderStrip(u);
  markNow(tgl);drawChart();
 }
 
-/* ---------- zona warna & PEWS ---------- */
+/* ---------- zona warna & PAT ---------- */
 // Pengaturan dari localStorage dicocokkan dengan bentuk ZDEF: hanya angka/teks di posisi yang benar yang diterima.
 function cleanZ(z){const fit=(d,v)=>Array.isArray(d)?(Array.isArray(v)&&v.length===d.length?d.map((x,i)=>fit(x,v[i])):d):typeof d==='number'?(typeof v==='number'&&isFinite(v)?v:d):(typeof v==='string'?v:d);
  const out=JSON.parse(JSON.stringify(ZDEF));if(z&&typeof z==='object')Object.keys(out).forEach(k=>out[k]=fit(out[k],z[k]));return out}
@@ -718,22 +1049,10 @@ try{Z=cleanZ(JSON.parse(localStorage.getItem(KEY+'-zona')))}catch(e){}
 let band=-1;
 function bandOf(u){if(!u)return-1;const m=u.th*12+u.bl;return BANDS.findIndex(([,a,b])=>m>=a&&m<b)}
 function zRange(v,[lo,hi]){if(isNaN(v))return'';const p=Z.pct/100;if(v<lo*(1-p)||v>hi*(1+p))return'r';if(v<lo||v>hi)return'y';return''}
-function pewsLevel(score,parts){if(isNaN(score))return 0;const[t1,t2,t3]=Z.pews;if(score>=t3||(parts&&parts.some(x=>x===3)))return 3;if(score>=t2)return 2;if(score>=t1)return 1;return 0}
-const pewsParts=i=>{const s=val(`g.pewsd.${i}`);return s?s.split(',').map(Number):null};
-// Skor minimal kardio & respirasi dari angka TTV. Warna kulit, retraksi & perilaku tidak terbaca dari angka:
-// tetap dinilai perawat, jadi hasil ini hanya batas bawah.
-function pewsAuto(i){
- const why={c:[],r:[]};let c=null,r=null;const up=(k,s,t)=>{if(k==='c'){if(c===null||s>c)c=s}else if(r===null||s>r)r=s;if(s>0)why[k].push(t)};
- const crt=num(val(`g.crt.${i}`));if(!isNaN(crt))up('c',crt>=5?3:crt>=4?2:crt>=3?1:0,`CRT ${crt} dtk`);
- const hr=num(val(`g.nadi.${i}`)),rr=num(val(`g.rr.${i}`));
- if(band>=0){const[lo,hi]=Z.hr[band];
-  if(!isNaN(hr))up('c',hr<lo?3:hr>=hi+30?3:hr>=hi+20?2:0,hr<lo?`nadi ${hr} bradikardia (<${lo})`:`nadi ${hr} (+${hr-hi} di atas normal)`);
-  const[rlo,rhi]=Z.rr[band];
-  if(!isNaN(rr)){up('r',rr>rhi+20?2:rr>rhi+10?1:0,`napas ${rr} (+${rr-rhi} di atas normal)`);if(rr<=rlo-5)why.r.push(`napas ${rr} ≥5 di bawah normal: nilai 3 bila ada retraksi / grunting`)}}
- const f=num(val(`g.fio2.${i}`));
- if(!isNaN(f))f<=15?up('r',f>=8?3:f>=6?2:f>=3?1:0,`O₂ ${f} lpm`):up('r',f>=50?3:f>=40?2:f>=30?1:0,`FiO₂ ${f}%`);
- return c===null&&r===null?null:{c,r,why,min:(c||0)+(r||0)};
-}
+// PAT tersimpan sebagai "0,1,0" (penampilan, napas, sirkulasi; 1 = abnormal). Level: 1 sisi abnormal = oranye, ≥2 = merah.
+const patParts=i=>{const s=val(`g.patd.${i}`);return s?s.split(',').map(Number):null};
+const patLevel=p=>{if(!p)return 0;const n=p.filter(x=>x===1).length;return n>=2?3:n===1?2:0};
+const patKesan=p=>PAT_KESAN[p.join('')];
 function colorize(u){
  band=bandOf(u);
  const setZ=(row,i,z)=>{const c=document.querySelector(`[data-k="g.${row}.${i}"]`).parentNode;c.classList.remove('z-y','z-o','z-r');if(z)c.classList.add('z-'+z)};
@@ -748,22 +1067,57 @@ function colorize(u){
   const sp=num(val(`g.spo2.${i}`));setZ('spo2',i,isNaN(sp)?'':!isNaN(tLo)?(sp<tLo-5?'r':sp<tLo||(!isNaN(tHi)&&sp>tHi)?'y':''):sp<Z.spo2[1]?'r':sp<Z.spo2[0]?'y':'');
   const t=num(val(`g.suhu.${i}`));setZ('suhu',i,isNaN(t)?'':(t<Z.suhu[2]||t>=Z.suhu[3])?'r':(t<Z.suhu[0]||t>=Z.suhu[1])?'y':'');
   const c=num(val(`g.crt.${i}`));setZ('crt',i,isNaN(c)?'':c>Z.crt[1]?'r':c>Z.crt[0]?'y':'');
-  const lv=pewsLevel(num(val(`g.pews.${i}`)),pewsParts(i));setZ('pews',i,['','y','o','r'][lv]);
-  const pa=pewsAuto(i),pc=document.querySelector(`[data-k="g.pews.${i}"]`);pc.placeholder=pa?`≥${pa.min}`:'';pc.title=pa&&!pc.value?`Skor minimal dari TTV ${pa.min}. Klik untuk menilai PEWS lengkap.`:'';
+  const pp=patParts(i);setZ('pat',i,['','y','o','r'][patLevel(pp)]);
+  document.querySelector(`[data-k="g.pat.${i}"]`).title=pp?patKesan(pp)[1]:'Klik untuk menilai PAT';
  }
  const sw=c=>`<span class="sw" style="background:${c}"></span>`;
  $('#zinfo').innerHTML=band>=0
-  ?`<b>Zona warna (usia ${BANDS[band][0]}):</b> Nadi ${Z.hr[band].join('–')} · Napas ${Z.rr[band].join('–')} · TD sistol ${Z.sbp[band].join('–')} · SpO₂ ${!isNaN(tLo)?`target pasien ${tLo}${!isNaN(tHi)?'–'+tHi:''}%`:'≥ '+Z.spo2[0]+'%'} &nbsp; ${sw('#FFE7A0')}di luar normal ${sw('#FFB8AE')}>${Z.pct}% di luar normal / bahaya · PEWS ${sw('#FFE7A0')}≥${Z.pews[0]} ${sw('#FFC98A')}≥${Z.pews[1]} ${sw('#FFB8AE')}≥${Z.pews[2]}`
-  :`<b>Zona warna:</b> isi tanggal lahir supaya nadi, napas & TD diwarnai sesuai usia. SpO₂, suhu, CRT & PEWS tetap diwarnai.`;
- // banner: PEWS jam terakhir yang terisi
- let last=-1;for(let i=23;i>=0;i--)if(val(`g.pews.${i}`)!==''){last=i;break}
- const bar=$('#alertbar');
- if(last>=0){const sc=num(val(`g.pews.${last}`)),lv=pewsLevel(sc,pewsParts(last));
-  if(lv>0){bar.hidden=false;bar.className='alertbar l'+lv;bar.innerHTML=`PEWS ${sc} pada jam ${String(HOURS[last]).padStart(2,'0')}.00 → ${esc(Z.esc[lv-1])}. <a href="#eskalasi">Catat di tabel eskalasi</a>`}else bar.hidden=true}
- else bar.hidden=true;
+  ?`<b>Zona warna (usia ${BANDS[band][0]}):</b> Nadi ${Z.hr[band].join('–')} · Napas ${Z.rr[band].join('–')} · TD sistol ${Z.sbp[band].join('–')} · SpO₂ ${!isNaN(tLo)?`target pasien ${tLo}${!isNaN(tHi)?'–'+tHi:''}%`:'≥ '+Z.spo2[0]+'%'} &nbsp; ${sw('#FFE7A0')}di luar normal ${sw('#FFB8AE')}>${Z.pct}% di luar normal / bahaya · PAT ${sw('#FFC98A')}1 sisi abnormal ${sw('#FFB8AE')}≥2 sisi abnormal`
+  :`<b>Zona warna:</b> isi tanggal lahir supaya nadi, napas & TD diwarnai sesuai usia. SpO₂, suhu, CRT & PAT tetap diwarnai.`;
+ // banner: jam terakhir yang punya TTV / PAT — muncul bila ada TTV zona merah atau PAT abnormal
+ const TTV=[['nadi','Nadi'],['td','TD'],['rr','Napas'],['spo2','SpO₂'],['suhu','Suhu'],['crt','CRT']];
+ let last=-1;for(let i=23;i>=0;i--)if(val(`g.pat.${i}`)!==''||TTV.some(([k])=>val(`g.${k}.${i}`)!=='')){last=i;break}
+ const bar=$('#alertbar');bar.hidden=true;
+ if(last>=0){
+  const red=TTV.filter(([k])=>document.querySelector(`[data-k="g.${k}.${last}"]`).parentNode.classList.contains('z-r')).map(([k,l])=>`${l} ${esc(val(`g.${k}.${last}`))}`);
+  const pp=patParts(last),plv=patLevel(pp),lv=Math.max(plv,red.length?3:0);
+  if(lv){const why=[plv?`PAT ${esc(patKesan(pp)[1])}`:'',red.length?`TTV merah: ${red.join(', ')}`:''].filter(Boolean).join(' · ');
+   bar.hidden=false;bar.className='alertbar l'+lv;bar.innerHTML=`Jam ${String(HOURS[last]).padStart(2,'0')}.00 — ${why} → ${esc(Z.esc[lv-1])}. <a href="#eskalasi">Catat di tabel eskalasi</a>`}}
+}
+/* ---------- jadwal obat dari frekuensi ---------- */
+// Jam pemberian standar per frekuensi sehari (24 = jam 00). Bisa ditimpa dengan menulis "jam 06-14-22" di nama obat.
+const JADWAL={1:[8],2:[8,20],3:[8,16,24],4:[6,12,18,24],6:[8,12,16,20,24,4]};
+const OBROWS=GROUPS.flatMap(g=>g.rows.filter(r=>r[3]==='freeroute').map(r=>r[0]));
+function jadwalObat(nm){
+ const s=String(nm).toLowerCase();if(!s.trim()||/k\s*\/\s*p|\bprn\b|bila perlu|jika perlu|\bstat\b|ekstra|extra/.test(s))return[];
+ // "tiap 8 jam" bukan daftar jam: buang dulu sebelum mencari "jam 06-14-22"
+ let hrs=null;const j=s.replace(/(?:tiap|setiap|\/|\bq)\s*\d{1,2}\s*(?:jam|j\b|h\b)/g,' ').match(/\bjam\s*(\d{1,2}(?:\s*[-.,\/ ]\s*\d{1,2})*)/);
+ const jl=j?j[1].split(/[^\d]+/).map(Number):[];
+ if(jl.length&&jl.every(h=>h>=0&&h<=24))hrs=jl;
+ else{let f=0;const q=s.match(/(?:tiap|setiap|\/|\bq)\s*(\d{1,2})\s*(?:jam|j\b|h\b)/),x=s.match(/(?:^|[^\d.,])(\d{1,2})\s*[x×]/);
+  if(q&&+q[1]>0&&+q[1]<=24)f=Math.round(24/+q[1]);else if(x&&+x[1]>0&&+x[1]<=12)f=+x[1];
+  if(f)hrs=JADWAL[f]||Array.from({length:f},(_,k)=>Math.round(8+k*24/f))}
+ return hrs?[...new Set(hrs.map(h=>HOURS.indexOf(h%24)))]:[];
+}
+function cekJadwal(){
+ OBROWS.forEach(id=>{const cols=jadwalObat(val(`g.${id}.nama`));
+  for(let i=0;i<24;i++){const ok=document.querySelector(`[data-k="g.${id}.${i}.v"]`),c=ok.parentNode,on=cols.includes(i);
+   c.classList.toggle('jdw',on);c.classList.toggle('nopar',ok.checked&&!val(`g.${id}.${i}`).trim());
+   c.querySelector('input:not(.ok)').placeholder=on?'paraf':'';c.title=on?'Jadwal pemberian: centang bila sudah diberikan, isi inisial perawat':''}});
+}
+// Dicentang → langsung ke kolom paraf / no. labu.
+$('#hourgrid').addEventListener('change',e=>{if(e.target.classList.contains('ok')&&e.target.checked){const t=e.target.nextElementSibling;if(t&&!t.value)t.focus()}});
+/* ---------- transfusi: jenis + no. labu di label; di jam masuk: centang + cc ---------- */
+// cc diisi = transfusi masuk jam itu: ikut intake & otomatis tercentang.
+function cekTransf(){
+ TRANSF.forEach(r=>{const jenis=val(`g.${r}.nama`),labu=val(`g.${r}.labu`);
+  for(let i=0;i<24;i++){const ok=document.querySelector(`[data-k="g.${r}.${i}.v"]`),c=ok.parentNode,cc=val(`g.${r}.${i}`).trim();
+   if(cc&&!ok.checked)ok.checked=true;
+   c.classList.toggle('jdw',ok.checked);c.classList.toggle('nopar',ok.checked&&!cc);
+   c.title=ok.checked?`${jenis||'Transfusi'}${labu?' · labu '+labu:''} · ${cc?cc+' cc':'cc belum diisi'}`:'Klik sel, centang di jam transfusi masuk, isi cc'}});
 }
 /* ---------- cek alergi & verifikasi obat salinan ---------- */
-const MEDROWS=GROUPS.flatMap(g=>g.rows.filter(r=>r[3]==='freeroute'||r[3]==='name').map(r=>r[0]));
+const MEDROWS=GROUPS.flatMap(g=>g.rows.filter(r=>r[3]==='freeroute'||r[3]==='name'||r[3]==='transf').map(r=>r[0]));
 // Samakan ejaan Inggris/Indonesia: ceftriaxone → seftriakson, ampicillin → ampisilin.
 const normObat=s=>String(s).toLowerCase().replace(/ph/g,'f').replace(/x/g,'ks').replace(/c(?=[eiy])/g,'s').replace(/c/g,'k').replace(/y/g,'i').replace(/([a-z])\1+/g,'$1').replace(/e\b/g,'');
 const ALG_STOP=new Set(['tidak','ada','alergi','obat','makanan','ruam','gatal','sesak','bengkak','merah','kemerahan','riwayat','disangkal','belum','diketahui','nihil','dengan','atau','berat','ringan','reaksi','syok','urtikaria','napas','kulit']);
@@ -821,24 +1175,26 @@ const clearBBcek=()=>{const h=document.querySelector('[data-k="p.bbcek"]');if(h.
 $('#bbk').addEventListener('click',e=>{e.preventDefault();clearBBcek()});
 document.querySelector('[data-k="p.bb"]').addEventListener('change',clearBBcek);
 function renderEscGuide(){
- const[t1,t2,t3]=Z.pews;
- $('#escGuide').innerHTML=[[`0–${t1-1}`,'Observasi rutin sesuai jadwal'],[`${t1}`+(t2-t1>1?`–${t2-1}`:''),Z.esc[0]],[`${t2}`+(t3-t2>1?`–${t3-1}`:''),Z.esc[1]],[`≥ ${t3} atau skor 3 di satu kategori`,Z.esc[2]]].map(([a,b],i)=>`<div class="lv" style="background:${['#fff','#FFE7A0','#FFC98A','#FFB8AE'][i]}">PEWS ${a}</div><div>${esc(b)}</div>`).join('');
+ const bg=['#fff','#FFE7A0','#FFC98A','#FFB8AE'],code=k=>PAT_K.map(([,,s],j)=>k[j]==='1'?s:'').filter(Boolean).join(' + ');
+ // urutan tetap (Object.entries mengurutkan kunci angka seperti '100' lebih dulu)
+ const pat=['000','100','010','001','110','101','011','111'].map(k=>{const[c,t]=PAT_KESAN[k];const lv=patLevel(k.split('').map(Number));return`<div class="lv" style="background:${bg[lv]}">${k==='000'?'PAT normal':code(k)}</div><div><b>${esc(t)}</b>${k==='000'?'':` (“${esc(c)}”)`}${lv?' → '+esc(Z.esc[lv-1]):' → observasi rutin sesuai jadwal'}</div>`}).join('');
+ $('#escGuide').innerHTML=pat+`<div class="lv" style="background:${bg[1]}">TTV kuning</div><div>${esc(Z.esc[0])}</div><div class="lv" style="background:${bg[3]}">TTV merah</div><div>${esc(Z.esc[2])}</div>`;
 }
 // Pengaturan zona berlaku untuk semua pasien: dikunci, dibuka dengan nama, setiap perubahan dicatat.
 let zBy=null;
 const ZLABEL={pct:'Batas merah (% di luar normal)','spo2.0':'SpO₂ kuning <','spo2.1':'SpO₂ merah <','suhu.0':'Suhu kuning <','suhu.1':'Suhu kuning ≥','suhu.2':'Suhu merah <','suhu.3':'Suhu merah ≥',
- 'crt.0':'CRT kuning >','crt.1':'CRT merah >','pews.0':'PEWS kuning ≥','pews.1':'PEWS oranye ≥','pews.2':'PEWS merah ≥','esc.0':'Teks eskalasi kuning','esc.1':'Teks eskalasi oranye','esc.2':'Teks eskalasi merah'};
+ 'crt.0':'CRT kuning >','crt.1':'CRT merah >','esc.0':'Teks eskalasi kuning','esc.1':'Teks eskalasi oranye','esc.2':'Teks eskalasi merah'};
 const ZLOG=KEY+'-zona-log';
 const zLog=()=>{try{return JSON.parse(localStorage.getItem(ZLOG))||[]}catch(e){return[]}};
-function addZLog(k,a,b){const l=zLog();l.unshift({t:Date.now(),n:zBy,k,a,b});try{localStorage.setItem(ZLOG,JSON.stringify(l.slice(0,200)))}catch(e){}}
+function addZLog(k,a,b){if(typeof auditPush==='function')auditPush([{s:'',k:'zona.'+k,o:a,n:b}]);const l=zLog();l.unshift({t:Date.now(),n:zBy,k,a,b});try{localStorage.setItem(ZLOG,JSON.stringify(l.slice(0,200)))}catch(e){}}
 function renderZLog(){const lg=zLog().slice(0,8),fmt=t=>new Date(t).toLocaleString('id-ID',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
  $('#zlog').innerHTML=`<b>Riwayat perubahan</b>${lg.length?lg.map(x=>`<div>${fmt(x.t)} · ${esc(x.n)} · ${esc(x.k)}: ${esc(x.a)} → ${esc(x.b)}</div>`).join(''):'<div>Belum ada perubahan.</div>'}`}
 function renderSettings(){
  const row=(k,l)=>`<tr><th style="text-align:left">${l}</th>${BANDS.map((b,i)=>`<td><input data-z="${k}.${i}.0" value="${Z[k][i][0]}" inputmode="decimal" aria-label="${l} ${b[0]} batas bawah"> – <input data-z="${k}.${i}.1" value="${Z[k][i][1]}" inputmode="decimal" aria-label="${l} ${b[0]} batas atas"></td>`).join('')}</tr>`;
  const lock=zBy?`<div class="zlock on">🔓 Dibuka oleh <b>${esc(zBy)}</b> — setiap perubahan dicatat dan berlaku untuk semua pasien di browser ini. <button type="button" id="zClose">Kunci lagi</button></div>`
-  :`<div class="zlock">🔒 Terkunci. Perubahan berlaku untuk semua pasien di browser ini dan dicatat. <input id="zNama" class="wide" style="width:220px" placeholder="Nama / NIP yang mengubah"> <button type="button" id="zOpen">Buka kunci</button> <span id="zHint"></span></div>`;
+  :`<div class="zlock">🔒 Terkunci. Perubahan berlaku untuk semua pasien di browser ini dan dicatat. <input id="zNama" class="wide" style="width:220px" placeholder="Nama / NIP yang mengubah" value="${esc(typeof AUTH!=='undefined'&&AUTH&&AUTH.user?AUTH.user.nama:'')}"> <button type="button" id="zOpen">Buka kunci</button> <span id="zHint"></span></div>`;
  $('#sbody').innerHTML=lock+`
- <p class="warnnote">Angka bawaan adalah contoh dari tabel nilai normal APLS dan PEWS format Brighton. Cocokkan dengan acuan &amp; SPO PICU RSSA sebelum dipakai. Pengaturan tersimpan di browser ini.</p>
+ <p class="warnnote">Angka bawaan adalah contoh dari tabel nilai normal APLS; interpretasi PAT mengikuti PALS / AAP. Cocokkan dengan acuan &amp; SPO PICU RSSA sebelum dipakai. Pengaturan tersimpan di browser ini.</p>
  <table><tr><th>Batas normal</th>${BANDS.map(b=>`<th>${b[0]}</th>`).join('')}</tr>${row('hr','Nadi (x/mnt)')}${row('rr','Napas (x/mnt)')}${row('sbp','TD sistol (mmHg)')}</table>
  <div class="fld">
   <label>Merah bila lebih dari <input data-z="pct" value="${Z.pct}"> % di luar batas normal</label>
@@ -848,10 +1204,10 @@ function renderSettings(){
   <label>CRT: kuning &gt; <input data-z="crt.0" value="${Z.crt[0]}"> · merah &gt; <input data-z="crt.1" value="${Z.crt[1]}"> detik</label>
  </div>
  <div class="fld">
-  <label>PEWS kuning ≥ <input data-z="pews.0" value="${Z.pews[0]}"> oranye ≥ <input data-z="pews.1" value="${Z.pews[1]}"> merah ≥ <input data-z="pews.2" value="${Z.pews[2]}"></label>
-  <label>Kuning: <input class="wide" data-z="esc.0" value="${esc(Z.esc[0])}"></label>
-  <label>Oranye: <input class="wide" data-z="esc.1" value="${esc(Z.esc[1])}"></label>
-  <label>Merah: <input class="wide" data-z="esc.2" value="${esc(Z.esc[2])}"></label>
+  <b>Teks eskalasi</b>
+  <label>Kuning (TTV kuning): <input class="wide" data-z="esc.0" value="${esc(Z.esc[0])}"></label>
+  <label>Oranye (PAT 1 sisi abnormal): <input class="wide" data-z="esc.1" value="${esc(Z.esc[1])}"></label>
+  <label>Merah (TTV merah / PAT ≥2 sisi): <input class="wide" data-z="esc.2" value="${esc(Z.esc[2])}"></label>
   <span><button type="button" id="zReset">Kembalikan angka bawaan</button></span>
  </div><div class="zlog" id="zlog"></div>`;renderZLog();
  $$('#sbody [data-z],#zReset').forEach(e=>e.disabled=!zBy);
@@ -867,39 +1223,37 @@ $('#settings').addEventListener('toggle',()=>{if(!$('#settings').open&&zBy){zBy=
 $('#sbody').addEventListener('input',e=>{const k=e.target.dataset.z;if(!k||!zBy)return;const p=k.split('.');const v=p[0]==='esc'?e.target.value:num(e.target.value);if(p[0]!=='esc'&&isNaN(v))return;
  if(p.length===1)Z[p[0]]=v;else if(p.length===2)Z[p[0]][+p[1]]=v;else Z[p[0]][+p[1]][+p[2]]=v;saveZ()});
 
-/* PEWS popover */
+/* PAT popover */
 let popCol=-1;
-function openPews(i,anchor){
- popCol=i;const pa=pewsAuto(i),saved=pewsParts(i),parts=saved||[null,pa?pa.c:null,pa?pa.r:null,0];const h=String(HOURS[i]).padStart(2,'0');
- const sug=pa?[null,pa.c,pa.r]:[];
- const autoTxt=pa?`<div class="auto"><b>Otomatis dari TTV${saved?' (skor tersimpan tidak diubah)':''}:</b> Kardio ≥ ${pa.c??'–'}${pa.why.c.length?' ('+pa.why.c.map(esc).join(', ')+')':''} · Respirasi ≥ ${pa.r??'–'}${pa.why.r.length?' ('+pa.why.r.map(esc).join(', ')+')':''}. Warna kulit, retraksi &amp; perilaku tetap dinilai perawat — naikkan bila perlu.${band<0?' <i>Isi tgl lahir supaya nadi &amp; napas ikut dinilai.</i>':''}</div>`:'';
- const ref=['nadi','rr','crt','spo2','fio2'].map(k=>[k,val(`g.${k}.${i}`)]).filter(([,v])=>v).map(([k,v])=>`${{nadi:'Nadi',rr:'Napas',crt:'CRT',spo2:'SpO₂',fio2:'FiO₂/O₂'}[k]} ${esc(v)}`).join(' · ');
- const pop=$('#pewsPop');
- pop.innerHTML=`<header><span>PEWS jam ${h}.00</span><button type="button" data-x="close" aria-label="Tutup" style="background:none;border:0;color:#fff;font-size:18px">×</button></header>
- <div class="ref">${ref||'Belum ada tanda vital jam ini.'}${band>=0?` · Normal usia ${BANDS[band][0]}: nadi ${Z.hr[band].join('–')}, napas ${Z.rr[band].join('–')}`:''}</div>${autoTxt}
- ${PEWS_CAT.map(([k,l,o],ci)=>`<fieldset><legend>${l}</legend>${o.map((t,s)=>`<label${sug[ci]===s?' class="sug" title="Saran dari TTV"':''}><input type="radio" name="pw-${k}" value="${s}" ${parts[ci]===s?'checked':''}><b>${s}</b><span>${esc(t)}</span></label>`).join('')}</fieldset>`).join('')}
- <fieldset><label><input type="checkbox" id="pw-x" ${parts[3]?'checked':''}><span>${PEWS_X}</span></label></fieldset>
- <div class="foot2"><span class="tot" id="pw-tot"></span><button type="button" data-x="clear">Kosongkan</button><button type="button" class="ok" data-x="save">Simpan</button></div>`;
+function openPat(i,anchor){
+ if(!bolehIsi(`g.pat.${i}`)){setStatus('PAT diisi perawat');return}
+ popCol=i;const parts=patParts(i)||[null,null,null],h=String(HOURS[i]).padStart(2,'0');
+ const ref=[['nadi','Nadi'],['td','TD'],['rr','Napas'],['spo2','SpO₂'],['suhu','Suhu'],['crt','CRT'],['akral','Akral']].map(([k,l])=>[l,val(`g.${k}.${i}`)]).filter(([,v])=>v).map(([l,v])=>`${l} ${esc(v)}`).join(' · ');
+ const pop=$('#patPop');
+ pop.innerHTML=`<header><span>PAT jam ${h}.00</span><button type="button" data-x="close" aria-label="Tutup" style="background:none;border:0;color:#fff;font-size:18px">×</button></header>
+ <div class="ref">${ref||'Belum ada tanda vital jam ini.'} · PAT dinilai dari pengamatan dalam beberapa detik pertama.</div>
+ ${PAT_K.map(([k,l,,ok,ab],ci)=>`<fieldset><legend>${l}</legend>${[[0,'Normal',ok],[1,'Abnormal',ab]].map(([v,t,d])=>`<label><input type="radio" name="pt-${k}" value="${v}" ${parts[ci]===v?'checked':''}><span><b style="width:auto">${t}</b> — ${esc(d)}</span></label>`).join('')}</fieldset>`).join('')}
+ <div class="foot2"><span class="tot" id="pt-tot"></span><button type="button" data-x="clear">Kosongkan</button><button type="button" class="ok" data-x="save">Simpan</button></div>`;
  pop.hidden=false;
  const r=anchor.getBoundingClientRect(),pw=pop.offsetWidth,ph=pop.offsetHeight;
  let left=Math.min(Math.max(12,r.left+r.width/2-pw/2),innerWidth-pw-12),top=r.bottom+6;if(top+ph>innerHeight-12)top=Math.max(12,r.top-ph-6);
  pop.style.left=left+'px';pop.style.top=top+'px';
- updPewsTot();const first=pop.querySelector('input:checked')||pop.querySelector('input');first.focus();
+ updPatTot();const first=pop.querySelector('input:checked')||pop.querySelector('input');first.focus();
 }
-function pewsSel(){const p=$('#pewsPop');const g=k=>{const e=p.querySelector(`input[name="pw-${k}"]:checked`);return e?+e.value:null};return[g('b'),g('c'),g('r'),p.querySelector('#pw-x').checked?2:0]}
-function updPewsTot(){const s=pewsSel(),done=s.slice(0,3).every(x=>x!==null),tot=s.reduce((a,b)=>a+(b||0),0),lv=pewsLevel(tot,s.slice(0,3));
- $('#pw-tot').innerHTML=done?`Skor ${tot} <small style="font-weight:600;font-size:12.5px;color:${['#3A4654','#6B4A00','#7A3E00','#8A1C12'][lv]}">${lv?esc(Z.esc[lv-1]):'observasi rutin'}</small>`:'<small style="font-size:13px;color:#55606E">Pilih ketiga kategori</small>'}
-function closePews(){$('#pewsPop').hidden=true;const c=document.querySelector(`[data-k="g.pews.${popCol}"]`);if(c)c.focus();popCol=-1}
-$('#pewsPop').addEventListener('change',updPewsTot);
-$('#pewsPop').addEventListener('click',e=>{const x=e.target.closest('[data-x]');if(!x)return;const a=x.dataset.x;
- if(a==='save'){const s=pewsSel();if(s.slice(0,3).some(v=>v===null)){updPewsTot();return}
-  document.querySelector(`[data-k="g.pews.${popCol}"]`).value=s.reduce((p,q)=>p+q,0);document.querySelector(`[data-k="g.pewsd.${popCol}"]`).value=s.join(',');onEdit();closePews()}
- else if(a==='clear'){document.querySelector(`[data-k="g.pews.${popCol}"]`).value='';document.querySelector(`[data-k="g.pewsd.${popCol}"]`).value='';onEdit();closePews()}
- else closePews()});
-$('#pewsPop').addEventListener('keydown',e=>{if(e.key==='Escape')closePews()});
-document.addEventListener('mousedown',e=>{if(!$('#pewsPop').hidden&&!e.target.closest('#pewsPop')&&!e.target.closest('.pewsc'))$('#pewsPop').hidden=true});
-$('#hourgrid').addEventListener('click',e=>{const c=e.target.closest('.pewsc');if(c)openPews(+c.dataset.col,c)});
-$('#hourgrid').addEventListener('keydown',e=>{const c=e.target.closest('.pewsc');if(c&&(e.key===' '||e.key==='F2')){e.preventDefault();openPews(+c.dataset.col,c)}});
+function patSel(){const p=$('#patPop');return PAT_K.map(([k])=>{const e=p.querySelector(`input[name="pt-${k}"]:checked`);return e?+e.value:null})}
+function updPatTot(){const s=patSel();if(s.some(x=>x===null)){$('#pt-tot').innerHTML='<small style="font-size:13px;color:#55606E">Nilai ketiga sisi</small>';return}
+ const lv=patLevel(s);$('#pt-tot').innerHTML=`${esc(patKesan(s)[1])} <small style="font-weight:600;font-size:12.5px;color:${['#3A4654','#6B4A00','#7A3E00','#8A1C12'][lv]}">${lv?esc(Z.esc[lv-1]):'observasi rutin'}</small>`}
+function closePat(){$('#patPop').hidden=true;const c=document.querySelector(`[data-k="g.pat.${popCol}"]`);if(c)c.focus();popCol=-1}
+$('#patPop').addEventListener('change',updPatTot);
+$('#patPop').addEventListener('click',e=>{const x=e.target.closest('[data-x]');if(!x)return;const a=x.dataset.x;
+ const cell=document.querySelector(`[data-k="g.pat.${popCol}"]`),det=document.querySelector(`[data-k="g.patd.${popCol}"]`);
+ if(a==='save'){const s=patSel();if(s.some(v=>v===null)){updPatTot();return}cell.value=patKesan(s)[0];det.value=s.join(',');onEdit();closePat()}
+ else if(a==='clear'){cell.value='';det.value='';onEdit();closePat()}
+ else closePat()});
+$('#patPop').addEventListener('keydown',e=>{if(e.key==='Escape')closePat()});
+document.addEventListener('mousedown',e=>{if(!$('#patPop').hidden&&!e.target.closest('#patPop')&&!e.target.closest('.patc'))$('#patPop').hidden=true});
+$('#hourgrid').addEventListener('click',e=>{const c=e.target.closest('.patc');if(c)openPat(+c.dataset.col,c)});
+$('#hourgrid').addEventListener('keydown',e=>{const c=e.target.closest('.patc');if(c&&(e.key===' '||e.key==='F2')){e.preventDefault();openPat(+c.dataset.col,c)}});
 renderSettings();renderEscGuide();
 function markNow(tgl){
  $$('.now').forEach(e=>e.classList.remove('now'));
@@ -909,15 +1263,21 @@ function markNow(tgl){
 function drawChart(){
  const svg=$('#chart');const W=svg.clientWidth||svg.parentNode.offsetWidth-200,H=svg.parentNode.offsetHeight;if(!W||!H)return;
  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
- const rh=H/8,cw=W/24,x=i=>(i+.5)*cw;
- const yN=n=>Math.max(0,Math.min(H,((200-n)/20)*rh+rh/2)),yS=s=>Math.max(0,Math.min(H,(41-s)*rh+rh/2));
+ // 10 baris: angka 200→20 (20/baris), suhu 41→32 (1 °C/baris), SpO₂ 100→55 (5 %/baris)
+ const rh=H/10,cw=W/24,x=i=>(i+.5)*cw,clamp=y=>Math.max(0,Math.min(H,y));
+ const yN=n=>clamp(((200-n)/20)*rh+rh/2),yS=s=>clamp((41-s)*rh+rh/2),yO=o=>clamp(((100-o)/5)*rh+rh/2);
  const pts=(k,f)=>{const p=[];for(let i=0;i<24;i++){const n=num(val(`g.${k}.${i}`));if(!isNaN(n))p.push([x(i),f(n)])}return p};
- const N=pts('nadi',yN),S=pts('suhu',yS);
- const line=(p,c,dash)=>p.length>1?`<polyline points="${p.map(q=>q.join(',')).join(' ')}" fill="none" stroke="${c}" stroke-width="1.6" ${dash?'stroke-dasharray="4 3"':''}/>`:'';
- let zone='';
- if(band>=0){const[lo,hi]=Z.hr[band],p=Z.pct/100,rect=(a,b,c)=>{const y1=Math.max(0,Math.min(yN(a),yN(b))),y2=Math.min(H,Math.max(yN(a),yN(b)));return y2>y1?`<rect x="0" y="${y1}" width="${W}" height="${y2-y1}" fill="${c}" opacity=".35"/>`:''};
-  zone=rect(400,hi*(1+p),'#FFB8AE')+rect(hi*(1+p),hi,'#FFE7A0')+rect(lo,lo*(1-p),'#FFE7A0')+rect(lo*(1-p),0,'#FFB8AE');}
- svg.innerHTML=zone+line(N,'#B42318')+line(S,'#13365C',true)+N.map(([a,b])=>`<circle cx="${a}" cy="${b}" r="3.6" fill="#B42318"/>`).join('')+S.map(([a,b])=>`<path d="M${a-4} ${b-4}L${a+4} ${b+4}M${a+4} ${b-4}L${a-4} ${b+4}" stroke="#13365C" stroke-width="2"/>`).join('');
+ const N=pts('nadi',yN),R=pts('rr',yN),O=pts('spo2',yO),S=pts('suhu',yS);
+ const line=(p,c,dash)=>p.length>1?`<polyline points="${p.map(q=>q.join(',')).join(' ')}" fill="none" stroke="${c}" stroke-width="1.6" ${dash?`stroke-dasharray="${dash}"`:''}/>`:'';
+ let td='';
+ for(let i=0;i<24;i++){const m=val(`g.td.${i}`).match(/(\d+(?:[.,]\d+)?)\s*\/\s*(\d+(?:[.,]\d+)?)/);if(!m)continue;
+  const a=x(i),ys=yN(num(m[1])),yd=yN(num(m[2]));
+  td+=`<line x1="${a}" y1="${ys}" x2="${a}" y2="${yd}" stroke="${CH.td}" stroke-width="1.6"/><path d="M${a-5} ${ys-6}L${a} ${ys}L${a+5} ${ys-6}M${a-5} ${yd+6}L${a} ${yd}L${a+5} ${yd+6}" fill="none" stroke="${CH.td}" stroke-width="2"/>`}
+ svg.innerHTML=td
+  +line(R,CH.rr,'6 3')+R.map(([a,b])=>`<path d="M${a} ${b-4.5}L${a+4.5} ${b+3.5}L${a-4.5} ${b+3.5}Z" fill="${CH.rr}"/>`).join('')
+  +line(O,CH.spo2,'2 3')+O.map(([a,b])=>`<circle cx="${a}" cy="${b}" r="4" fill="#fff" stroke="${CH.spo2}" stroke-width="1.8"/>`).join('')
+  +line(S,CH.suhu,'4 3')+S.map(([a,b])=>`<path d="M${a-4} ${b-4}L${a+4} ${b+4}M${a+4} ${b-4}L${a-4} ${b+4}" stroke="${CH.suhu}" stroke-width="2"/>`).join('')
+  +line(N,CH.nadi)+N.map(([a,b])=>`<circle cx="${a}" cy="${b}" r="3.6" fill="${CH.nadi}"/>`).join('');
 }
 addEventListener('resize',()=>drawChart());
 setInterval(()=>markNow(val('p.tanggal')),60000);
@@ -933,42 +1293,49 @@ $('#hourgrid').addEventListener('keydown',e=>{
 
 /* ---------- toolbar ---------- */
 $('#sheetSel').onchange=e=>load(e.target.value);
-$('#btnNew').onclick=()=>{newSheet();load(store.current)};
+$('#btnNew').onclick=()=>{newSheet();load(store.current);auditEvt('lembar baru','')};
 $('#btnNext').onclick=()=>{
  flushSave();const d=collect(),n={};
- const keep=k=>/^p\./.test(k)&&k!=='p.tanggal'||/^a\./.test(k)||/^sp\./.test(k)&&!/\.(p1|p2)$/.test(k)||/^m\.\d+\.(nama|rute|jadwal)$/.test(k)||/^dx\.[^.]+\.(on|kode|nama|muncul|teratasi)$/.test(k)||/^k\./.test(k)||/^g\.(cair1|cair2|ob\d+|sp\d)\.nama$/.test(k);
+ const keep=k=>/^p\./.test(k)&&k!=='p.tanggal'||/^a\./.test(k)||/^sp\./.test(k)&&!/\.(p1|p2)$/.test(k)||/^m\.\d+\.(nama|rute|jadwal)$/.test(k)||/^dx\.[^.]+\.(on|kode|nama|muncul|teratasi)$/.test(k)||/^k\./.test(k)||/^g\.(cair1|cair2|ob\d+|sp\d|tk\d+)\.nama$/.test(k)||/^luka\./.test(k);
  Object.keys(d).forEach(k=>{if(keep(k))n[k]=d[k]});
- const ver=Object.keys(n).map(k=>(k.match(/^g\.(\w+)\.nama$/)||[])[1]).filter(Boolean);if(ver.length)n.obverif=ver.join(',');
+ const ver=Object.keys(n).map(k=>(k.match(/^g\.(\w+)\.nama$/)||[])[1]).filter(r=>r&&!/^tk\d/.test(r));if(ver.length)n.obverif=ver.join(',');
  n['p.tanggal']=d['p.tanggal']?addDays(d['p.tanggal'],1):todayISO();
  if(d['p.bb'])n['p.bbcek']='1';
  const kum=$('#bl-kum-4').textContent.replace('+','');if(kum!=='')n['bal.kum0']=kum;const b24=$('#bl-bal-4').textContent.replace('+','');if(b24!=='')n['bal.kemarin']=b24;
- newSheet(n);load(store.current);setStatus('Lembar hari berikutnya dibuat');
+ newSheet(n);load(store.current);auditEvt('hari berikutnya',label(cur()));setStatus('Lembar hari berikutnya dibuat');
 };
-$('#btnDel').onclick=()=>{const s=cur();if(!confirm(`Hapus lembar "${label(s)}"? Data lembar ini akan hilang dari browser ini.`))return;clearTimeout(saveT);saveT=0;deleted.add(store.current);delete store.sheets[store.current];const ids=Object.keys(store.sheets);if(ids.length)store.current=ids[0];else newSheet();load(store.current)};
+$('#btnDel').onclick=()=>{const s=cur();if(!confirm(`Hapus lembar "${label(s)}"? Data lembar ini akan hilang dari browser ini.`))return;auditEvt('hapus lembar',label(s));clearTimeout(saveT);saveT=0;deleted.add(store.current);delete store.sheets[store.current];const ids=Object.keys(store.sheets);if(ids.length)store.current=ids[0];else newSheet();load(store.current)};
 $('#btnImport').onclick=()=>$('#fileImport').click();
 // Cadangan per pasien: lembar dikelompokkan menurut No. RM (atau nama bila RM kosong).
 const pkey=d=>(d['p.rm']||'').trim()?'rm:'+d['p.rm'].trim():'nm:'+(d['p.nama']||'').trim().toLowerCase();
 const sheetsOfCur=()=>{const k=pkey(cur().data);return Object.keys(store.sheets).filter(id=>pkey(store.sheets[id].data)===k)};
 const fileTag=()=>{const rm=(val('p.rm')||'').replace(/[^\w-]/g,'');return rm?'RM-'+rm:'tanpa-RM'};
-function unduh(ids,name){const out={sheets:Object.fromEntries(ids.map(id=>[id,store.sheets[id]])),current:ids.includes(store.current)?store.current:ids[0]};
+// semua lembar satu pasien: yang aktif + yang di arsip
+async function idsPasien(){const k=pkey(cur().data),rk=await dall('ringkas');return[...new Set([...Object.keys(store.sheets).filter(id=>pkey(store.sheets[id].data)===k),...rk.filter(r=>r.pk===k).map(r=>r.id)])]}
+async function idsSemua(){const rk=await dall('ringkas');return[...new Set([...Object.keys(store.sheets),...rk.map(r=>r.id)])]}
+async function unduh(ids,name){const sh={};for(const id of ids){const s=store.sheets[id]||await dget('sheets',id);if(s)sh[id]={data:s.data,updated:s.updated}}
+ const out={sheets:sh,current:ids.includes(store.current)?store.current:ids[0]};
+ try{out.audit=(await auditSemua(ids)).map(({i,ar,...r})=>r)}catch(e){}
  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,1)],{type:'application/json'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
-$('#btnExport').onclick=()=>{flushSave();const ids=sheetsOfCur();unduh(ids,`kardeks-picu-${fileTag()}-${todayISO()}.json`);setStatus(`${ids.length} lembar pasien ini dicadangkan`)};
-$('#btnExportAll').onclick=()=>{flushSave();const ids=Object.keys(store.sheets);unduh(ids,`kardeks-picu-semua-${todayISO()}.json`);setStatus(`${ids.length} lembar (semua pasien) dicadangkan`)};
-$('#btnPulang').onclick=()=>{flushSave();const d=cur().data;if(!(d['p.rm']||d['p.nama'])){setStatus('Isi nama / No. RM dulu');return}
- const ids=sheetsOfCur();
+$('#btnExport').onclick=async()=>{flushSave();const ids=await idsPasien();unduh(ids,`kardeks-picu-${fileTag()}-${todayISO()}.json`);setStatus(`${ids.length} lembar pasien ini dicadangkan`)};
+$('#btnExportAll').onclick=async()=>{flushSave();const ids=await idsSemua();unduh(ids,`kardeks-picu-semua-${todayISO()}.json`);setStatus(`${ids.length} lembar (semua pasien) dicadangkan`)};
+$('#btnPulang').onclick=async()=>{flushSave();const d=cur().data;if(!(d['p.rm']||d['p.nama'])){setStatus('Isi nama / No. RM dulu');return}
+ const ids=await idsPasien();
  if(!confirm(`Pasien pulang / pindah: ${label(cur())}\n\n${ids.length} lembar pasien ini akan disimpan ke file cadangan, lalu DIHAPUS dari browser ini.\nPastikan file .json muncul di folder Downloads.\n\nLanjutkan?`))return;
- unduh(ids,`kardeks-picu-${fileTag()}-pulang-${todayISO()}.json`);
+ unduh(ids,`kardeks-picu-${fileTag()}-pulang-${todayISO()}.json`);auditEvt('pasien pulang: diarsipkan & dihapus',`${label(cur())} · ${ids.length} lembar`);
  ids.forEach(id=>{deleted.add(id);delete store.sheets[id]});
  const rest=Object.keys(store.sheets);if(rest.length)store.current=rest[0];else newSheet();load(store.current);setStatus(`${ids.length} lembar diarsipkan & dihapus dari browser`)};
 $('#fileImport').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;flushSave();
- let ok;try{const s=JSON.parse(await f.text());if(!s||typeof s.sheets!=='object')throw 0;
+ let ok,s;try{s=JSON.parse(await f.text());if(!s||typeof s.sheets!=='object')throw 0;
   ok=Object.entries(s.sheets).filter(([id,v])=>/^[a-z0-9]{4,24}$/.test(id)&&v&&v.data&&typeof v.data==='object');if(!ok.length)throw 0}
  catch(err){alert('File cadangan tidak bisa dibaca. Pilih file .json dari tombol Cadangkan.');return}
  const ada=ok.filter(([id])=>store.sheets[id]),baru=ada.filter(([id,v])=>(store.sheets[id].updated||0)>(+v.updated||0));
  if(ada.length&&!confirm(`File berisi ${ok.length} lembar. ${ada.length} lembar sudah ada di browser ini${baru.length?` — ${baru.length} di antaranya versi di browser LEBIH BARU`:''}.\n\nLembar itu akan ditimpa dengan isi dari file. Lanjutkan?`))return;
  // Hanya teks / centang yang diterima; waktu diperbarui supaya tidak kalah saat digabung dengan tab lain.
- ok.forEach(([id,v])=>{store.sheets[id]={data:Object.fromEntries(Object.entries(v.data).filter(([,x])=>typeof x==='string'||x===true)),updated:Date.now()};deleted.delete(id)});
- load(ok[0][0]);setStatus(`${ok.length} lembar dipulihkan`)};
+ ok.forEach(([id,v])=>{const lama=store.sheets[id]&&store.sheets[id].data;store.sheets[id]={data:Object.fromEntries(Object.entries(v.data).filter(([,x])=>typeof x==='string'||x===true)),updated:Date.now()};deleted.delete(id);dirty.add(id);
+  if(lama)auditDiff(id,lama,store.sheets[id].data,'pulihkan');auditSnap(id,lama?'dipulihkan (menimpa)':'dipulihkan')});
+ if(Array.isArray(s.audit))auditArsip(s.audit,f.name);
+ load(ok[0][0]);auditEvt('pulihkan dari file',`${ok.length} lembar`);setStatus(`${ok.length} lembar dipulihkan`)};
 
 /* ---------- print ---------- */
 const PAPER={a3:[297,420],besar:[480,650],a4:[210,297]};
@@ -979,7 +1346,7 @@ try{const h=localStorage.getItem(KEY+'-hal');if(h==='1'||h==='2')$('#hal').value
 $('#hal').onchange=()=>{try{localStorage.setItem(KEY+'-hal',$('#hal').value)}catch(e){}};
 let printing=false;
 function preparePrint(){
- if(printing)return;printing=true;setPage();document.body.classList.add('printing');
+ if(printing)return;printing=true;setPage();document.body.classList.add('printing');syncTk();fitEsc();
  $$('[data-k]').forEach(el=>el.classList.toggle('kosong',el.type!=='checkbox'&&!el.value));
  const[w,h]=PAPER[$('#paper').value],mm=3.7795,pw=(w-12)*mm,ph=(h-12)*mm;
  const dua=$('#hal').value==='2';document.body.classList.toggle('dua',dua);
@@ -991,19 +1358,331 @@ function preparePrint(){
   s.style.zoom=Math.min(pw/s.offsetWidth,ph/cut,ph/h2)*.99});
  drawChart();
 }
-function endPrint(){printing=false;document.body.classList.remove('printing','dua');$$('.sheet').forEach(s=>s.style.zoom='');$$('.kosong').forEach(e=>e.classList.remove('kosong'));drawChart()}
-addEventListener('beforeprint',preparePrint);addEventListener('afterprint',endPrint);
+function endPrint(){printing=false;document.body.classList.remove('printing','dua');$$('.sheet').forEach(s=>s.style.zoom='');$$('.kosong').forEach(e=>e.classList.remove('kosong'));drawChart();syncTk();fitEsc()}
+addEventListener('beforeprint',preparePrint);addEventListener('afterprint',()=>{endPrint();setTimeout(setelahCetak,300)});
+// Setelah cetak: lembar hanya DITANDAI (siapa & kapan). Tidak dihapus otomatis — browser tidak tahu apakah kertas benar-benar keluar.
+async function setelahCetak(){const s=cur();if(!s||typeof AUTH==='undefined'||!AUTH.user)return;
+ s.cetak={t:Date.now(),by:AUTH.user.nama};s.updated=Date.now();dirty.add(store.current);persist();renderCetak();setStatus('Lembar ditandai sudah dicetak')}
+// Pengingat: pasien yang lembarnya tidak diubah > PULANG_HARI hari — mungkin sudah pulang tapi belum "Pasien pulang".
+const PULANG_HARI=3,TKEY=KEY+'-tunda';
+async function cekPulang(){const bar=$('#pulangBar');if(!bar||typeof AUTH==='undefined'||!AUTH.user){if(bar)bar.hidden=true;return}
+ let rk;try{rk=await dall('ringkas')}catch(e){return}
+ Object.entries(store.sheets).forEach(([id,s])=>rk.push({id,label:label(s),tgl:s.data['p.tanggal']||'',pk:pkey(s.data),updated:s.updated||0}));
+ const pas={};rk.forEach(r=>{const p=pas[r.pk]||(pas[r.pk]={pk:r.pk,upd:0,tgl:'',id:'',label:''});if((r.updated||0)>p.upd)p.upd=r.updated||0;if(r.tgl>=p.tgl){p.tgl=r.tgl;p.id=r.id;p.label=r.label}});
+ let tunda={};try{tunda=JSON.parse(localStorage.getItem(TKEY))||{}}catch(e){}
+ const batas=Date.now()-PULANG_HARI*864e5,hari=todayISO(),L=Object.values(pas).filter(p=>p.pk!=='nm:'&&p.upd&&p.upd<batas&&!(tunda[p.pk]>=hari)).sort((a,b)=>a.upd-b.upd);
+ if(!L.length){bar.hidden=true;return}
+ const tg=t=>new Date(t).toLocaleDateString('id-ID',{day:'2-digit',month:'2-digit'});
+ bar.hidden=false;bar.innerHTML=`🛏 ${L.length} pasien tidak diisi lebih dari ${PULANG_HARI} hari: ${L.slice(0,3).map(p=>esc(p.label.replace(/ · [^·]*$/,''))+' (terakhir '+tg(p.upd)+')').join(', ')}${L.length>3?', …':''} — sudah pulang? <button type="button" id="plLihat">Lihat</button>`;
+ $('#plLihat').onclick=()=>{const dk=AUTH.user.role==='dokter';
+  mdl('Pasien tidak diisi > '+PULANG_HARI+' hari',`<p class="am">Bila pasien sudah pulang / pindah: buka lembar terakhirnya lalu tekan <b>Pasien pulang</b> (semua lembar &amp; riwayat disimpan ke file dulu, baru dihapus dari browser).</p>
+   <div class="rlist"><table><tr><th>Pasien · lembar terakhir</th><th>Terakhir diubah</th><th></th></tr>${L.map(p=>`<tr><td>${esc(p.label)}</td><td>${new Date(p.upd).toLocaleString('id-ID',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'})}</td><td><button class="plBuka" data-id="${p.id}">Buka lembar</button> ${dk?'':`<button class="plTunda" data-pk="${esc(p.pk)}">Masih dirawat</button>`}</td></tr>`).join('')}</table></div>`,true);
+  $$('.plBuka').forEach(b=>b.onclick=async()=>{const id=b.dataset.id;if(!store.sheets[id]&&!(await bukaArsip(id)))return;mdlClose();load(id);setStatus('Bila pasien sudah pulang: tekan "Pasien pulang"')});
+  $$('.plTunda').forEach(b=>b.onclick=()=>{tunda[b.dataset.pk]=addDays(hari,1);try{localStorage.setItem(TKEY,JSON.stringify(tunda))}catch(e){}auditEvt('pengingat pulang ditunda (masih dirawat)',b.closest('tr').firstChild.textContent,'');b.closest('tr').remove();cekPulang()})}}
+setInterval(cekPulang,6*3600e3);
+function renderCetak(){const c=cur()&&cur().cetak,el=$('#cetakInfo');if(!el)return;el.hidden=!c;if(c)el.textContent=`🖨 dicetak ${new Date(c.t).toLocaleString('id-ID',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})} · ${c.by}`}
 // Di dalam bingkai (mis. tampilan artifact) cetak & unduh diblokir: beri tahu, jangan diam saja.
 const framed=(()=>{try{return window.self!==window.top}catch(e){return true}})();
 const blockedMsg=f=>setStatus(`${f} hanya berfungsi di versi lokal (file index.html di laptop)`)||($('#status').style.display='inline');
 $('#btnPrint').onclick=()=>{if(framed){blockedMsg('Cetak');return}preparePrint();setTimeout(()=>window.print(),50)};
 if(framed){[['#btnExport','Cadangkan'],['#btnExportAll','Cadangkan'],['#btnPulang','Pasien pulang']].forEach(([q,f])=>{const ex=$(q);ex.onclick=()=>blockedMsg(f);ex.title='Hanya di versi lokal'});$('#btnPrint').title='Hanya di versi lokal'}
 
+/* ---------- login perawat & riwayat (audit trail) ---------- */
+// Akun & PIN (hash PBKDF2) di localStorage; riwayat di IndexedDB (kapasitas jauh lebih besar dari localStorage).
+// Riwayat dirantai hash: catatan yang diubah / dihapus di tengah terdeteksi saat verifikasi.
+// Ini jejak lokal di browser ini — untuk audit resmi lintas komputer tetap perlu server RS.
+var AUTH={user:null};
+const IDLE=10*60e3,COALESCE=2*60e3,UKEY=KEY+'-users',SKEY=KEY+'-sesi';
+function users(){try{return(JSON.parse(localStorage.getItem(UKEY))||{}).users||[]}catch(e){return[]}}
+function saveUsers(a){localStorage.setItem(UKEY,JSON.stringify({v:1,users:a}))}
+const enc=s=>new TextEncoder().encode(s);
+async function pinHash(pin,salt){const k=await crypto.subtle.importKey('raw',enc(pin),'PBKDF2',false,['deriveBits']);
+ const b=await crypto.subtle.deriveBits({name:'PBKDF2',salt:enc(salt),iterations:60000,hash:'SHA-256'},k,256);return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+const inisial=n=>n.replace(/^(ns|ners|dr|bd)\.?\s+/i,'').split(/[\s,]+/).filter(Boolean).slice(0,3).map(w=>w[0].toUpperCase()).join('');
+const pinOk=p=>/^\d{4,6}$/.test(p);
+
+/* riwayat: IndexedDB */
+var auditDB=null,auditQ=Promise.resolve();
+// v2: store 'arsip' = riwayat yang ikut dipulihkan dari file cadangan (tidak masuk rantai hash browser ini)
+function idb(){return auditDB||(auditDB=new Promise((res,rej)=>{const r=indexedDB.open(KEY+'-audit',2);
+ r.onupgradeneeded=()=>{const db=r.result;if(!db.objectStoreNames.contains('log'))db.createObjectStore('log',{keyPath:'i',autoIncrement:true}).createIndex('s','s');
+  if(!db.objectStoreNames.contains('arsip'))db.createObjectStore('arsip',{keyPath:'id'})};
+ r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}))}
+function cyrb(str){let h1=0xdeadbeef,h2=0x41c6ce57;for(let i=0;i<str.length;i++){const c=str.charCodeAt(i);h1=Math.imul(h1^c,2654435761);h2=Math.imul(h2^c,1597334677)}
+ h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);
+ return(h2>>>0).toString(16).padStart(8,'0')+(h1>>>0).toString(16).padStart(8,'0')}
+const rHash=r=>cyrb([r.p,r.t,r.u,r.un,r.s,r.k||'',r.e||'',r.o??'',r.n??'',r.x||''].join('␟')+(r.y?'␟'+r.y:''));
+// recs: {s,k,o,n} (perubahan isian) atau {s,e,x} (kejadian). Ketikan beruntun di kolom sama ≤2 menit digabung.
+const auditRaw=()=>idb().then(db=>idbReq(db.transaction('log').objectStore('log').getAll()));
+async function auditDec(r){if(!r)return r;if(!r.enc)return r;const pl=await decObj(r.enc);return{i:r.i,t:r.t,s:r.s,p:r.p,h:r.h,...pl}}
+async function auditEnc(r){const {i,t,s,p,h,...pl}=r;const o={t,s:s||'',p:p||'0',h:h||''};if(i!==undefined)o.i=i;if(DEK)o.enc=await encObj(pl);else Object.assign(o,pl);return o}
+function auditPush(recs){const u=AUTH.user,t=Date.now();
+ recs=recs.map(r=>Object.assign({t,u:u?u.id:'',un:u?u.nama:'(belum masuk)',s:''},r));
+ auditQ=auditQ.then(async()=>{const db=await idb();
+  let lastRaw=await new Promise(res=>{const tx=db.transaction('log');tx.objectStore('log').openCursor(null,'prev').onsuccess=e=>res(e.target.result?e.target.result.value:null)});
+  let last=lastRaw?await auditDec(lastRaw):null;const puts=[];
+  for(const r of recs){
+   if(last&&last.i&&r.k&&last.k===r.k&&last.s===r.s&&last.u===r.u&&r.t-last.t<COALESCE){last.n=r.n;last.t=r.t;last.h=rHash(last);puts.push(await auditEnc(last))}
+   else{r.p=last?last.h:'0';r.h=rHash(r);puts.push(await auditEnc(r));last={...r}}}
+  await new Promise((res,rej)=>{const tx=db.transaction('log','readwrite'),st=tx.objectStore('log');
+   puts.forEach((pr,i)=>{const isNew=pr.i===undefined;const q=st.put(pr);if(isNew)q.onsuccess=e=>{recs[i]&&(recs[i].i=e.target.result)}});
+   tx.oncomplete=res;tx.onerror=tx.onabort=()=>rej(tx.error)})}).catch(()=>{});return auditQ}
+function auditEvt(e,x,s){auditPush([{e,x:x||'',s:s===undefined?(store.current||''):s}])}
+function auditDiff(sid,a,b,tag){const ch=[];new Set([...Object.keys(a),...Object.keys(b)]).forEach(k=>{
+ const o=a[k]===true?'✓':(a[k]??''),n=b[k]===true?'✓':(b[k]??'');if(String(o)===String(n))return;if(o===''&&n===DEFAULTS[k])return;ch.push(tag?{s:sid,k,o,n,x:tag}:{s:sid,k,o,n})});
+ if(ch.length)auditPush(ch)}
+const auditAll=()=>auditRaw().then(rs=>Promise.all(rs.map(auditDec)));
+const auditSys=recs=>auditPush(recs.map(r=>Object.assign({u:'',un:'(sistem)'},r)));
+const normData=d=>Object.fromEntries(Object.entries(d||{}).filter(([,v])=>v!==''&&v!==false&&v!=null).map(([k,v])=>[k,v===true?'✓':String(v)]));
+// titik awal lembar: isi lengkap disimpan, perubahan sesudahnya diputar ulang dari sini
+function auditSnap(id,why){const s=store.sheets[id];if(s)auditPush([{s:id,e:'snapshot',x:JSON.stringify(normData(s.data)),y:why,u:'',un:'(sistem)'}])}
+function replay(L){let j=-1;L.forEach((r,n)=>{if(r.e==='snapshot')j=n});if(j<0)return null;let d;try{d=JSON.parse(L[j].x)}catch(e){return null}
+ L.slice(j+1).forEach(r=>{if(!r.k)return;if(r.n===''||r.n==null)delete d[r.k];else d[r.k]=String(r.n)});return d}
+// buka lembar: isi sekarang harus sama dengan hasil putar ulang riwayat; selisih = diubah di luar kardeks
+function cekLembar(id){auditQ.then(()=>auditLembar(id)).then(L=>{const s=store.sheets[id];if(!s)return;L.sort((a,b)=>a.i-b.i);
+ const exp=replay(L);if(!exp){auditSnap(id,'snapshot awal (lembar dibuat sebelum ada riwayat)');return}
+ const now=normData(s.data),diff=[];new Set([...Object.keys(exp),...Object.keys(now)]).forEach(k=>{const a=exp[k]??'',b=now[k]??'';if(a===b||(a===''&&b===DEFAULTS[k]))return;diff.push({s:id,k,o:a,n:b})});
+ if(id===store.current)$('#tamperBar').hidden=true;if(!diff.length)return;
+ auditPush(diff.map(r=>Object.assign(r,{u:'',un:'⚠ di luar kardeks'})).concat([{s:id,e:'perubahan di luar kardeks terdeteksi',x:`${diff.length} kolom berbeda dari riwayat`,u:'',un:'(sistem)'}]));
+ if(id===store.current){const b=$('#tamperBar');b.hidden=false;b.innerHTML=`⚠️ ${diff.length} kolom di lembar ini berubah di luar kardeks (bukan lewat isian, mis. diubah lewat DevTools / file). Perubahannya sudah dicatat di <button type="button" id="tamperGo">Riwayat</button> <button type="button" id="tamperX">Tutup</button>`;
+  $('#tamperGo').onclick=()=>{riwayatUI();b.hidden=true};$('#tamperX').onclick=()=>{b.hidden=true}}}).catch(()=>{})}
+// riwayat dari file cadangan → store 'arsip'
+function auditArsip(list,src){idb().then(db=>{const tx=db.transaction('arsip','readwrite'),st=tx.objectStore('arsip');
+ Promise.all(list.filter(r=>r&&typeof r==='object'&&r.t&&(r.k||r.e)).map(async r=>{const full={t:+r.t,u:String(r.u||''),un:String(r.un||''),s:String(r.s||''),k:r.k?String(r.k):undefined,e:r.e?String(r.e):undefined,o:r.o??'',n:r.n??'',x:r.x?String(r.x):'',y:r.y?String(r.y):'',h:String(r.h||''),src};const id=full.h+'|'+full.t+'|'+(full.k||full.e);return DEK?{id,enc:await encObj(full)}:{...full,id}})).then(rows=>{const tx=db.transaction('arsip','readwrite'),st=tx.objectStore('arsip');rows.forEach(x=>st.put(x))})}).catch(()=>{})}
+const arsipAll=()=>idb().then(db=>new Promise(res=>{const q=db.transaction('arsip').objectStore('arsip').getAll();q.onsuccess=()=>res(q.result);q.onerror=()=>res([])})).then(rs=>Promise.all(rs.map(async r=>r.enc?{...await decObj(r.enc),id:r.id,ar:1}:r))).catch(()=>[]);
+const auditLembar=id=>idb().then(db=>idbReq(db.transaction('log').objectStore('log').index('s').getAll(IDBKeyRange.only(id)))).then(rs=>Promise.all(rs.map(auditDec)));
+async function auditSemua(ids){const [a,b]=await Promise.all([ids?Promise.all(ids.map(auditLembar)).then(x=>x.flat()):auditAll(),arsipAll()]);const ss=ids&&new Set(ids),seen=new Set(a.map(r=>r.h+'|'+r.t));
+ return b.filter(r=>!seen.has(r.h+'|'+r.t)&&(!ss||ss.has(r.s))).map(r=>({...r,ar:true})).concat(a)}
+function auditVerify(list){let prev='0';for(const r of list){if(r.p!==prev||r.h!==rHash(r))return r;prev=r.h}return null}
+
+/* label kolom yang mudah dibaca */
+const ROWSEC={};GROUPS.forEach(g=>g.rows.forEach(r=>{ROWSEC[r[0]]=g.t.split(' · ')[0]}));
+const PREFSEC={p:'Identitas',a:'Alat invasif',k:'Kebutuhan',bal:'Riwayat balance',lab:'Lab / BGA',esk:'PAT & eskalasi',cppt:'Laporan shift',luka:'Luka & kulit',advc:'Program terapi',obverif:'Verifikasi obat'};
+const rapi=s=>String(s||'').replace(/\s+/g,' ').trim();
+function fieldInfo(k){const el=document.querySelector(`[data-k="${CSS.escape(k)}"]`);let m=k.match(/^g\.([^.]+)\.(\d+)(?:\.(v|p))?$/);
+ const rowLab=r=>{const row=document.querySelector(`.row [data-k^="g.${r}."]`);const lab=row&&row.closest('.row,.grow').querySelector('.lab');if(!lab)return r;const li=lab.querySelector('.labin');return rapi(li?(li.value||li.placeholder):lab.firstElementChild?lab.firstElementChild.textContent:lab.textContent)};
+{const z=k.match(/^zona\.(.+)$/);if(z)return{sec:'Pengaturan zona',f:(typeof ZLABEL!=='undefined'&&ZLABEL[z[1]])||z[1]}}
+ if(m)return{sec:ROWSEC[m[1]]||'Grid jam',f:`${rowLab(m[1])} · jam ${String(HOURS[+m[2]]).padStart(2,'0')}${m[3]==='v'?' (centang)':m[3]==='p'?' (paraf)':''}`};
+ m=k.match(/^g\.([^.]+)\.(nama|labu|cc)$/);if(m)return{sec:ROWSEC[m[1]]||'Grid jam',f:`${rowLab(m[1])} · ${m[2]==='nama'?'nama / label':m[2]}`};
+ const box=el&&el.closest('.box'),bt=box&&box.querySelector('.bt');let sec=bt?rapi(bt.firstChild.textContent):PREFSEC[k.split('.')[0]]||'Lainnya';
+ let f=el&&(el.getAttribute('aria-label')||'');
+ if(!f&&el){const cell=el.closest('.mt>div');if(cell){let p=cell.previousElementSibling;while(p&&p.classList.contains('in'))p=p.previousElementSibling;if(p)f=rapi(p.textContent)}}
+ if(!f&&el){const lb=el.closest('label');if(lb){const c=lb.cloneNode(true);c.querySelectorAll('button,input,select,textarea,output,small').forEach(x=>x.remove());f=rapi(c.textContent)}}
+ if(!f&&el)f=el.placeholder||el.title||'';
+ return{sec,f:rapi(f)||k}}
+
+/* hak isi per peran: dokter = program terapi & TTD DPJP; perawat (dan admin) = isian keperawatan; sisanya diisi bersama */
+const AKSES_DOKTER=/^(advc\.|ttd\.dpjp$)/,AKSES_BERSAMA=/^(p\.|k\.|lab\.|nk\.|advd\.|a\.|obverif$)/;
+function bolehIsi(k){const r=AUTH.user&&AUTH.user.role;if(!r)return false;if(AKSES_BERSAMA.test(k))return true;if(AKSES_DOKTER.test(k))return r==='dokter';return r!=='dokter'}
+const AKSES_LABEL=k=>AKSES_DOKTER.test(k)?'Diisi dokter':'Diisi perawat';
+function applyAkses(){const r=AUTH.user&&AUTH.user.role;document.body.classList.toggle('role-dokter',r==='dokter');
+ $$('[data-k]').forEach(el=>{if(el.type==='hidden')return;if(el.dataset.ro0===undefined)el.dataset.ro0=el.readOnly?'1':'';
+  const ok=!r||bolehIsi(el.dataset.k);el.classList.toggle('noakses',!ok);
+  if(el.type==='checkbox'||el.tagName==='SELECT')el.disabled=!ok;else el.readOnly=!ok||el.dataset.ro0==='1';
+  if(!ok)el.title=AKSES_LABEL(el.dataset.k)+' — hanya bisa dibaca';else if(el.title&&/hanya bisa dibaca$/.test(el.title))el.title=''});
+ const dk=r==='dokter';['#btnNew','#btnNext','#btnDel','#btnPulang','#btnImport'].forEach(q=>{const b=$(q);b.disabled=dk;b.classList.toggle('noakses',dk)});
+ $('#roleBar').hidden=!dk}
+
+/* tampilan: kotak masuk, akun, riwayat */
+function showRecovery(rec,done){mdl('Kunci pemulihan — simpan sekarang',`
+ <p class="am warn">Ini satu-satunya cara membuka data bila SEMUA PIN admin lupa. Tanpa kunci ini & tanpa file cadangan, data pasien di browser ini tidak bisa dibuka lagi oleh siapa pun.</p>
+ <div class="reckey" id="recKey">${esc(rec)}</div>
+ <div class="arow"><button id="recSalin">Salin</button><button id="recCetak">Cetak</button></div>
+ <p class="am">Simpan di tempat aman (brankas / amplop tertutup di ruang Karu), jangan di komputer ini.</p>
+ <label class="am" style="display:flex;gap:7px;align-items:center;font-weight:600"><input type="checkbox" id="recOk"> Saya sudah menyimpan kunci ini</label>
+ <div class="arow"><button id="recLanjut" class="pri" disabled>Lanjut</button></div>`);
+ $('#recSalin').onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(rec);setStatus('Kunci pemulihan disalin')};
+ $('#recCetak').onclick=()=>{const w=window.open('','_blank');if(w){w.document.write(`<pre style="font:20px monospace;padding:40px">KUNCI PEMULIHAN KARDEKS PICU\n\n${esc(rec)}\n\nSimpan di tempat aman. Dibuat ${new Date().toLocaleString('id-ID')}.</pre>`);w.print()}};
+ $('#recOk').onchange=e=>{$('#recLanjut').disabled=!e.target.checked};
+ $('#recLanjut').onclick=()=>{mdlClose();done&&done()}}
+const mdl=(title,body,wide)=>{$('#mTitle').textContent=title;$('#mBody').innerHTML=body;$('#mdl').classList.toggle('wide',!!wide);$('#mdl').hidden=false};
+const mdlClose=()=>{$('#mdl').hidden=true;$('#mBody').innerHTML=''};
+function lockUI(on){document.body.classList.toggle('locked',on);[...document.body.children].forEach(e=>{if(e.id!=='authOv'&&e.tagName!=='SCRIPT'&&e.tagName!=='STYLE')e.inert=on});$('#authOv').hidden=!on;if(on)mdlClose()}
+function renderWho(){const u=AUTH.user;$('#btnUser').textContent=u?`👤 ${u.nama}`:'👤 —';$('#btnUser').title=u?`${u.nama} · ${u.role} — klik untuk akun / keluar`:''}
+function showAuth(msg){const us=users().filter(u=>u.aktif!==false),box=$('#authBox');lockUI(true);
+ if(!users().length){box.innerHTML=`<h2>Buat akun admin</h2><p class="am">Pertama kali dipakai di browser ini. Akun admin bisa menambah perawat & dokter serta mereset PIN.</p>
+  <label>Nama lengkap<input id="aNama" autocomplete="off" placeholder="mis. Ns. Lailatus S"></label><label>NIP / ID pegawai<input id="aNip" autocomplete="off"></label>
+  <label>Paraf (inisial)<input id="aParaf" autocomplete="off" maxlength="6"></label>
+  <label>PIN (4–6 angka)<input id="aPin" type="password" inputmode="numeric" maxlength="6" autocomplete="new-password"></label><label>Ulangi PIN<input id="aPin2" type="password" inputmode="numeric" maxlength="6" autocomplete="new-password"></label>
+  <div class="aerr" id="aErr"></div><button id="aGo" class="pri">Buat akun &amp; masuk</button>
+  <p class="am small">PIN tidak bisa dilihat lagi. Bila lupa, admin lain yang mereset — catat siapa saja adminnya.</p>`;
+  $('#aNama').oninput=()=>{$('#aParaf').value=inisial($('#aNama').value)};
+  $('#aGo').onclick=async()=>{const nama=rapi($('#aNama').value),pin=$('#aPin').value;
+   if(!nama)return void($('#aErr').textContent='Isi nama');if(!pinOk(pin))return void($('#aErr').textContent='PIN harus 4–6 angka');if(pin!==$('#aPin2').value)return void($('#aErr').textContent='PIN tidak sama');
+   $('#aErr').textContent='Menyiapkan enkripsi…';
+   const u={id:uid(),nama,nip:rapi($('#aNip').value),paraf:rapi($('#aParaf').value)||inisial(nama),role:'admin',aktif:true,salt:uid()+uid(),dibuat:Date.now()};u.ph=await pinHash(pin,u.salt);saveUsers([u]);
+   AUTH.user=u;const rec=await encSetup(u.id,pin);auditEvt('akun dibuat + enkripsi dipasang',`${u.nama} (admin)`,'');
+   showRecovery(rec,()=>masuk(u))};
+  setTimeout(()=>$('#aNama').focus(),50);return}
+ const last=sessionStorage.getItem(SKEY+'-last')||'';
+ box.innerHTML=`<h2>Masuk</h2>${msg?`<p class="am warn">${esc(msg)}</p>`:''}
+  <label>Nama<select id="aUser">${us.map(u=>`<option value="${u.id}" ${u.id===last?'selected':''}>${esc(u.nama)}${u.role==='dokter'?' (dokter)':''}${u.nip?' · '+esc(u.nip):''}</option>`).join('')}</select></label>
+  <label>PIN<input id="aPin" type="password" inputmode="numeric" maxlength="6" autocomplete="off"></label><div class="aerr" id="aErr"></div><button id="aGo" class="pri">Masuk</button>
+  <p class="am small">Keluar otomatis setelah ${IDLE/60e3} menit tidak dipakai. Lupa PIN? Minta admin mereset.</p>`;
+ const go=async()=>{const fl=JSON.parse(sessionStorage.getItem(SKEY+'-gagal')||'{"n":0,"t":0}');
+  if(fl.n>=5&&Date.now()-fl.t<60e3)return void($('#aErr').textContent=`Terlalu banyak salah. Coba lagi ${Math.ceil((60e3-(Date.now()-fl.t))/1e3)} detik lagi.`);
+  const u=users().find(x=>x.id===$('#aUser').value);if(!u)return;
+  if(await pinHash($('#aPin').value,u.salt)!==u.ph){const n=fl.n>=5?1:fl.n+1;sessionStorage.setItem(SKEY+'-gagal',JSON.stringify({n,t:Date.now()}));$('#aPin').value='';$('#aErr').textContent=`PIN salah (${n}/5)`;
+   AUTH.user=null;auditEvt('PIN salah',u.nama,'');return}
+  sessionStorage.removeItem(SKEY+'-gagal');AUTH.user=u;const pin=$('#aPin').value;
+  if(!enkripsiAktif()){$('#aErr').textContent='Menyiapkan enkripsi…';const rec=await encSetup(u.id,pin);auditEvt('enkripsi dipasang (pertama kali)',u.nama,'');auditEvt('masuk','','');showRecovery(rec,()=>masuk(u));return}
+  const K=encKeysLoad();if(!K.wrap[u.id]){$('#aErr').textContent='Akun ini belum punya kunci enkripsi — minta admin reset PIN Anda';AUTH.user=null;return}
+  try{DEK=await unwrapWith(pin,K.wrap[u.id])}catch(e){$('#aErr').textContent='PIN benar tapi kunci gagal dibuka';AUTH.user=null;return}
+  await dekSesiSimpan();auditEvt('masuk','','');masuk(u)};
+ $('#aGo').onclick=go;$('#aPin').onkeydown=e=>{if(e.key==='Enter')go()};
+ box.insertAdjacentHTML('beforeend','<p class="am small"><a href="#" id="aLupa">Lupa PIN? Buka dengan kunci pemulihan</a></p>');
+ $('#aLupa').onclick=ev=>{ev.preventDefault();pulihkanUI()};
+ setTimeout(()=>$('#aPin').focus(),50)}
+// Pulihkan akses dengan kunci pemulihan → buka DEK, lalu admin menetapkan PIN baru
+function pulihkanUI(){const adm=users().filter(u=>u.role==='admin'&&u.aktif!==false);
+ mdl('Buka dengan kunci pemulihan',`<p class="am">Masukkan kunci pemulihan, lalu tetapkan PIN baru untuk akun admin.</p>
+  <label>Kunci pemulihan<input id="pkRec" autocomplete="off" placeholder="XXXX-XXXX-XXXX-XXXX-XXXX"></label>
+  <label>Akun admin<select id="pkUser">${adm.map(u=>`<option value="${u.id}">${esc(u.nama)}</option>`).join('')}</select></label>
+  <label>PIN baru<input id="pkPin" type="password" inputmode="numeric" maxlength="6"></label><label>Ulangi PIN<input id="pkPin2" type="password" inputmode="numeric" maxlength="6"></label>
+  <div class="aerr" id="pkErr"></div><button id="pkGo" class="pri">Buka &amp; tetapkan PIN</button>`);
+ $('#pkGo').onclick=async()=>{const K=encKeysLoad();if(!K||!K.rec)return void($('#pkErr').textContent='Tidak ada kunci pemulihan di browser ini');
+  const pin=$('#pkPin').value;if(!pinOk(pin))return void($('#pkErr').textContent='PIN 4–6 angka');if(pin!==$('#pkPin2').value)return void($('#pkErr').textContent='PIN tidak sama');
+  try{DEK=await unwrapWith(rapi($('#pkRec').value).toUpperCase(),K.rec)}catch(e){return void($('#pkErr').textContent='Kunci pemulihan salah')}
+  const id=$('#pkUser').value,a=users(),x=a.find(y=>y.id===id);x.salt=uid()+uid();x.ph=await pinHash(pin,x.salt);saveUsers(a);
+  K.wrap[id]=await wrapFor(pin);encKeysSave(K);await dekSesiSimpan();AUTH.user=x;auditEvt('akses dipulihkan dengan kunci pemulihan',x.nama,'');mdlClose();masuk(x)}}
+async function masuk(u){AUTH.user=u;sessionStorage.setItem(SKEY,JSON.stringify({id:u.id,last:Date.now()}));sessionStorage.setItem(SKEY+'-last',u.id);renderWho();lockUI(false);
+ try{await dataReady()}catch(e){setStatus('Gagal memuat data terenkripsi')}
+ if(DEK)encAllPlain().catch(()=>{});renderCadangan();jadwalCadangan();
+ if(!store.current||!store.sheets[store.current]){const ids=Object.keys(store.sheets).sort((a,b)=>(store.sheets[b].data['p.tanggal']||'').localeCompare(store.sheets[a].data['p.tanggal']||''));if(ids.length)store.current=ids[0];else newSheet()}
+ load(store.current);applyAkses();renderWho();setTimeout(cekPulang,500);if(typeof renderSettings==='function'&&$('#sbody'))try{renderSettings()}catch(e){}}
+function keluar(why){if(!AUTH.user)return;flushSave();auditEvt(why||'keluar','','');AUTH.user=null;DEK=null;dekSesiHapus();store.sheets={};store.current=null;sessionStorage.removeItem(SKEY);renderWho();applyAkses();showAuth(why==='keluar otomatis'?'Keluar otomatis karena tidak dipakai. Masuk lagi untuk melanjutkan.':'')}
+// tidak dipakai → keluar otomatis
+let actT=0;const aktif=()=>{if(!AUTH.user)return;const n=Date.now();if(n-actT>15e3){actT=n;sessionStorage.setItem(SKEY,JSON.stringify({id:AUTH.user.id,last:n}))}};
+['pointerdown','keydown','wheel','input'].forEach(ev=>addEventListener(ev,aktif,{passive:true,capture:true}));
+setInterval(()=>{if(!AUTH.user)return;const s=JSON.parse(sessionStorage.getItem(SKEY)||'null');if(!s||Date.now()-s.last>IDLE)keluar('keluar otomatis')},20e3);
+
+function akunUI(){const u=AUTH.user;if(!u)return;const adm=u.role==='admin',us=users();
+ mdl('Akun',`<p>Masuk sebagai <b>${esc(u.nama)}</b>${u.nip?' · '+esc(u.nip):''} · paraf <b>${esc(u.paraf)}</b> · ${u.role}</p>
+  <div class="arow"><button id="kOut" class="pri">Keluar</button><button id="kPin">Ganti PIN saya</button></div><div id="kPinF"></div>
+  ${adm?`<h3>Kelola akun</h3><table class="atab"><tr><th>Nama</th><th>NIP</th><th>Paraf</th><th>Peran</th><th>Status</th><th></th></tr>${us.map(x=>`<tr data-id="${x.id}"><td>${esc(x.nama)}</td><td>${esc(x.nip||'')}</td><td>${esc(x.paraf||'')}</td><td>${x.role}</td><td>${x.aktif===false?'nonaktif':'aktif'}</td><td><button class="kReset">Reset PIN</button> ${x.id===u.id?'':`<button class="kAkt">${x.aktif===false?'Aktifkan':'Nonaktifkan'}</button>`}</td></tr>`).join('')}</table>
+  <h3>Tambah pengguna</h3><div class="afrm"><input id="nNama" placeholder="Nama lengkap"><input id="nNip" placeholder="NIP / ID"><input id="nParaf" placeholder="Paraf" maxlength="6" style="width:70px"><select id="nRole"><option value="perawat">perawat</option><option value="dokter">dokter</option><option value="admin">admin</option></select><input id="nPin" type="password" inputmode="numeric" maxlength="6" placeholder="PIN awal" style="width:90px"><button id="nGo" class="pri">Tambah</button></div><div class="aerr" id="nErr"></div>`:''}`);
+ $('#kOut').onclick=()=>{mdlClose();keluar('keluar')};
+ const pinForm=(id,label,done)=>{$('#kPinF').innerHTML=`<div class="afrm">${label}<input id="pp1" type="password" inputmode="numeric" maxlength="6" placeholder="PIN baru"><input id="pp2" type="password" inputmode="numeric" maxlength="6" placeholder="ulangi"><button id="ppGo" class="pri">Simpan</button></div><div class="aerr" id="ppErr"></div>`;
+  $('#ppGo').onclick=async()=>{const p=$('#pp1').value;if(!pinOk(p))return void($('#ppErr').textContent='PIN 4–6 angka');if(p!==$('#pp2').value)return void($('#ppErr').textContent='PIN tidak sama');
+   const a=users(),x=a.find(y=>y.id===id);x.salt=uid()+uid();x.ph=await pinHash(p,x.salt);saveUsers(a);if(DEK){const K=encKeysLoad();K.wrap[id]=await wrapFor(p);encKeysSave(K)}if(x.id===AUTH.user.id)AUTH.user=x;done(x);$('#kPinF').innerHTML='<p class="am">PIN tersimpan.</p>'};$('#pp1').focus()};
+ $('#kPin').onclick=()=>pinForm(u.id,'PIN baru untuk saya:',x=>auditEvt('ganti PIN',x.nama,''));
+ if(!adm)return;
+ $$('.atab .kReset').forEach(b=>b.onclick=()=>{const x=us.find(y=>y.id===b.closest('tr').dataset.id);pinForm(x.id,`Reset PIN ${esc(x.nama)}:`,y=>auditEvt('reset PIN',y.nama,''))});
+ $$('.atab .kAkt').forEach(b=>b.onclick=()=>{const a=users(),x=a.find(y=>y.id===b.closest('tr').dataset.id);
+  if(x.aktif!==false&&x.role==='admin'&&a.filter(y=>y.role==='admin'&&y.aktif!==false).length<2)return void alert('Minimal harus ada satu admin aktif.');
+  x.aktif=x.aktif===false;saveUsers(a);auditEvt(x.aktif?'akun diaktifkan':'akun dinonaktifkan',x.nama,'');akunUI()});
+ $('#nNama').oninput=()=>{$('#nParaf').value=inisial($('#nNama').value)};
+ $('#nGo').onclick=async()=>{const nama=rapi($('#nNama').value),pin=$('#nPin').value,a=users();
+  if(!nama)return void($('#nErr').textContent='Isi nama');if(!pinOk(pin))return void($('#nErr').textContent='PIN awal 4–6 angka');
+  if(a.some(y=>y.nama.toLowerCase()===nama.toLowerCase()))return void($('#nErr').textContent='Nama sudah ada');
+  const x={id:uid(),nama,nip:rapi($('#nNip').value),paraf:rapi($('#nParaf').value)||inisial(nama),role:$('#nRole').value,aktif:true,salt:uid()+uid(),dibuat:Date.now()};x.ph=await pinHash(pin,x.salt);a.push(x);saveUsers(a);
+  if(DEK){const K=encKeysLoad();K.wrap[x.id]=await wrapFor(pin);encKeysSave(K)}
+  auditEvt('akun dibuat',`${x.nama} (${x.role})`,'');akunUI()}}
+
+async function riwayatUI(){let list,semua;try{list=await auditAll();semua=await auditSemua()}catch(e){mdl('Riwayat','<p>Riwayat tidak bisa dibuka di browser ini (IndexedDB diblokir).</p>');return}
+ const rusak=auditVerify(list),fmt=t=>new Date(t).toLocaleString('id-ID',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'});
+ const rkL=Object.fromEntries((await dall('ringkas').catch(()=>[])).map(r=>[r.id,r.label]));
+ const sheetLab=s=>s?(store.sheets[s]?label(store.sheets[s]):rkL[s]?rkL[s]+' (arsip)':'(lembar sudah dihapus / pulang)'):'—';
+ const peran=Object.fromEntries(users().map(u=>[u.id,u.role])),siapa=r=>r.un+(peran[r.u]==='dokter'?' (dokter)':'');
+ const rows=semua.filter(r=>!(r.k&&String(r.o)===String(r.n))).sort((a,b)=>a.t-b.t).map(r=>{const fi=r.k?fieldInfo(r.k):{sec:'Kejadian',f:r.e==='snapshot'?`titik awal lembar · ${r.y||''}`:r.e+(r.x?': '+r.x:'')};if(r.ar)fi.f+=' · (arsip file)';if(r.x==='pulihkan'&&r.k)fi.f+=' · (dipulihkan dari file)';return{...r,un:siapa(r),sec:fi.sec,f:fi.f}}).reverse();
+ const secs=[...new Set(rows.map(r=>r.sec))].sort(),ppl=[...new Set(rows.map(r=>r.un))].sort();
+ mdl('Riwayat perubahan',`<div class="rint ${rusak?'bad':'ok'}">${rusak?`⚠️ Riwayat TIDAK UTUH — catatan ${fmt(rusak.t)} (${esc(rusak.un)}) atau sebelumnya diubah / dihapus di luar kardeks.`:`✅ Riwayat utuh · ${list.length} catatan di browser ini${semua.length>list.length?` + ${semua.length-list.length} dari file arsip`:''}`}</div>
+  <div class="rflt"><select id="rLing"><option value="ini">Lembar ini</option><option value="semua">Semua lembar</option><option value="akun">Masuk / keluar, akun &amp; zona</option></select>
+  <select id="rUser"><option value="">Semua petugas</option>${ppl.map(p=>`<option>${esc(p)}</option>`).join('')}</select>
+  <select id="rSec"><option value="">Semua bagian</option>${secs.map(p=>`<option>${esc(p)}</option>`).join('')}</select>
+  <input id="rCari" placeholder="cari kolom / nilai"><button id="rCsv">Ekspor CSV</button><span id="rN"></span></div><div class="rlist" id="rList"></div>`,true);
+ let shown=[];
+ const draw=()=>{const L=$('#rLing').value,U=$('#rUser').value,S=$('#rSec').value,Q=$('#rCari').value.toLowerCase();
+  shown=rows.filter(r=>(L==='ini'?r.s===store.current:L==='akun'?!r.s:true)&&(!U||r.un===U)&&(!S||r.sec===S)&&(!Q||(r.f+' '+r.o+' '+r.n).toLowerCase().includes(Q)));
+  $('#rN').textContent=`${shown.length} catatan`;
+  $('#rList').innerHTML=shown.length?`<table><tr><th>Waktu</th><th>Petugas</th>${L==='ini'?'':'<th>Lembar</th>'}<th>Bagian</th><th>Kolom / kejadian</th><th>Lama</th><th>Baru</th></tr>${shown.slice(0,800).map(r=>`<tr class="${r.k?'':'ev'}"><td>${fmt(r.t)}</td><td>${esc(r.un)}</td>${L==='ini'?'':`<td>${esc(sheetLab(r.s))}</td>`}<td>${esc(r.sec)}</td><td title="${esc(r.k||'')}">${esc(r.f)}</td><td class="o">${r.k?esc(r.o===''?'—':r.o):''}</td><td class="n">${r.k?esc(r.n===''?'(dihapus)':r.n):''}</td></tr>`).join('')}</table>${shown.length>800?'<p class="am">Menampilkan 800 terbaru — pakai filter atau Ekspor CSV untuk semua.</p>':''}`:'<p class="am">Belum ada catatan.</p>'};
+ ['rLing','rUser','rSec'].forEach(id=>$('#'+id).onchange=draw);$('#rCari').oninput=draw;
+ $('#rCsv').onclick=()=>{const q=v=>`"${String(v??'').replace(/"/g,'""')}"`,us=users();
+  const csv=[['Waktu','Petugas','NIP','Lembar','Bagian','Kolom / kejadian','Lama','Baru','Kunci'].join(',')].concat(shown.map(r=>[new Date(r.t).toISOString(),r.un,(us.find(u=>u.id===r.u)||{}).nip||'',sheetLab(r.s),r.sec,r.f,r.k?r.o:'',r.k?r.n:'',r.k||''].map(q).join(','))).join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+csv],{type:'text/csv'}));a.download=`riwayat-kardeks-${todayISO()}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);auditEvt('ekspor riwayat',`${shown.length} catatan`,'')};
+ draw()}
+
+async function arsipUI(){const rk=(await dall('ringkas')).filter(r=>r.arsip).sort((a,b)=>b.tgl.localeCompare(a.tgl));
+ mdl('Arsip lembar',`<p class="am">Lembar lebih dari ${ARSIP_HARI} hari dipindah ke arsip otomatis (lembar terbaru tiap pasien tetap aktif). Data tetap utuh di browser ini dan ikut Cadangkan / Pasien pulang.</p>
+  <div class="rflt"><input id="aCari" placeholder="cari nama / RM / tanggal"><span id="aN"></span>${AUTH.user&&AUTH.user.role!=='dokter'&&rk.some(r=>r.cetak)?`<button id="aHapusCetak">Hapus ${rk.filter(r=>r.cetak).length} lembar arsip yang sudah dicetak</button>`:''}</div><div class="rlist" id="aList"></div>`,true);
+ if($('#aHapusCetak'))$('#aHapusCetak').onclick=()=>{const L=rk.filter(r=>r.cetak);if(!confirm(`Hapus ${L.length} lembar arsip yang sudah dicetak dari browser ini? Riwayat perubahannya tetap tersimpan.`))return;L.forEach(r=>{deleted.add(r.id);auditEvt('dihapus setelah dicetak (arsip)',r.label,r.id)});persist();mdlClose();setStatus(`${L.length} lembar arsip yang sudah dicetak dihapus`)};
+ const draw=()=>{const Q=$('#aCari').value.toLowerCase(),L=rk.filter(r=>!Q||(r.label+' '+r.pk).toLowerCase().includes(Q));$('#aN').textContent=`${L.length} lembar`;
+  $('#aList').innerHTML=L.length?`<table><tr><th>Lembar</th><th></th></tr>${L.slice(0,500).map(r=>`<tr><td>${r.cetak?'🖨 ':''}${esc(r.label)}${r.cetak?` <small class="am">dicetak ${esc(r.cetak.by)}</small>`:''}</td><td><button class="aBuka" data-id="${r.id}">Buka</button></td></tr>`).join('')}</table>`:'<p class="am">Arsip kosong.</p>';
+  $$('.aBuka').forEach(b=>b.onclick=async()=>{if(await bukaArsip(b.dataset.id)){mdlClose();load(b.dataset.id);auditEvt('buka dari arsip',label(cur()))}})};
+ $('#aCari').oninput=draw;draw()}
+$('#btnArsip').onclick=arsipUI;
+$('#btnCadangan').onclick=cadanganUI;
+$('#bkInfo').onclick=cadanganUI;
+$('#btnUser').onclick=akunUI;$('#btnLog').onclick=riwayatUI;$('#mClose').onclick=mdlClose;$('#mdl').addEventListener('click',e=>{if(e.target.id==='mdl')mdlClose()});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#mdl').hidden)mdlClose()});
+// paraf otomatis: centang tindakan / obat → paraf diisi inisial perawat yang masuk (bila masih kosong)
+document.addEventListener('change',e=>{const t=e.target,m=t.dataset&&t.dataset.k&&t.dataset.k.match(/^(g\.(?:tk\d+|ob\d+)\.\d+)\.v$/);
+ if(!m||!t.checked||!AUTH.user)return;const p=document.querySelector(`[data-k="${m[1]}"]`);if(p&&!p.value)p.value=AUTH.user.paraf},true);
+// kejadian penting
+[['#btnPrint','cetak'],['#btnExport','cadangkan pasien'],['#btnExportAll','cadangkan semua'],['#btnPulang','pasien pulang (diklik)'],['#btnImport','pulihkan (dibuka)']].forEach(([q,e])=>$(q).addEventListener('click',()=>auditEvt(e,store.current&&cur()?label(cur()):''),true));
+
+/* ---------- cadangan otomatis terenkripsi ke folder pilihan ---------- */
+// Cadangan = salinan apa adanya (sudah terenkripsi) + bahan kunci, jadi bisa dipulihkan di browser/komputer lain
+// dengan PIN admin mana pun ATAU kunci pemulihan. File ditulis ke folder yang dipilih sekali (File System Access API).
+const BKINT=8*3600e3,BKSIMPAN=20; // cadangkan tiap ≥8 jam; simpan 20 file terbaru
+const miscGet=id=>ddb().then(db=>idbReq(db.transaction('misc').objectStore('misc').get(id))).then(r=>r&&r.v).catch(()=>null);
+const miscSet=(id,v)=>ddb().then(db=>new Promise(res=>{const tx=db.transaction('misc','readwrite');tx.objectStore('misc').put({id,v});tx.oncomplete=tx.onerror=tx.onabort=()=>res()}));
+async function backupBundle(){
+ const sheets=await dallRaw('sheets'),ringkas=await dallRaw('ringkas'),log=await auditRaw(),arsip=await (idb().then(db=>idbReq(db.transaction('arsip').objectStore('arsip').getAll())).catch(()=>[]));
+ return{app:'kardeks-picu-f61',jenis:'cadangan-terenkripsi',v:1,ts:Date.now(),tanggal:new Date().toISOString(),
+  keys:encKeysLoad(),users:JSON.parse(localStorage.getItem(UKEY)||'null'),cur:localStorage.getItem(KEY+'-cur')||'',
+  idb:{sheets,ringkas,log,arsip}}}
+const bkNama=()=>`kardeks-cadangan-${new Date().toISOString().slice(0,16).replace('T','-').replace(':','')}.enc.json`;
+async function folderOK(h,minta){if(!h)return false;const opt={mode:'readwrite'};if((await h.queryPermission(opt))==='granted')return true;if(minta&&(await h.requestPermission(opt))==='granted')return true;return false}
+async function pilihFolder(){if(!window.showDirectoryPicker){setStatus('Browser ini belum mendukung folder cadangan — pakai Cadangkan manual');return false}
+ let h;try{h=await window.showDirectoryPicker({mode:'readwrite',id:'kardeks-cadangan'})}catch(e){return false}
+ await miscSet('bkdir',h);auditEvt('folder cadangan dipilih',h.name||'');renderCadangan();return true}
+async function tulisCadangan(manual){const h=await miscGet('bkdir');
+ if(!h||!(await folderOK(h,!!manual))){if(manual)setStatus('Folder cadangan belum dipilih / izin ditolak');return false}
+ try{const data=JSON.stringify(await backupBundle());const fh=await h.getFileHandle(bkNama(),{create:true});const w=await fh.createWritable();await w.write(data);await w.close();
+  await miscSet('bklast',Date.now());
+  // sisakan BKSIMPAN terbaru
+  const files=[];for await(const [n,e] of h.entries())if(e.kind==='file'&&/^kardeks-cadangan-.*\.enc\.json$/.test(n))files.push(n);
+  files.sort();for(const n of files.slice(0,Math.max(0,files.length-BKSIMPAN)))try{await h.removeEntry(n)}catch(e){}
+  auditEvt('cadangan otomatis ditulis',`${(data.length/1024).toFixed(0)} KB`);renderCadangan();if(manual)setStatus('Cadangan terenkripsi tersimpan ke folder');return true}
+ catch(e){if(manual)setStatus('Gagal menulis cadangan ke folder');return false}}
+async function jadwalCadangan(){const h=await miscGet('bkdir');if(!h)return;const last=await miscGet('bklast')||0;if(Date.now()-last>=BKINT)tulisCadangan(false)}
+async function renderCadangan(){const el=$('#bkInfo');if(!el)return;const h=await miscGet('bkdir'),last=await miscGet('bklast');
+ el.hidden=false;if(!h){el.textContent='💾 cadangan: folder belum dipilih';el.className='rolebar bkwarn'}
+ else{el.textContent=`💾 ${h.name||'folder'}${last?' · '+new Date(last).toLocaleString('id-ID',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):' · belum'}`;el.className='rolebar bkok'}}
+async function cadanganUI(){const dk=AUTH.user&&AUTH.user.role==='dokter',h=await miscGet('bkdir'),last=await miscGet('bklast'),ada=!!window.showDirectoryPicker;
+ mdl('Cadangan otomatis terenkripsi',`
+  <p class="am">Cadangan berisi semua lembar &amp; riwayat dalam bentuk terenkripsi. Bisa dipulihkan di komputer lain dengan PIN admin mana pun atau kunci pemulihan. Simpan folder di drive bersama / cloud RS supaya ikut ter-backup.</p>
+  ${ada?`<div class="arow"><button id="bkPilih" class="pri">${h?'Ganti folder':'Pilih folder cadangan'}</button><span class="am">${h?'Folder: <b>'+esc(h.name||'(folder)')+'</b>':'belum dipilih'}</span></div>
+  <p class="am">Cadangan otomatis tiap ±${BKINT/3600e3} jam saat dipakai. Terakhir: <b>${last?new Date(last).toLocaleString('id-ID'):'belum pernah'}</b>. Disimpan ${BKSIMPAN} file terbaru.</p>
+  <div class="arow">${dk?'':'<button id="bkNow">Cadangkan sekarang</button>'}<button id="bkRestore">Pulihkan dari cadangan…</button></div>
+  <input type="file" id="bkFile" accept=".json,application/json" hidden>`:'<p class="am warn">Browser ini belum mendukung folder cadangan otomatis. Pakai tombol <b>Cadangkan</b> biasa di toolbar (unduh ke Downloads).</p>'}`);
+ if(!ada)return;
+ $('#bkPilih').onclick=async()=>{if(await pilihFolder()){await tulisCadangan(true);cadanganUI()}};
+ if($('#bkNow'))$('#bkNow').onclick=async()=>{await tulisCadangan(true);cadanganUI()};
+ $('#bkRestore').onclick=()=>$('#bkFile').click();
+ $('#bkFile').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(f)restoreCadangan(f)}}
+async function restoreCadangan(file){let b;try{b=JSON.parse(await file.text())}catch(e){return void alert('File cadangan tidak terbaca.')}
+ if(!b||b.app!=='kardeks-picu-f61'||!b.idb){alert('Ini bukan file cadangan terenkripsi kardeks.\n(Untuk file .json lama tanpa enkripsi, pakai tombol Pulihkan di toolbar.)');return}
+ const n=(b.idb.sheets||[]).length;
+ if(!confirm(`Pulihkan cadangan ${b.tanggal?b.tanggal.slice(0,16).replace('T',' '):''}\n${n} lembar.\n\nData di browser ini akan DIGABUNG dengan isi cadangan (lembar dengan id sama ditimpa versi dari cadangan). Bahan kunci & daftar akun dari cadangan juga dipasang.\n\nSetelah pulih, masuk dengan PIN admin dari cadangan itu, atau kunci pemulihannya. Lanjutkan?`))return;
+ try{
+  if(b.keys)encKeysSave(b.keys);if(b.users)localStorage.setItem(UKEY,JSON.stringify(b.users));if(b.cur)localStorage.setItem(KEY+'-cur',b.cur);
+  const db=await ddb();await new Promise((res,rej)=>{const tx=db.transaction(['sheets','ringkas'],'readwrite');(b.idb.sheets||[]).forEach(r=>tx.objectStore('sheets').put(r));(b.idb.ringkas||[]).forEach(r=>tx.objectStore('ringkas').put(r));tx.oncomplete=res;tx.onerror=tx.onabort=()=>rej(tx.error)});
+  const adb=await idb();await new Promise(res=>{const tx=adb.transaction(['log','arsip'],'readwrite');(b.idb.log||[]).forEach(r=>{const {i,...rest}=r;tx.objectStore('log').put(r)});(b.idb.arsip||[]).forEach(r=>tx.objectStore('arsip').put(r));tx.oncomplete=tx.onerror=tx.onabort=()=>res()});
+  alert('Cadangan dipulihkan. Halaman akan dimuat ulang — masuk dengan PIN admin dari cadangan atau kunci pemulihannya.');DEK=null;dekSesiHapus();location.reload()}
+ catch(e){alert('Gagal memulihkan cadangan: '+e.message)}}
 /* ---------- boot ---------- */
 setPage();
-if(!store.current||!store.sheets[store.current]){const ids=Object.keys(store.sheets);if(ids.length)store.current=ids[0];else newSheet()}
-load(store.current);setStatus('Tersimpan otomatis di browser ini');
+(async()=>{
+try{await migrasiLS()}catch(e){}
+const s=JSON.parse(sessionStorage.getItem(SKEY)||'null'),u=s&&users().find(x=>x.id===s.id&&x.aktif!==false);
+if(u&&Date.now()-s.last<IDLE&&enkripsiAktif()&&await dekSesiMuat()){AUTH.user=u;renderWho();
+ try{await dataReady()}catch(e){}if(!store.current||!store.sheets[store.current]){const ids=Object.keys(store.sheets);if(ids.length)store.current=ids[0];else newSheet()}
+ load(store.current);applyAkses();cekPulang();setStatus('Tersimpan otomatis di browser ini')}
+else showAuth();
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(drawChart);
+})();
 </script>
 
 </body></html>
