@@ -361,7 +361,36 @@ textarea.lined{display:block;width:100%;border:0;resize:vertical;padding:0 10px;
   body:not(.printing) .sign{grid-template-columns:repeat(2,minmax(0,1fr))}
   body:not(.printing) .sheet{padding:20px 16px}
 }
+/* Layar HP & tablet: cegah halaman melebar; grid jam & tabel alat digeser di dalam kotaknya sendiri */
+@media screen and (max-width:1300px){
+  body:not(.printing) .sheet>*,body:not(.printing) .mid>*,body:not(.printing) .gridbox{min-width:0;max-width:100%}
+  body:not(.printing) .idg>.f[style*="grid-column"]{grid-column:auto!important}
+  body:not(.printing) .idg>.f.dxf,body:not(.printing) .idg>.f.alergi{grid-column:1/-1!important}
+  body:not(.printing) .idg .fl{white-space:normal}
+  body:not(.printing) .sbody{overflow-x:auto}
+  body:not(.printing) #alatbox{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  body:not(.printing) #alatbox>.bt{position:sticky;left:0}
+  body:not(.printing) #alatbox .mt.alat{min-width:860px}
+  body:not(.printing) #alatbox .mt.alat>.h{white-space:normal;line-height:1.2;padding-block:4px}
+  body:not(.printing) #alatbox .mt.alat>.k,body:not(.printing) #alatbox .mt.alat>.h:first-child{position:sticky;left:0;z-index:1}
+}
+@media screen and (max-width:900px){
+  body:not(.printing) .toolbar{position:static;padding:8px 12px;gap:6px}
+  body:not(.printing) .toolbar .brand{flex-basis:100%}
+  body:not(.printing) .toolbar select,body:not(.printing) .toolbar button{padding:5px 8px;font-size:13px}
+  body:not(.printing) .toolbar .sp{display:none}
+}
 @media screen and (max-width:640px){
+  body:not(.printing) .idg,body:not(.printing) .idg.back{grid-template-columns:repeat(2,minmax(0,1fr))}
+  body:not(.printing) .idg>.f:first-child,body:not(.printing) .idg>.f.prio{grid-column:1/-1!important}
+  body:not(.printing) .row,body:not(.printing) .grow{grid-template-columns:140px repeat(24,minmax(0,1fr))}
+  body:not(.printing) .chartbox svg{left:140px;width:calc(100% - 140px)}
+  body:not(.printing) .lab{font-size:12.5px;padding:0 5px}
+  body:not(.printing) .hg{min-width:1040px}
+  body:not(.printing) .sheet{margin-inline:8px;padding:16px 12px}
+  body:not(.printing) .notice{margin-inline:8px}
+  body:not(.printing) .fhead{gap:12px}
+  body:not(.printing) .badgewrap{align-items:flex-start}
   body:not(.printing) .sign{grid-template-columns:minmax(0,1fr)}
   body:not(.printing) .ttl b{font-size:22px}
   body:not(.printing) .pref{grid-template-columns:90px minmax(0,1fr)}
@@ -1647,7 +1676,8 @@ async function tulisCadangan(manual){const h=await miscGet('bkdir');
  catch(e){if(manual)setStatus('Gagal menulis cadangan ke folder');return false}}
 async function jadwalCadangan(){const h=await miscGet('bkdir');if(!h)return;const last=await miscGet('bklast')||0;if(Date.now()-last>=BKINT)tulisCadangan(false)}
 async function renderCadangan(){const el=$('#bkInfo');if(!el)return;const h=await miscGet('bkdir'),last=await miscGet('bklast');
- el.hidden=false;if(!h){el.textContent='💾 cadangan: folder belum dipilih';el.className='rolebar bkwarn'}
+ el.hidden=false;if(!h&&!window.showDirectoryPicker){el.textContent='💾 cadangan: pakai “Cadangkan pasien”';el.title='Browser ini (mis. HP/Safari) tidak mendukung folder cadangan otomatis. Simpan manual lewat tombol Cadangkan pasien / Semua.';el.className='rolebar bkok'}
+ else if(!h){el.textContent='💾 cadangan: folder belum dipilih';el.className='rolebar bkwarn'}
  else{el.textContent=`💾 ${h.name||'folder'}${last?' · '+new Date(last).toLocaleString('id-ID',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):' · belum'}`;el.className='rolebar bkok'}}
 async function cadanganUI(){const dk=AUTH.user&&AUTH.user.role==='dokter',h=await miscGet('bkdir'),last=await miscGet('bklast'),ada=!!window.showDirectoryPicker;
  mdl('Cadangan otomatis terenkripsi',`
